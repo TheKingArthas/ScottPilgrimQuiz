@@ -15,9 +15,11 @@ struct QuizView: View {
     }
     
     var body: some View {
-        QuestionView(question: viewModel.questions.first ?? QuestionModel(question: "",
-                                                                          correctAnswer: "",
-                                                                          wrongAnswers: ["",""]))
+        VStack {
+            if let randomQuestion = viewModel.popRandomUnaskedQuestion() {
+                QuestionView(question: randomQuestion)
+            }
+        }
         .onAppear {
             do {
                 try viewModel.fetchQuestions()
