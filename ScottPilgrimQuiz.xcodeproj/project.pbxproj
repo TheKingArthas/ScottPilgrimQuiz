@@ -11,6 +11,7 @@
 		C70904F72B96BC0500CAB49F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70904F62B96BC0500CAB49F /* ContentView.swift */; };
 		C70904F92B96BC0700CAB49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70904F82B96BC0700CAB49F /* Assets.xcassets */; };
 		C70904FC2B96BC0700CAB49F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70904FB2B96BC0700CAB49F /* Preview Assets.xcassets */; };
+		C70905042B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = C70905032B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		C70904F62B96BC0500CAB49F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C70904F82B96BC0700CAB49F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C70904FB2B96BC0700CAB49F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C70905032B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ScottPilgrimQuizJsonResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +53,9 @@
 		C70904F32B96BC0500CAB49F /* ScottPilgrimQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				C70905022B96BFA400CAB49F /* Resources */,
 				C70904F42B96BC0500CAB49F /* ScottPilgrimQuizApp.swift */,
 				C70904F62B96BC0500CAB49F /* ContentView.swift */,
-				C70904F82B96BC0700CAB49F /* Assets.xcassets */,
 				C70904FA2B96BC0700CAB49F /* Preview Content */,
 			);
 			path = ScottPilgrimQuiz;
@@ -65,6 +67,15 @@
 				C70904FB2B96BC0700CAB49F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C70905022B96BFA400CAB49F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C70904F82B96BC0700CAB49F /* Assets.xcassets */,
+				C70905032B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C70904FC2B96BC0700CAB49F /* Preview Assets.xcassets in Resources */,
+				C70905042B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json in Resources */,
 				C70904F92B96BC0700CAB49F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
