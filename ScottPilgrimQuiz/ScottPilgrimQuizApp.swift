@@ -11,7 +11,7 @@ import SwiftUI
 struct ScottPilgrimQuizApp: App {
     var body: some Scene {
         WindowGroup {
-            QuizView(viewModel: QuizViewModel())
+            QuizView(viewModel: QuizViewModel(amountOfRandomQuestions: 10))
         }
     }
 }

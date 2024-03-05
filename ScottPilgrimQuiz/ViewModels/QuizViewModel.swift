@@ -7,28 +7,54 @@
 
 import Foundation
 
+enum QuizViewModelError: Error {
+    case notEnoughQuestionsFetched
+}
+
 class QuizViewModel: ObservableObject {
-    @Published private var questions: [QuestionModel] = []
-    private var unaskedQuestions: [QuestionModel] = []
+    private let amountOfRandomQuestions: Int
+    @Published private var unaskedQuestions: [QuestionModel]
     
-    func fetchQuestions() throws {
-        questions = try QuestionService().fetchQuestions()
-        resetUnaskedQuestions()
+    init(amountOfRandomQuestions: Int) {
+        self.amountOfRandomQuestions = amountOfRandomQuestions
+        self.unaskedQuestions = []
     }
     
-    func popRandomUnaskedQuestion() -> QuestionModel? {
-        guard !unaskedQuestions.isEmpty else {
+    func fetchQuestions() throws {
+        try fetchRandomQuestions(amount: amountOfRandomQuestions)
+    }
+    
+    func popRandomQuestion() -> QuestionModel? {
+        popQuestion(&unaskedQuestions)
+    }
+    
+    private func popQuestion(_ questions: inout [QuestionModel]) -> QuestionModel? {
+        guard !questions.isEmpty else {
             return nil
         }
         
-        let questionPosition = Int.random(in: 0...unaskedQuestions.count - 1)
-        let unaskedQuestion = unaskedQuestions[questionPosition]
-        unaskedQuestions.remove(at: questionPosition)
+        let randomPosition = Int.random(in: 0...questions.count - 1)
+        let question = questions[randomPosition]
+        questions.remove(at: randomPosition)
         
-        return unaskedQuestion
+        return question
     }
     
-    func resetUnaskedQuestions() {
-        unaskedQuestions = questions
+    private func fetchRandomQuestions(amount amountOfQuestions: Int) throws {
+        var questions = try fetchAllQuestions()
+        
+        guard questions.count >= amountOfQuestions else {
+            throw QuizViewModelError.notEnoughQuestionsFetched
+        }
+        
+        (1...amountOfQuestions).forEach { _ in
+            if let randomQuestion = popQuestion(&questions) {
+                unaskedQuestions.append(randomQuestion)
+            }
+        }
+    }
+    
+    private func fetchAllQuestions() throws -> [QuestionModel] {
+        return try QuestionService().fetchQuestions()
     }
 }
