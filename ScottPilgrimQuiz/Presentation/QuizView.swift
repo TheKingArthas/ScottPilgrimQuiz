@@ -17,7 +17,7 @@ struct QuizView: View {
     var body: some View {
         VStack {
             if let question = viewModel.popRandomQuestion() {
-                QuestionView(question: question)
+                QuestionView(questionModel: question)
             }
         }
         .onAppear {

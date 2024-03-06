@@ -8,23 +8,43 @@
 import SwiftUI
 
 struct QuestionView: View {
-    let question: QuestionModel
+    let questionModel: QuestionModel
     
     var body: some View {
+        mainView
+    }
+    
+    private var mainView: some View {
         VStack {
-            Text(question.question)
-            Text(question.correctAnswer)
-            Text(question.wrongAnswers[0])
-            Text(question.wrongAnswers[1])
+            questionView(questionModel.question)
+            answersView(questionModel.answers)
         }
+    }
+    
+    private func questionView(_ question: String) -> some View {
+        Text(question)
+    }
+    
+    private func answersView(_ answers: [AnswerModel]) -> some View {
+        let shuffledAnswers = answers.shuffled()
+        return List {
+            ForEach(shuffledAnswers) { answer in
+                answerView(answer)
+            }
+        }
+    }
+    
+    private func answerView(_ answer: AnswerModel) -> some View {
+        Text(answer.answer)
     }
 }
 
 #Preview {
-    QuestionView(question: QuestionModel(question: "Is true?",
-                                         correctAnswer: "It is",
-                                         wrongAnswers: [
-                                            "Wrong anwser",
-                                            "Another wrong answer"
-                                         ]))
+    QuestionView(questionModel: QuestionModel(id: "0",
+                                              question: "Is true?",
+                                              answers: [
+                                                AnswerModel(id: "1", answer: "Correct answer", isCorrect: true),
+                                                AnswerModel(id: "2", answer: "Wrong answer", isCorrect: false),
+                                                AnswerModel(id: "3", answer: "Another wrong answer", isCorrect: false)
+                                              ]))
 }
