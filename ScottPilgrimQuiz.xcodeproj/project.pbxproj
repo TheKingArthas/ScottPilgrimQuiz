@@ -20,6 +20,7 @@
 		C79E2CDB2B9951CC00E9395E /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E2CDA2B9951CC00E9395E /* CustomFont.swift */; };
 		C79E2CE02B9958C800E9395E /* Dusty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C79E2CDE2B9955B900E9395E /* Dusty.ttf */; };
 		C79E2CE12B9958CC00E9395E /* SUPERFLY.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C79E2CDD2B9955B900E9395E /* SUPERFLY.TTF */; };
+		C79E2CE32B995B1900E9395E /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E2CE22B995B1900E9395E /* CustomColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C79E2CDD2B9955B900E9395E /* SUPERFLY.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SUPERFLY.TTF; sourceTree = "<group>"; };
 		C79E2CDE2B9955B900E9395E /* Dusty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dusty.ttf; sourceTree = "<group>"; };
 		C79E2CDF2B99579400E9395E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C79E2CE22B995B1900E9395E /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				C70904F82B96BC0700CAB49F /* Assets.xcassets */,
+				C79E2CE22B995B1900E9395E /* CustomColor.swift */,
 				C79E2CDA2B9951CC00E9395E /* CustomFont.swift */,
 				C79E2CDC2B99558700E9395E /* Font */,
 				C70905032B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json */,
@@ -219,6 +222,7 @@
 			files = (
 				C70905072B96C87200CAB49F /* QuestionModel.swift in Sources */,
 				C709050F2B96CB2500CAB49F /* ServiceError.swift in Sources */,
+				C79E2CE32B995B1900E9395E /* CustomColor.swift in Sources */,
 				C709050D2B96CA9100CAB49F /* QuestionService.swift in Sources */,
 				C79E2CDB2B9951CC00E9395E /* CustomFont.swift in Sources */,
 				C70905142B96D32300CAB49F /* QuestionView.swift in Sources */,
