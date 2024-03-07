@@ -9,6 +9,8 @@ import SwiftUI
 
 struct QuestionView: View {
     let questionModel: QuestionModel
+    let questionNumber: Int
+    let amountOfTotalQuestions: Int
     
     var body: some View {
         mainView
@@ -17,7 +19,7 @@ struct QuestionView: View {
     private var mainView: some View {
         VStack {
             questionView(questionModel.question)
-                .padding(.bottom, LayoutMultiplier.size(8))
+                .padding(.bottom, LayoutMultiplier.size(6))
             answersView(questionModel.answers)
                 .frame(maxWidth: .infinity)
         }
@@ -29,13 +31,19 @@ struct QuestionView: View {
     }
     
     private func questionView(_ question: String) -> some View {
-        Text(question)
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
-            .minimumScaleFactor(0.8)
-            .lineLimit(5)
-            .multilineTextAlignment(.center)
-            .foregroundStyle(CustomColor.white)
-            .padding(.horizontal, LayoutMultiplier.padding(2.5))
+        VStack {
+            Text("Question \(questionNumber)-\(amountOfTotalQuestions)")
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+                .foregroundStyle(CustomColor.primary)
+                .padding(.vertical, LayoutMultiplier.size(2))
+            Text(question)
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+                .minimumScaleFactor(0.8)
+                .lineLimit(5)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(CustomColor.white)
+        }
+        .padding(.horizontal, LayoutMultiplier.padding(2.5))
     }
     
     private func answersView(_ answers: [AnswerModel]) -> some View {
@@ -80,5 +88,7 @@ struct QuestionView: View {
                                                 AnswerModel(id: "1", answer: "Scott Pilgrim's Precious Little Life", isCorrect: true),
                                                 AnswerModel(id: "2", answer: "Scott Pilgrim vs. the World", isCorrect: false),
                                                 AnswerModel(id: "3", answer: "Scott Pilgrim Gets it Together", isCorrect: false)
-                                              ]))
+                                              ]),
+                 questionNumber: 1,
+                 amountOfTotalQuestions: 10)
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuizView: View {
     @ObservedObject private var viewModel: QuizViewModel
+    @State private var currentQuestionNumber: Int = 1
     
     init(viewModel: QuizViewModel) {
         self.viewModel = viewModel
@@ -17,7 +18,9 @@ struct QuizView: View {
     var body: some View {
         VStack {
             if let question = viewModel.popRandomQuestion() {
-                QuestionView(questionModel: question)
+                QuestionView(questionModel: question,
+                             questionNumber: currentQuestionNumber,
+                             amountOfTotalQuestions: viewModel.amountOfRandomQuestions)
             }
         }
         .onAppear {

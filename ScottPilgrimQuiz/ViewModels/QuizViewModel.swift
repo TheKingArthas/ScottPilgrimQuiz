@@ -12,7 +12,7 @@ enum QuizViewModelError: Error {
 }
 
 class QuizViewModel: ObservableObject {
-    private let amountOfRandomQuestions: Int
+    let amountOfRandomQuestions: Int
     @Published private var unaskedQuestions: [QuestionModel]
     
     init(amountOfRandomQuestions: Int) {
