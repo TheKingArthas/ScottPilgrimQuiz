@@ -8,9 +8,8 @@
 import Foundation
 
 struct LayoutMultiplier {
-    static func size(_ multiplier: CGFloat) -> CGFloat {
-        8 * multiplier
-    }
+    static func padding(_ multiplier: CGFloat) -> CGFloat { 8 * multiplier }
+    static func size(_ multiplier: CGFloat) -> CGFloat { 8 * multiplier }
     
     private init() {}
 }
