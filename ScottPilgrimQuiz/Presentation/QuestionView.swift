@@ -18,10 +18,12 @@ struct QuestionView: View {
     
     private var mainView: some View {
         VStack {
+            timerView()
             questionView(questionModel.question)
                 .padding(.bottom, LayoutMultiplier.size(6))
             answersView(questionModel.answers)
                 .frame(maxWidth: .infinity)
+            skipButtonView()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background {
@@ -61,13 +63,15 @@ struct QuestionView: View {
                             answerNumber: Int) -> some View {
         Button {
             print(answer.isCorrect)
+            //TODO: Add flow
         } label: {
             HStack {
                 Text("\(answerNumber)")
-                    .padding(LayoutMultiplier.size(2))
+                    .padding(LayoutMultiplier.padding(2))
                     .background(CustomColor.background)
                     .clipShape(Circle())
                 Text(answer.answer)
+                    .padding(.leading, LayoutMultiplier.padding(1.5))
                     .frame(maxWidth: .infinity)
             }
             .font(CustomFont.montserrat(size: LayoutMultiplier.size(2.5),
@@ -75,9 +79,26 @@ struct QuestionView: View {
             .lineLimit(2)
             .minimumScaleFactor(0.8)
             .foregroundStyle(CustomColor.primary)
-            .padding(LayoutMultiplier.size(3))
-            .background(CustomColor.secondary)
         }
+        .padding(LayoutMultiplier.size(3))
+        .background(CustomColor.secondary)
+    }
+    
+    private func timerView() -> some View {
+        EmptyView()
+    }
+    
+    private func skipButtonView() -> some View {
+        Button {
+            print("Question skipped")
+            //TODO: Add action
+        } label: {
+            Text("Skip")
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+                .foregroundStyle(CustomColor.destructive)
+                .padding(.vertical, LayoutMultiplier.size(2))
+        }
+
     }
 }
 
