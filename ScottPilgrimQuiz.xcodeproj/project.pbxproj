@@ -17,6 +17,9 @@
 		C709050F2B96CB2500CAB49F /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C709050E2B96CB2500CAB49F /* ServiceError.swift */; };
 		C70905122B96D22400CAB49F /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70905112B96D22400CAB49F /* QuizView.swift */; };
 		C70905142B96D32300CAB49F /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70905132B96D32300CAB49F /* QuestionView.swift */; };
+		C79E2CDB2B9951CC00E9395E /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E2CDA2B9951CC00E9395E /* CustomFont.swift */; };
+		C79E2CE02B9958C800E9395E /* Dusty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C79E2CDE2B9955B900E9395E /* Dusty.ttf */; };
+		C79E2CE12B9958CC00E9395E /* SUPERFLY.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C79E2CDD2B9955B900E9395E /* SUPERFLY.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,10 @@
 		C709050E2B96CB2500CAB49F /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		C70905112B96D22400CAB49F /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		C70905132B96D32300CAB49F /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		C79E2CDA2B9951CC00E9395E /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		C79E2CDD2B9955B900E9395E /* SUPERFLY.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SUPERFLY.TTF; sourceTree = "<group>"; };
+		C79E2CDE2B9955B900E9395E /* Dusty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dusty.ttf; sourceTree = "<group>"; };
+		C79E2CDF2B99579400E9395E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +70,7 @@
 		C70904F32B96BC0500CAB49F /* ScottPilgrimQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				C79E2CDF2B99579400E9395E /* Info.plist */,
 				C70905052B96C86000CAB49F /* Models */,
 				C70905102B96D1EE00CAB49F /* Presentation */,
 				C70904FA2B96BC0700CAB49F /* Preview Content */,
@@ -86,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				C70904F82B96BC0700CAB49F /* Assets.xcassets */,
+				C79E2CDA2B9951CC00E9395E /* CustomFont.swift */,
+				C79E2CDC2B99558700E9395E /* Font */,
 				C70905032B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json */,
 			);
 			path = Resources;
@@ -123,6 +133,15 @@
 				C70905132B96D32300CAB49F /* QuestionView.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C79E2CDC2B99558700E9395E /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C79E2CDE2B9955B900E9395E /* Dusty.ttf */,
+				C79E2CDD2B9955B900E9395E /* SUPERFLY.TTF */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +203,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C70904FC2B96BC0700CAB49F /* Preview Assets.xcassets in Resources */,
+				C79E2CE12B9958CC00E9395E /* SUPERFLY.TTF in Resources */,
 				C70905042B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json in Resources */,
+				C79E2CE02B9958C800E9395E /* Dusty.ttf in Resources */,
 				C70904F92B96BC0700CAB49F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +220,7 @@
 				C70905072B96C87200CAB49F /* QuestionModel.swift in Sources */,
 				C709050F2B96CB2500CAB49F /* ServiceError.swift in Sources */,
 				C709050D2B96CA9100CAB49F /* QuestionService.swift in Sources */,
+				C79E2CDB2B9951CC00E9395E /* CustomFont.swift in Sources */,
 				C70905142B96D32300CAB49F /* QuestionView.swift in Sources */,
 				C70905122B96D22400CAB49F /* QuizView.swift in Sources */,
 				C70904F52B96BC0500CAB49F /* ScottPilgrimQuizApp.swift in Sources */,
@@ -338,6 +360,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ScottPilgrimQuiz/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScottPilgrimQuiz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -371,6 +394,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ScottPilgrimQuiz/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScottPilgrimQuiz/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
