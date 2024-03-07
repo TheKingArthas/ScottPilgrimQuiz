@@ -19,33 +19,39 @@ struct QuestionView: View {
     private var mainView: some View {
         VStack {
             timerView()
-            questionView(questionModel.question)
-                .padding(.bottom, LayoutMultiplier.size(6))
+                .padding(.bottom, LayoutMultiplier.padding(4))
+            questionNumberView(currentQuestionNumber: questionNumber,
+                               amountOfTotalQuestions: amountOfTotalQuestions)
+            .padding(.bottom, LayoutMultiplier.size(1))
+            questionTextView(questionModel.question)
+                .padding(.horizontal, LayoutMultiplier.padding(2.5))
+                .padding(.bottom, LayoutMultiplier.padding(4))
             answersView(questionModel.answers)
                 .frame(maxWidth: .infinity)
             skipButtonView()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.vertical, LayoutMultiplier.padding(1))
         .background {
             CustomColor.background
+                .ignoresSafeArea()
         }
-        .ignoresSafeArea()
     }
     
-    private func questionView(_ question: String) -> some View {
-        VStack {
-            Text("Question \(questionNumber)-\(amountOfTotalQuestions)")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-                .foregroundStyle(CustomColor.primary)
-                .padding(.vertical, LayoutMultiplier.size(2))
-            Text(question)
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
-                .minimumScaleFactor(0.8)
-                .lineLimit(5)
-                .multilineTextAlignment(.center)
-                .foregroundStyle(CustomColor.white)
-        }
-        .padding(.horizontal, LayoutMultiplier.padding(2.5))
+    private func questionNumberView(currentQuestionNumber: Int,
+                                    amountOfTotalQuestions: Int) -> some View {
+        Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+            .foregroundStyle(CustomColor.primary)
+    }
+    
+    private func questionTextView(_ question: String) -> some View {
+        Text(question)
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+            .minimumScaleFactor(0.8)
+            .lineLimit(5)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(CustomColor.white)
     }
     
     private func answersView(_ answers: [AnswerModel]) -> some View {
@@ -85,7 +91,10 @@ struct QuestionView: View {
     }
     
     private func timerView() -> some View {
-        EmptyView()
+        Text("Time remaining: \n00 00")
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+            .multilineTextAlignment(.center)
+            .foregroundStyle(CustomColor.primary)
     }
     
     private func skipButtonView() -> some View {
@@ -93,12 +102,12 @@ struct QuestionView: View {
             print("Question skipped")
             //TODO: Add action
         } label: {
-            Text("Skip")
+            Text("Skip question")
                 .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
                 .foregroundStyle(CustomColor.destructive)
                 .padding(.vertical, LayoutMultiplier.size(2))
         }
-
+        
     }
 }
 
