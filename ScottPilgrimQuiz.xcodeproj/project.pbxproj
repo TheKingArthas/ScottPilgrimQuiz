@@ -61,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B567CA702C63048C009543CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C70905112B96D22400CAB49F /* QuizView.swift */,
+				C70905132B96D32300CAB49F /* QuestionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C70904E82B96BC0500CAB49F = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +96,6 @@
 				C70905022B96BFA400CAB49F /* Resources */,
 				C70904F42B96BC0500CAB49F /* ScottPilgrimQuizApp.swift */,
 				C709050B2B96CA7B00CAB49F /* Services */,
-				C70905082B96C91000CAB49F /* ViewModels */,
 			);
 			path = ScottPilgrimQuiz;
 			sourceTree = "<group>";
@@ -141,8 +149,8 @@
 		C70905102B96D1EE00CAB49F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				C70905112B96D22400CAB49F /* QuizView.swift */,
-				C70905132B96D32300CAB49F /* QuestionView.swift */,
+				B567CA702C63048C009543CE /* Views */,
+				C70905082B96C91000CAB49F /* ViewModels */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
