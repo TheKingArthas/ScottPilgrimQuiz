@@ -11,11 +11,11 @@ struct QuestionView: View {
     let questionModel: QuestionModel
     let questionNumber: Int
     let amountOfTotalQuestions: Int
-    
+
     var body: some View {
         mainView
     }
-    
+
     private var mainView: some View {
         VStack {
             timerView()
@@ -26,7 +26,7 @@ struct QuestionView: View {
             questionTextView(questionModel.question)
                 .padding(.horizontal, LayoutMultiplier.padding(2.5))
                 .padding(.bottom, LayoutMultiplier.padding(4))
-            answersView(questionModel.answers)
+            answersView(questionModel.allAnswers)
                 .frame(maxWidth: .infinity)
             skipButtonView()
         }
@@ -37,14 +37,14 @@ struct QuestionView: View {
                 .ignoresSafeArea()
         }
     }
-    
+
     private func questionNumberView(currentQuestionNumber: Int,
                                     amountOfTotalQuestions: Int) -> some View {
         Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
             .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
             .foregroundStyle(CustomColor.primary)
     }
-    
+
     private func questionTextView(_ question: String) -> some View {
         Text(question)
             .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
@@ -53,8 +53,8 @@ struct QuestionView: View {
             .multilineTextAlignment(.center)
             .foregroundStyle(CustomColor.white)
     }
-    
-    private func answersView(_ answers: [AnswerModel]) -> some View {
+
+    private func answersView(_ answers: [String]) -> some View {
         let shuffledAnswers = answers.shuffled()
         return VStack {
             ForEach(0..<shuffledAnswers.count) { index in
@@ -64,11 +64,10 @@ struct QuestionView: View {
             }
         }
     }
-    
-    private func answerView(_ answer: AnswerModel,
+
+    private func answerView(_ answer: String,
                             answerNumber: Int) -> some View {
         Button {
-            print(answer.isCorrect)
             //TODO: Add flow
         } label: {
             HStack {
@@ -76,7 +75,7 @@ struct QuestionView: View {
                     .padding(LayoutMultiplier.padding(2))
                     .background(CustomColor.background)
                     .clipShape(Circle())
-                Text(answer.answer)
+                Text(answer)
                     .padding(.leading, LayoutMultiplier.padding(1.5))
                     .frame(maxWidth: .infinity)
             }
@@ -89,14 +88,14 @@ struct QuestionView: View {
         .padding(LayoutMultiplier.size(3))
         .background(CustomColor.secondary)
     }
-    
+
     private func timerView() -> some View {
         Text("Time remaining: \n00 00")
             .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
             .multilineTextAlignment(.center)
             .foregroundStyle(CustomColor.primary)
     }
-    
+
     private func skipButtonView() -> some View {
         Button {
             print("Question skipped")
@@ -107,17 +106,17 @@ struct QuestionView: View {
                 .foregroundStyle(CustomColor.destructive)
                 .padding(.vertical, LayoutMultiplier.size(2))
         }
-        
+
     }
 }
 
 #Preview {
-    QuestionView(questionModel: QuestionModel(id: "0",
+    QuestionView(questionModel: QuestionModel(id: "999",
                                               question: "What is the name of the first volume in the Scott Pilgrim series?",
-                                              answers: [
-                                                AnswerModel(id: "1", answer: "Scott Pilgrim's Precious Little Life", isCorrect: true),
-                                                AnswerModel(id: "2", answer: "Scott Pilgrim vs. the World", isCorrect: false),
-                                                AnswerModel(id: "3", answer: "Scott Pilgrim Gets it Together", isCorrect: false)
+                                              correctAnswer: "Scott Pilgrim's Precious Little Life",
+                                              wrongAnswers: [
+                                                "Scott Pilgrim vs. the World",
+                                                "Scott Pilgrim Gets it Together"
                                               ]),
                  questionNumber: 1,
                  amountOfTotalQuestions: 10)

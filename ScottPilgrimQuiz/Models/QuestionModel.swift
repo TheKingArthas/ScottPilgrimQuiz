@@ -10,17 +10,18 @@ import Foundation
 struct QuestionModel: Codable, Identifiable {
     let id: String
     let question: String
-    let answers: [AnswerModel]
-}
+    let correctAnswer: String
+    let wrongAnswers: [String]
+    var allAnswers: [String] {
+        var allAnswers = Array(wrongAnswers)
+        allAnswers.append(correctAnswer)
+        return allAnswers
+    }
 
-struct AnswerModel: Codable, Identifiable {
-    let id: String
-    let answer: String
-    let isCorrect: Bool
-    
     enum CodingKeys: String, CodingKey {
         case id
-        case answer
-        case isCorrect = "is_Correct"
+        case question
+        case correctAnswer = "correct_answer"
+        case wrongAnswers = "wrong_answers"
     }
 }
