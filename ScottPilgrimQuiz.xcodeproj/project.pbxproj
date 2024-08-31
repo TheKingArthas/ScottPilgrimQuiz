@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5F6008B2C82B826006EBCFB /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6008A2C82B826006EBCFB /* SuccessView.swift */; };
+		B5F6008D2C82BA23006EBCFB /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6008C2C82BA23006EBCFB /* CustomImage.swift */; };
 		C70904F52B96BC0500CAB49F /* ScottPilgrimQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70904F42B96BC0500CAB49F /* ScottPilgrimQuizApp.swift */; };
 		C70904F92B96BC0700CAB49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70904F82B96BC0700CAB49F /* Assets.xcassets */; };
 		C70904FC2B96BC0700CAB49F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70904FB2B96BC0700CAB49F /* Preview Assets.xcassets */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5F6008A2C82B826006EBCFB /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
+		B5F6008C2C82BA23006EBCFB /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		C70904F12B96BC0500CAB49F /* ScottPilgrimQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScottPilgrimQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70904F42B96BC0500CAB49F /* ScottPilgrimQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScottPilgrimQuizApp.swift; sourceTree = "<group>"; };
 		C70904F82B96BC0700CAB49F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			children = (
 				C70905112B96D22400CAB49F /* QuizView.swift */,
 				C70905132B96D32300CAB49F /* QuestionView.swift */,
+				B5F6008A2C82B826006EBCFB /* SuccessView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 				C70904F82B96BC0700CAB49F /* Assets.xcassets */,
 				C79E2CE22B995B1900E9395E /* CustomColor.swift */,
 				C79E2CDA2B9951CC00E9395E /* CustomFont.swift */,
+				B5F6008C2C82BA23006EBCFB /* CustomImage.swift */,
 				C79E2CDC2B99558700E9395E /* Font */,
 				C79E2CE42B995ECD00E9395E /* LayoutMultiplier.swift */,
 				C70905032B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json */,
@@ -245,11 +251,13 @@
 			files = (
 				C70905072B96C87200CAB49F /* QuestionModel.swift in Sources */,
 				C709050F2B96CB2500CAB49F /* ServiceError.swift in Sources */,
+				B5F6008D2C82BA23006EBCFB /* CustomImage.swift in Sources */,
 				C79E2CE32B995B1900E9395E /* CustomColor.swift in Sources */,
 				C709050D2B96CA9100CAB49F /* QuestionService.swift in Sources */,
 				C79E2CDB2B9951CC00E9395E /* CustomFont.swift in Sources */,
 				C70905142B96D32300CAB49F /* QuestionView.swift in Sources */,
 				C70905122B96D22400CAB49F /* QuizView.swift in Sources */,
+				B5F6008B2C82B826006EBCFB /* SuccessView.swift in Sources */,
 				C70904F52B96BC0500CAB49F /* ScottPilgrimQuizApp.swift in Sources */,
 				C79E2CE52B995ECD00E9395E /* LayoutMultiplier.swift in Sources */,
 				C709050A2B96C97800CAB49F /* QuizViewModel.swift in Sources */,

@@ -11,6 +11,7 @@ import SwiftUI
 struct CustomColor {
     static var background: Color { Color("Background") }
     static var destructive: Color { Color("Destructive") }
+    static var positive: Color { Color("Positive") }
     static var primary: Color { Color("Primary") }
     static var secondary: Color { Color("Secondary") }
     static var white: Color { .white }
