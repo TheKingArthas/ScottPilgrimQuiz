@@ -24,11 +24,9 @@ struct SuccessView: View {
             correctTextView
                 .padding(.top, LayoutMultiplier.padding(10))
                 .padding(.bottom, LayoutMultiplier.padding(6))
-            pointsEarnedView
+            pointsEarnedView(10)
             Spacer()
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                Text("Next question")
-            })
+            nextButtonView
         }
     }
 
@@ -51,9 +49,22 @@ struct SuccessView: View {
         }
     }
 
-    private var pointsEarnedView: some View {
+    private var nextButtonView: some View {
+        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Text("Next question")
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+                .foregroundStyle(CustomColor.primary)
+                .padding(.vertical, LayoutMultiplier.size(2))
+        })
+        .clipShape(Circle())
+        .background {
+            CustomColor.white
+        }
+    }
+
+    private func pointsEarnedView(_ amount: Int) -> some View {
         VStack {
-            Text("10")
+            Text("\(amount)")
                 .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(10)))
                 .foregroundStyle(CustomColor.positive)
                 .padding(.bottom, LayoutMultiplier.padding(1))
