@@ -25,17 +25,13 @@ class QuizViewModel: ObservableObject {
     }
     
     func popRandomQuestion() -> QuestionModel? {
-        popQuestion(&unaskedQuestions)
-    }
-    
-    private func popQuestion(_ questions: inout [QuestionModel]) -> QuestionModel? {
-        guard !questions.isEmpty else {
+        guard !unaskedQuestions.isEmpty else {
             return nil
         }
         
-        let randomPosition = Int.random(in: 0...questions.count - 1)
-        let question = questions[randomPosition]
-        questions.remove(at: randomPosition)
+        let randomPosition = Int.random(in: 0...unaskedQuestions.count - 1)
+        let question = unaskedQuestions[randomPosition]
+        unaskedQuestions.remove(at: randomPosition)
         
         return question
     }
@@ -48,7 +44,7 @@ class QuizViewModel: ObservableObject {
         }
         
         (1...amountOfQuestions).forEach { _ in
-            if let randomQuestion = popQuestion(&questions) {
+            if let randomQuestion = popRandomQuestion() {
                 unaskedQuestions.append(randomQuestion)
             }
         }
