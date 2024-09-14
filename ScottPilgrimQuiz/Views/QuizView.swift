@@ -20,7 +20,7 @@ struct QuizView: View {
             if let question = viewModel.popRandomQuestion() {
                 QuestionView(questionModel: question,
                              questionNumber: currentQuestionNumber,
-                             amountOfTotalQuestions: viewModel.amountOfRandomQuestions)
+                             amountOfTotalQuestions: viewModel.amountOfQuestions)
             }
         }
         .onAppear {

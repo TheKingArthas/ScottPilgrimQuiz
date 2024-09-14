@@ -8,22 +8,41 @@
 import Foundation
 
 struct QuestionService {
+    static private let questionsKey = "questions"
+
     func fetchQuestions() throws -> [QuestionModel] {
         let fileURL = try localJsonFileUrl()
-        let localJsonData = try readLocalJsonFile(fileUrl: fileURL)
-        let questions = try parseJSONData(data: localJsonData)
-        return questions
-    }
-    
-    private func localJsonFileUrl() throws -> URL {
-        let localJsonFileName = "ScottPilgrimQuizJsonResponse"
-        guard let fileUrl = Bundle.main.url(forResource: localJsonFileName, withExtension: "json") else {
-            print("Couldn't find \(localJsonFileName).json in the main bundle.")
-            throw ServiceError.invalidFilePath
+        let retrievedJsonData = try readLocalJsonFile(fileUrl: fileURL)
+        let retrievedQuestions = try parseJSONData(data: retrievedJsonData)
+
+        if let persistedQuestions = retrieveFromUserDefaults(),
+           persistedQuestions.publicationDate >= retrievedQuestions.publicationDate {
+            return persistedQuestions.questions
+        } else {
+            saveToUsersDefaults(retrievedJsonData)
+            return retrievedQuestions.questions
         }
-        return fileUrl
     }
-    
+
+    private func saveToUsersDefaults(_ data: Data) {
+        UserDefaults.standard.set(data, forKey: Self.questionsKey)
+    }
+
+    private func retrieveFromUserDefaults() -> QuestionsModel? {
+        if let data = UserDefaults.standard.data(forKey: Self.questionsKey) {
+            let decoder = JSONDecoder()
+            do {
+                let questions = try decoder.decode(QuestionsModel.self, from: data)
+                return questions
+            } catch {
+                print("Failed to decode: \(error.localizedDescription)")
+            }
+        }
+        return nil
+    }
+}
+
+extension QuestionService {
     private func readLocalJsonFile(fileUrl: URL) throws -> Data {
         do {
             let jsonData = try Data(contentsOf: fileUrl)
@@ -33,11 +52,26 @@ struct QuestionService {
             throw ServiceError.invalidData
         }
     }
-    
-    private func parseJSONData(data: Data) throws -> [QuestionModel] {
+
+    private func localJsonFileUrl() throws -> URL {
+        let localJsonFileName = "ScottPilgrimQuizJsonResponse"
+        guard let fileUrl = Bundle.main.url(forResource: localJsonFileName, withExtension: "json") else {
+            print("Couldn't find \(localJsonFileName).json in the main bundle.")
+            throw ServiceError.invalidFilePath
+        }
+        return fileUrl
+    }
+
+    private func parseJSONData(data: Data) throws -> QuestionsModel {
         do {
             let decoder = JSONDecoder()
-            return try decoder.decode([QuestionModel].self, from: data)
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+
+            return try decoder.decode(QuestionsModel.self, from: data)
         } catch {
             print("Error parsing JSON data:", error.localizedDescription)
             throw ServiceError.parsingFailed
