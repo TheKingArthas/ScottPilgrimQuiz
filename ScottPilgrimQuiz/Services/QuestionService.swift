@@ -16,7 +16,7 @@ struct QuestionService {
         let retrievedQuestions = try parseJSONData(data: retrievedJsonData)
 
         if let persistedQuestions = retrieveFromUserDefaults(),
-           persistedQuestions.publicationDate >= retrievedQuestions.publicationDate {
+           persistedQuestions.version >= retrievedQuestions.version {
             return persistedQuestions.questions
         } else {
             saveToUsersDefaults(retrievedJsonData)
@@ -65,12 +65,6 @@ extension QuestionService {
     private func parseJSONData(data: Data) throws -> QuestionsModel {
         do {
             let decoder = JSONDecoder()
-
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-            decoder.dateDecodingStrategy = .formatted(dateFormatter)
-
             return try decoder.decode(QuestionsModel.self, from: data)
         } catch {
             print("Error parsing JSON data:", error.localizedDescription)

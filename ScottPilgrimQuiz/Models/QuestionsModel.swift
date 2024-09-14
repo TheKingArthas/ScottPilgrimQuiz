@@ -8,11 +8,6 @@
 import Foundation
 
 struct QuestionsModel: Codable {
-    let publicationDate: Date
+    let version: String
     let questions: [QuestionModel]
-
-    enum CodingKeys: String, CodingKey {
-        case publicationDate = "publication_date"
-        case questions
-    }
 }
