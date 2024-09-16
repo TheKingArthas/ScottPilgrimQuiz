@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct QuizView: View {
-    private var viewModel: QuizViewModel
+    @State private var viewModel: QuizViewModel
 
     init(viewModel: QuizViewModel) {
         self.viewModel = viewModel
@@ -28,6 +28,7 @@ struct QuizView: View {
             .onAppear {
                 do {
                     try viewModel.fetchQuestions()
+                    viewModel.popQuestion()
                 } catch {
                     print(error)
                 }
@@ -36,13 +37,13 @@ struct QuizView: View {
 
     private var mainView: some View {
         VStack {
-            if let question = viewModel.popQuestion() {
-                timerView()
-                    .padding(.bottom, LayoutMultiplier.padding(4))
-                questionNumberView(currentQuestionNumber: viewModel.currentQuestionNumber,
-                                   amountOfTotalQuestions: viewModel.amountOfQuestions)
-                .padding(.bottom, LayoutMultiplier.size(1))
-                QuestionView(question, viewModel)
+            timerView()
+                .padding(.bottom, LayoutMultiplier.padding(4))
+            questionNumberView(currentQuestionNumber: viewModel.currentQuestionNumber,
+                               amountOfTotalQuestions: viewModel.amountOfQuestions)
+            .padding(.bottom, LayoutMultiplier.size(1))
+            if viewModel.currentQuestion != nil {
+                QuestionView(viewModel: $viewModel)
             }
         }
     }

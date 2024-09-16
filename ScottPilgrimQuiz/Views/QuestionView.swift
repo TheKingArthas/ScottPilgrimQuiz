@@ -8,24 +8,14 @@
 import SwiftUI
 
 struct QuestionView: View {
-    private let questionModel: QuestionModel
-    private let viewModel: QuizViewModel
-
-    init(_ questionModel: QuestionModel, _ viewModel: QuizViewModel) {
-        self.questionModel = questionModel
-        self.viewModel = viewModel
-    }
+    @Binding var viewModel: QuizViewModel
 
     var body: some View {
-        mainView
-    }
-
-    private var mainView: some View {
         VStack {
-            questionTextView(questionModel.question)
+            questionTextView()
                 .padding(.horizontal, LayoutMultiplier.padding(2.5))
                 .padding(.bottom, LayoutMultiplier.padding(4))
-            answersView(questionModel.allAnswers)
+            answersView()
                 .frame(maxWidth: .infinity)
             skipButtonView()
         }
@@ -33,23 +23,33 @@ struct QuestionView: View {
         .padding(.vertical, LayoutMultiplier.padding(1))
     }
 
-    private func questionTextView(_ question: String) -> some View {
-        Text(question)
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
-            .minimumScaleFactor(0.8)
-            .lineLimit(5)
-            .multilineTextAlignment(.center)
-            .foregroundStyle(CustomColor.white)
+    @ViewBuilder
+    private func questionTextView() -> some View {
+        if let currentQuestion = viewModel.currentQuestion {
+            Text(currentQuestion.question)
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+                .minimumScaleFactor(0.8)
+                .lineLimit(5)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(CustomColor.white)
+        } else {
+            EmptyView()
+        }
     }
 
-    private func answersView(_ answers: [String]) -> some View {
-        let shuffledAnswers = answers.shuffled()
-        return VStack {
-            ForEach(0..<shuffledAnswers.count) { index in
-                answerView(shuffledAnswers[index],
-                           answerNumber: index + 1)
-                .padding(.bottom, LayoutMultiplier.padding(1))
+    @ViewBuilder
+    private func answersView() -> some View {
+        if let currentQuestion = viewModel.currentQuestion {
+            let shuffledAnswers = currentQuestion.allAnswers.shuffled()
+            VStack {
+                ForEach(0..<shuffledAnswers.count) { index in
+                    answerView(shuffledAnswers[index],
+                               answerNumber: index + 1)
+                    .padding(.bottom, LayoutMultiplier.padding(1))
+                }
             }
+        } else {
+            EmptyView()
         }
     }
 
@@ -79,8 +79,7 @@ struct QuestionView: View {
 
     private func skipButtonView() -> some View {
         Button {
-            print("Question skipped")
-            //TODO: Add action
+            viewModel.popQuestion()
         } label: {
             Text("Skip question")
                 .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
