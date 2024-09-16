@@ -9,8 +9,7 @@ import SwiftUI
 
 struct QuizView: View {
     private var viewModel: QuizViewModel
-    @State private var currentQuestionNumber: Int = 1
-    
+
     init(viewModel: QuizViewModel) {
         self.viewModel = viewModel
         do {
@@ -19,21 +18,46 @@ struct QuizView: View {
             print(error)
         }
     }
-    
+
     var body: some View {
+        mainView
+            .background {
+                CustomColor.background
+                    .ignoresSafeArea()
+            }
+            .onAppear {
+                do {
+                    try viewModel.fetchQuestions()
+                } catch {
+                    print(error)
+                }
+            }
+    }
+
+    private var mainView: some View {
         VStack {
             if let question = viewModel.popQuestion() {
-                QuestionView(questionModel: question,
-                             questionNumber: currentQuestionNumber,
-                             amountOfTotalQuestions: viewModel.amountOfQuestions)
+                timerView()
+                    .padding(.bottom, LayoutMultiplier.padding(4))
+                questionNumberView(currentQuestionNumber: viewModel.currentQuestionNumber,
+                                   amountOfTotalQuestions: viewModel.amountOfQuestions)
+                .padding(.bottom, LayoutMultiplier.size(1))
+                QuestionView(question, viewModel)
             }
         }
-        .onAppear {
-            do {
-                try viewModel.fetchQuestions()
-            } catch {
-                print(error)
-            }
-        }
+    }
+
+    private func timerView() -> some View {
+        Text("Time remaining: \n00 00")
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+            .multilineTextAlignment(.center)
+            .foregroundStyle(CustomColor.primary)
+    }
+
+    private func questionNumberView(currentQuestionNumber: Int,
+                                    amountOfTotalQuestions: Int) -> some View {
+        Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+            .foregroundStyle(CustomColor.primary)
     }
 }

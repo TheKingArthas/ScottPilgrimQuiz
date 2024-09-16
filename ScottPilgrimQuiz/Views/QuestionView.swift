@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct QuestionView: View {
-    let questionModel: QuestionModel
-    let questionNumber: Int
-    let amountOfTotalQuestions: Int
+    private let questionModel: QuestionModel
+    private let viewModel: QuizViewModel
+
+    init(_ questionModel: QuestionModel, _ viewModel: QuizViewModel) {
+        self.questionModel = questionModel
+        self.viewModel = viewModel
+    }
 
     var body: some View {
         mainView
@@ -18,11 +22,6 @@ struct QuestionView: View {
 
     private var mainView: some View {
         VStack {
-            timerView()
-                .padding(.bottom, LayoutMultiplier.padding(4))
-            questionNumberView(currentQuestionNumber: questionNumber,
-                               amountOfTotalQuestions: amountOfTotalQuestions)
-            .padding(.bottom, LayoutMultiplier.size(1))
             questionTextView(questionModel.question)
                 .padding(.horizontal, LayoutMultiplier.padding(2.5))
                 .padding(.bottom, LayoutMultiplier.padding(4))
@@ -32,17 +31,6 @@ struct QuestionView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.vertical, LayoutMultiplier.padding(1))
-        .background {
-            CustomColor.background
-                .ignoresSafeArea()
-        }
-    }
-
-    private func questionNumberView(currentQuestionNumber: Int,
-                                    amountOfTotalQuestions: Int) -> some View {
-        Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-            .foregroundStyle(CustomColor.primary)
     }
 
     private func questionTextView(_ question: String) -> some View {
@@ -89,13 +77,6 @@ struct QuestionView: View {
         .background(CustomColor.secondary)
     }
 
-    private func timerView() -> some View {
-        Text("Time remaining: \n00 00")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-            .multilineTextAlignment(.center)
-            .foregroundStyle(CustomColor.primary)
-    }
-
     private func skipButtonView() -> some View {
         Button {
             print("Question skipped")
@@ -106,18 +87,5 @@ struct QuestionView: View {
                 .foregroundStyle(CustomColor.destructive)
                 .padding(.vertical, LayoutMultiplier.size(2))
         }
-
     }
-}
-
-#Preview {
-    QuestionView(questionModel: QuestionModel(id: "999",
-                                              question: "What is the name of the first volume in the Scott Pilgrim series?",
-                                              correctAnswer: "Scott Pilgrim's Precious Little Life",
-                                              wrongAnswers: [
-                                                "Scott Pilgrim vs. the World",
-                                                "Scott Pilgrim Gets it Together"
-                                              ]),
-                 questionNumber: 1,
-                 amountOfTotalQuestions: 10)
 }

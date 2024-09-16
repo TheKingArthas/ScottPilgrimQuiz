@@ -13,11 +13,14 @@ enum QuizViewModelError: Error {
 
 class QuizViewModel: ObservableObject {
     let amountOfQuestions: Int
+    var currentQuestionNumber: Int
     private var unaskedQuestions: [QuestionModel]
     private let questionsService: QuestionService
 
-    init(amountOfQuestions: Int, questionsService: QuestionService) {
+    init(amountOfQuestions: Int,
+         questionsService: QuestionService) {
         self.amountOfQuestions = amountOfQuestions
+        self.currentQuestionNumber = 0
         self.unaskedQuestions = []
         self.questionsService = questionsService
     }
@@ -34,7 +37,8 @@ class QuizViewModel: ObservableObject {
     }
 
     func popQuestion() -> QuestionModel? {
-        popRandomQuestion(&unaskedQuestions)
+        currentQuestionNumber += 1
+        return popRandomQuestion(&unaskedQuestions)
     }
 
     private func popRandomQuestion(_ questions: inout [QuestionModel]) -> QuestionModel? {
