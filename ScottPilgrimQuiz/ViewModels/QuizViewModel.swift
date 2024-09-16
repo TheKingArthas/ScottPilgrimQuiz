@@ -13,7 +13,7 @@ enum QuizViewModelError: Error {
 
 class QuizViewModel: ObservableObject {
     let amountOfQuestions: Int
-    @Published private var unaskedQuestions: [QuestionModel]
+    private var unaskedQuestions: [QuestionModel]
     private let questionsService: QuestionService
 
     init(amountOfQuestions: Int, questionsService: QuestionService) {
@@ -22,30 +22,29 @@ class QuizViewModel: ObservableObject {
         self.questionsService = questionsService
     }
 
-    func popRandomQuestion() -> QuestionModel? {
-        guard !unaskedQuestions.isEmpty else {
-            return nil
-        }
-
-        let randomPosition = Int.random(in: 0...unaskedQuestions.count - 1)
-        let question = unaskedQuestions[randomPosition]
-        unaskedQuestions.remove(at: randomPosition)
-
-        return question
-    }
-
     func fetchQuestions() throws {
-        let questions = try fetchAllQuestions()
-
-        guard questions.count >= amountOfQuestions else {
-            throw QuizViewModelError.notEnoughQuestionsFetched
-        }
+        var questions = try fetchAllQuestions()
+        guard questions.count >= amountOfQuestions else { throw QuizViewModelError.notEnoughQuestionsFetched }
 
         (1...amountOfQuestions).forEach { _ in
-            if let randomQuestion = popRandomQuestion() {
+            if let randomQuestion = popRandomQuestion(&questions) {
                 unaskedQuestions.append(randomQuestion)
             }
         }
+    }
+
+    func popQuestion() -> QuestionModel? {
+        popRandomQuestion(&unaskedQuestions)
+    }
+
+    private func popRandomQuestion(_ questions: inout [QuestionModel]) -> QuestionModel? {
+        guard !questions.isEmpty else { return nil }
+
+        let randomPosition = Int.random(in: 0...questions.count - 1)
+        let question = questions[randomPosition]
+        questions.remove(at: randomPosition)
+
+        return question
     }
 
     private func fetchAllQuestions() throws -> [QuestionModel] {

@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct QuizView: View {
-    @ObservedObject private var viewModel: QuizViewModel
+    private var viewModel: QuizViewModel
     @State private var currentQuestionNumber: Int = 1
     
     init(viewModel: QuizViewModel) {
         self.viewModel = viewModel
+        do {
+            try self.viewModel.fetchQuestions()
+        } catch {
+            print(error)
+        }
     }
     
     var body: some View {
         VStack {
-            if let question = viewModel.popRandomQuestion() {
+            if let question = viewModel.popQuestion() {
                 QuestionView(questionModel: question,
                              questionNumber: currentQuestionNumber,
                              amountOfTotalQuestions: viewModel.amountOfQuestions)
