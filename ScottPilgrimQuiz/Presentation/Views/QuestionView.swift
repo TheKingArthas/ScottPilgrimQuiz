@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct QuestionView: View {
-    var viewModel: QuestionnaireViewModel
+    @ObservedObject var viewModel: QuestionnaireViewModel
 
     var body: some View {
         VStack {
