@@ -11,7 +11,7 @@ enum QuizViewModelError: Error {
     case notEnoughQuestionsFetched
 }
 
-class QuizViewModel: ObservableObject {
+class QuestionnaireViewModel: ObservableObject {
     let amountOfQuestions: Int
     var currentQuestionNumber: Int
     var currentQuestion: QuestionModel?

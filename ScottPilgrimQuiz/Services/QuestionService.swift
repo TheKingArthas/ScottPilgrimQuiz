@@ -28,11 +28,11 @@ struct QuestionService {
         UserDefaults.standard.set(data, forKey: Self.questionsKey)
     }
 
-    private func retrieveFromUserDefaults() -> QuestionsModel? {
+    private func retrieveFromUserDefaults() -> QuestionnaireModel? {
         if let data = UserDefaults.standard.data(forKey: Self.questionsKey) {
             let decoder = JSONDecoder()
             do {
-                let questions = try decoder.decode(QuestionsModel.self, from: data)
+                let questions = try decoder.decode(QuestionnaireModel.self, from: data)
                 return questions
             } catch {
                 print("Failed to decode: \(error.localizedDescription)")
@@ -62,10 +62,10 @@ extension QuestionService {
         return fileUrl
     }
 
-    private func parseJSONData(data: Data) throws -> QuestionsModel {
+    private func parseJSONData(data: Data) throws -> QuestionnaireModel {
         do {
             let decoder = JSONDecoder()
-            return try decoder.decode(QuestionsModel.self, from: data)
+            return try decoder.decode(QuestionnaireModel.self, from: data)
         } catch {
             print("Error parsing JSON data:", error.localizedDescription)
             throw ServiceError.parsingFailed

@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct QuizView: View {
-    @State private var viewModel: QuizViewModel
+struct QuestionnaireView: View {
+    @State private var viewModel: QuestionnaireViewModel
 
-    init(viewModel: QuizViewModel) {
+    init(viewModel: QuestionnaireViewModel) {
         self.viewModel = viewModel
         do {
             try self.viewModel.fetchQuestions()
