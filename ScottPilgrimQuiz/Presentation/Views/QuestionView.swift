@@ -21,6 +21,9 @@ struct QuestionView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.vertical, LayoutMultiplier.padding(1))
+        .onAppear {
+            viewModel.timerViewModel.startTimer()
+        }
     }
 
     @ViewBuilder
@@ -56,7 +59,7 @@ struct QuestionView: View {
     private func answerView(_ answer: String,
                             answerNumber: Int) -> some View {
         Button {
-            //TODO: Add flow
+            viewModel.answer(answer)
         } label: {
             HStack {
                 Text("\(answerNumber)")

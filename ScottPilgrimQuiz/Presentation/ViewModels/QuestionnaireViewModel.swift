@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUICore
 
 enum QuestionnaireViewModelError: Error {
     case notEnoughQuestionsFetched
@@ -15,16 +16,21 @@ class QuestionnaireViewModel: ObservableObject {
     let amountOfQuestions: Int
     var currentQuestionNumber: Int
     @Published var currentQuestion: QuestionModel?
+    private(set) var score: Int
+    @State private(set) var timerViewModel: TimerViewModel
     private var unaskedQuestions: [QuestionModel]
     private let questionsService: QuestionService
 
     init(amountOfQuestions: Int,
-         questionsService: QuestionService) {
+         questionsService: QuestionService,
+         secondsToAnswerEachQuestion: Int) {
         self.amountOfQuestions = amountOfQuestions
         self.currentQuestionNumber = 0
         self.currentQuestion = nil
         self.unaskedQuestions = []
         self.questionsService = questionsService
+        self.score = 0
+        self.timerViewModel = TimerViewModel(initialTime: secondsToAnswerEachQuestion)
     }
 
     func fetchQuestions() throws {
@@ -43,6 +49,14 @@ class QuestionnaireViewModel: ObservableObject {
         currentQuestion = popRandomQuestion(&unaskedQuestions)
     }
 
+    func answer(_ answer: String) {
+        if currentQuestion?.correctAnswer == answer {
+            scoreCorrectAnswer()
+        } else {
+            print("False")
+        }
+    }
+
     private func popRandomQuestion(_ questions: inout [QuestionModel]) -> QuestionModel? {
         guard !questions.isEmpty else { return nil }
 
@@ -55,5 +69,10 @@ class QuestionnaireViewModel: ObservableObject {
 
     private func fetchAllQuestions() throws -> [QuestionModel] {
         return try QuestionService().fetchQuestions()
+    }
+
+    private func scoreCorrectAnswer() {
+        score += timerViewModel.remainingTime
+        print("Score: \(score)")
     }
 }

@@ -32,7 +32,7 @@ struct QuestionnaireView: View {
 
     private var mainView: some View {
         VStack {
-            timerView()
+            TimerView(viewModel: viewModel.timerViewModel)
                 .padding(.bottom, LayoutMultiplier.padding(4))
             questionNumberView(currentQuestionNumber: viewModel.currentQuestionNumber,
                                amountOfTotalQuestions: viewModel.amountOfQuestions)
@@ -41,13 +41,6 @@ struct QuestionnaireView: View {
                 QuestionView(viewModel: viewModel)
             }
         }
-    }
-
-    private func timerView() -> some View {
-        Text("Time remaining: \n00 00")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-            .multilineTextAlignment(.center)
-            .foregroundStyle(CustomColor.primary)
     }
 
     private func questionNumberView(currentQuestionNumber: Int,
