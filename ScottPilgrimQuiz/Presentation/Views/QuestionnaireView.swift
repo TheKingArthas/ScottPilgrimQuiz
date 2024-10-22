@@ -8,15 +8,10 @@
 import SwiftUI
 
 struct QuestionnaireView: View {
-    @State private var viewModel: QuestionnaireViewModel
+    @StateObject private var viewModel: QuestionnaireViewModel
 
     init(viewModel: QuestionnaireViewModel) {
-        self.viewModel = viewModel
-        do {
-            try self.viewModel.fetchQuestions()
-        } catch {
-            print(error)
-        }
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     var body: some View {
@@ -43,7 +38,7 @@ struct QuestionnaireView: View {
                                amountOfTotalQuestions: viewModel.amountOfQuestions)
             .padding(.bottom, LayoutMultiplier.size(1))
             if viewModel.currentQuestion != nil {
-                QuestionView(viewModel: $viewModel)
+                QuestionView(viewModel: viewModel)
             }
         }
     }

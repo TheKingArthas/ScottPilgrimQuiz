@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct QuestionView: View {
-    @Binding var viewModel: QuestionnaireViewModel
+    var viewModel: QuestionnaireViewModel
 
     var body: some View {
         VStack {

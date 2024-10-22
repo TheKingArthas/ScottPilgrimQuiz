@@ -14,7 +14,7 @@ enum QuizViewModelError: Error {
 class QuestionnaireViewModel: ObservableObject {
     let amountOfQuestions: Int
     var currentQuestionNumber: Int
-    var currentQuestion: QuestionModel?
+    @Published var currentQuestion: QuestionModel?
     private var unaskedQuestions: [QuestionModel]
     private let questionsService: QuestionService
 
