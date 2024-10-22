@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum QuizViewModelError: Error {
+enum QuestionnaireViewModelError: Error {
     case notEnoughQuestionsFetched
 }
 
@@ -29,7 +29,7 @@ class QuestionnaireViewModel: ObservableObject {
 
     func fetchQuestions() throws {
         var questions = try fetchAllQuestions()
-        guard questions.count >= amountOfQuestions else { throw QuizViewModelError.notEnoughQuestionsFetched }
+        guard questions.count >= amountOfQuestions else { throw QuestionnaireViewModelError.notEnoughQuestionsFetched }
 
         (1...amountOfQuestions).forEach { _ in
             if let randomQuestion = popRandomQuestion(&questions) {
