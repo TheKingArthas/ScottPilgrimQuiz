@@ -7,22 +7,32 @@
 
 import SwiftUI
 
+private enum LastAnswerResult: Equatable {
+    case correct
+    case incorrect
+    case none
+}
+
 struct QuestionView: View {
     @ObservedObject var viewModel: QuestionnaireViewModel
+    @State var lastAnswerResult: Bool = false
 
     var body: some View {
-        VStack {
-            questionTextView()
-                .padding(.horizontal, LayoutMultiplier.padding(2.5))
-                .padding(.bottom, LayoutMultiplier.padding(4))
-            answersView()
-                .frame(maxWidth: .infinity)
-            skipButtonView()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.vertical, LayoutMultiplier.padding(1))
-        .onAppear {
-            viewModel.timerViewModel.startTimer()
+        ZStack {
+            VStack {
+                questionTextView()
+                    .padding(.horizontal, LayoutMultiplier.padding(2.5))
+                    .padding(.bottom, LayoutMultiplier.padding(4))
+                answersView()
+                    .frame(maxWidth: .infinity)
+                skipButtonView()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.vertical, LayoutMultiplier.padding(1))
+            .onAppear {
+                viewModel.timerViewModel.startTimer()
+            }
+            SuccessView(pointsEarned: 10)
         }
     }
 
@@ -59,7 +69,7 @@ struct QuestionView: View {
     private func answerView(_ answer: String,
                             answerNumber: Int) -> some View {
         Button {
-            viewModel.answer(answer)
+
         } label: {
             HStack {
                 Text("\(answerNumber)")
@@ -88,6 +98,13 @@ struct QuestionView: View {
                 .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
                 .foregroundStyle(CustomColor.destructive)
                 .padding(.vertical, LayoutMultiplier.size(2))
+        }
+    }
+
+    private func handleAnswer(_ answer: String) {
+        let isCorrectAnswer = viewModel.answer(answer)
+        if isCorrectAnswer {
+
         }
     }
 }

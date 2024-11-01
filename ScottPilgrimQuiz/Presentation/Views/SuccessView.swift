@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct SuccessView: View {
+    private let pointsEarned: Int
+
+    init(pointsEarned: Int) {
+        self.pointsEarned = pointsEarned
+    }
+
     var body: some View {
         mainView
             .frame(maxWidth: .infinity,
@@ -78,5 +84,5 @@ struct SuccessView: View {
 }
 
 #Preview {
-    SuccessView()
+    SuccessView(pointsEarned: 10)
 }

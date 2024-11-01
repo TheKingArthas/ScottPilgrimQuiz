@@ -49,11 +49,12 @@ class QuestionnaireViewModel: ObservableObject {
         currentQuestion = popRandomQuestion(&unaskedQuestions)
     }
 
-    func answer(_ answer: String) {
+    func answer(_ answer: String) -> Bool {
         if currentQuestion?.correctAnswer == answer {
             scoreCorrectAnswer()
+            return true
         } else {
-            print("False")
+            return false
         }
     }
 
