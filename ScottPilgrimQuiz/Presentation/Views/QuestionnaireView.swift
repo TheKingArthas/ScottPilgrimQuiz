@@ -15,38 +15,33 @@ struct QuestionnaireView: View {
     }
 
     var body: some View {
-        mainView
-            .background {
-                CustomColor.background
-                    .ignoresSafeArea()
+        switch viewModel.viewState {
+        case .question(let currentQuestion):
+            QuestionView(currentQuestionNumber: viewModel.currentQuestionNumber,
+                         amountOfTotalQuestions: viewModel.amountOfQuestions,
+                         currentQuestion: currentQuestion,
+                         timer: viewModel.timerViewModel) { answer in
+                viewModel.answer(answer)
+            } skipQuestionAction: {
+                viewModel.skipQuestion()
             }
-            .onAppear {
-                do {
-                    try viewModel.fetchQuestions()
-                    viewModel.popQuestion()
-                } catch {
-                    print(error)
+        case .correctAnswer:
+            EmptyView()
+        case .incorrectAnswer:
+            EmptyView()
+        case .loading:
+            EmptyView()
+        case .firstLoad:
+            EmptyView()
+                .onAppear {
+                    do {
+                        try viewModel.initQuestionnaire()
+                    } catch {
+                        viewModel.viewState = .error("Something went wrong:", error.localizedDescription)
+                    }
                 }
-            }
-    }
-
-    private var mainView: some View {
-        VStack {
-            TimerView(viewModel: viewModel.timerViewModel)
-                .padding(.bottom, LayoutMultiplier.padding(4))
-            questionNumberView(currentQuestionNumber: viewModel.currentQuestionNumber,
-                               amountOfTotalQuestions: viewModel.amountOfQuestions)
-            .padding(.bottom, LayoutMultiplier.size(1))
-            if viewModel.currentQuestion != nil {
-                QuestionView(viewModel: viewModel)
-            }
+        case .error(let title, let description):
+            ErrorView(title: title, description: description)
         }
-    }
-
-    private func questionNumberView(currentQuestionNumber: Int,
-                                    amountOfTotalQuestions: Int) -> some View {
-        Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-            .foregroundStyle(CustomColor.primary)
     }
 }

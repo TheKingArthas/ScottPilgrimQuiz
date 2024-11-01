@@ -7,63 +7,81 @@
 
 import SwiftUI
 
-private enum LastAnswerResult: Equatable {
-    case correct
-    case incorrect
-    case none
-}
-
 struct QuestionView: View {
-    @ObservedObject var viewModel: QuestionnaireViewModel
-    @State var lastAnswerResult: Bool = false
+    private let currentQuestionNumber: Int
+    private let amountOfTotalQuestions: Int
+    private let currentQuestion: QuestionModel
+    private let timer: TimerViewModel
+    private let answerAction: (String) -> Void
+    private let skipQuestionAction: () -> Void
+
+    init(currentQuestionNumber: Int,
+         amountOfTotalQuestions: Int,
+         currentQuestion: QuestionModel,
+         timer: TimerViewModel,
+         answerAction: @escaping (String) -> Void,
+         skipQuestionAction: @escaping () -> Void) {
+        self.currentQuestionNumber = currentQuestionNumber
+        self.amountOfTotalQuestions = amountOfTotalQuestions
+        self.currentQuestion = currentQuestion
+        self.timer = timer
+        self.answerAction = answerAction
+        self.skipQuestionAction = skipQuestionAction
+    }
 
     var body: some View {
-        ZStack {
-            VStack {
-                questionTextView()
-                    .padding(.horizontal, LayoutMultiplier.padding(2.5))
-                    .padding(.bottom, LayoutMultiplier.padding(4))
-                answersView()
-                    .frame(maxWidth: .infinity)
-                skipButtonView()
+        mainView
+            .background {
+                CustomColor.background
+                    .ignoresSafeArea()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.vertical, LayoutMultiplier.padding(1))
-            .onAppear {
-                viewModel.timerViewModel.startTimer()
-            }
-            SuccessView(pointsEarned: 10)
+    }
+
+    private var mainView: some View {
+        VStack {
+            TimerView(viewModel: timer)
+                .padding(.bottom, LayoutMultiplier.padding(4))
+            questionNumberView(currentQuestionNumber: currentQuestionNumber,
+                               amountOfTotalQuestions: amountOfTotalQuestions)
+            .padding(.bottom, LayoutMultiplier.size(1))
+            questionTextView()
+                .padding(.horizontal, LayoutMultiplier.padding(2.5))
+                .padding(.bottom, LayoutMultiplier.padding(4))
+            answersView()
+                .frame(maxWidth: .infinity)
+            skipButtonView()
         }
     }
 
     @ViewBuilder
     private func questionTextView() -> some View {
-        if let currentQuestion = viewModel.currentQuestion {
-            Text(currentQuestion.question)
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
-                .minimumScaleFactor(0.8)
-                .lineLimit(5)
-                .multilineTextAlignment(.center)
-                .foregroundStyle(CustomColor.white)
-        } else {
-            EmptyView()
-        }
+        Text(currentQuestion.question)
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+            .minimumScaleFactor(0.8)
+            .lineLimit(5)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(CustomColor.white)
     }
 
     @ViewBuilder
     private func answersView() -> some View {
-        if let currentQuestion = viewModel.currentQuestion {
-            let shuffledAnswers = currentQuestion.allAnswers.shuffled()
-            VStack {
-                ForEach(0..<shuffledAnswers.count) { index in
-                    answerView(shuffledAnswers[index],
-                               answerNumber: index + 1)
-                    .padding(.bottom, LayoutMultiplier.padding(1))
-                }
+        let shuffledAnswers = currentQuestion.allAnswers.shuffled()
+        VStack {
+            ForEach(0..<shuffledAnswers.count) { index in
+                answerView(shuffledAnswers[index],
+                           answerNumber: index + 1)
+                .padding(.bottom, LayoutMultiplier.padding(1))
             }
-        } else {
-            EmptyView()
         }
+    }
+
+    private func questionNumberView(currentQuestionNumber: Int,
+                                    amountOfTotalQuestions: Int) -> some View {
+        Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+            .foregroundStyle(CustomColor.primary)
     }
 
     private func answerView(_ answer: String,
@@ -92,7 +110,7 @@ struct QuestionView: View {
 
     private func skipButtonView() -> some View {
         Button {
-            viewModel.popQuestion()
+            skipQuestionAction()
         } label: {
             Text("Skip question")
                 .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
@@ -102,9 +120,6 @@ struct QuestionView: View {
     }
 
     private func handleAnswer(_ answer: String) {
-        let isCorrectAnswer = viewModel.answer(answer)
-        if isCorrectAnswer {
-
-        }
+        answerAction(answer)
     }
 }

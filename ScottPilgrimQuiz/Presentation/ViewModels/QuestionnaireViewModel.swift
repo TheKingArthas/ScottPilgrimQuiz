@@ -12,18 +12,29 @@ enum QuestionnaireViewModelError: Error {
     case notEnoughQuestionsFetched
 }
 
+enum QuestionnaireViewState {
+    case question(_ question: QuestionModel)
+    case correctAnswer
+    case incorrectAnswer
+    case loading
+    case firstLoad
+    case error(_ title: String, _ description: String)
+}
+
 class QuestionnaireViewModel: ObservableObject {
-    let amountOfQuestions: Int
-    var currentQuestionNumber: Int
-    @Published var currentQuestion: QuestionModel?
-    private(set) var score: Int
-    @State private(set) var timerViewModel: TimerViewModel
+    @Published var viewState: QuestionnaireViewState
+    private(set) var amountOfQuestions: Int
+    private(set) var currentQuestion: QuestionModel?
+    private(set) var currentQuestionNumber: Int
+    private(set) var timerViewModel: TimerViewModel
     private var unaskedQuestions: [QuestionModel]
+    private var score: Int
     private let questionsService: QuestionService
 
     init(amountOfQuestions: Int,
          questionsService: QuestionService,
          secondsToAnswerEachQuestion: Int) {
+        self.viewState = .loading
         self.amountOfQuestions = amountOfQuestions
         self.currentQuestionNumber = 0
         self.currentQuestion = nil
@@ -33,7 +44,23 @@ class QuestionnaireViewModel: ObservableObject {
         self.timerViewModel = TimerViewModel(initialTime: secondsToAnswerEachQuestion)
     }
 
-    func fetchQuestions() throws {
+    func initQuestionnaire() throws {
+        try fetchQuestions()
+        popQuestion()
+    }
+
+    func answer(_ answer: String) {
+        if currentQuestion?.correctAnswer == answer {
+            scoreCorrectAnswer()
+        }
+    }
+
+    func skipQuestion() {
+        // TODO:
+        print("Question skipped")
+    }
+
+    private func fetchQuestions() throws {
         var questions = try fetchAllQuestions()
         guard questions.count >= amountOfQuestions else { throw QuestionnaireViewModelError.notEnoughQuestionsFetched }
 
@@ -44,17 +71,11 @@ class QuestionnaireViewModel: ObservableObject {
         }
     }
 
-    func popQuestion() {
-        currentQuestionNumber += 1
+    private func popQuestion() {
         currentQuestion = popRandomQuestion(&unaskedQuestions)
-    }
-
-    func answer(_ answer: String) -> Bool {
-        if currentQuestion?.correctAnswer == answer {
-            scoreCorrectAnswer()
-            return true
-        } else {
-            return false
+        if let currentQuestion = currentQuestion {
+            currentQuestionNumber += 1
+            viewState = .question(currentQuestion)
         }
     }
 
