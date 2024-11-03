@@ -32,7 +32,6 @@ struct QuestionnaireView: View {
                 CustomColor.background
             }
             .ignoresSafeArea()
-
         case .correctAnswer(let score):
             CorrectAnswerView(pointsEarned: score) { viewModel.nextQuestion() }
         case .incorrectAnswer(let correctAnswer):
@@ -56,7 +55,9 @@ struct QuestionnaireView: View {
                 viewModel.viewState = .highestScores
             }
         case .highestScores:
-            EmptyView()
+            HighestScoresView(viewModel.highestScores) {
+                viewModel.viewState = .mainMenu
+            }
         }
     }
 }

@@ -10,6 +10,9 @@ import SwiftUICore
 
 class QuestionnaireViewModel: ObservableObject {
     @Published var viewState: QuestionnaireViewState
+    var highestScores: [PlayerScore] {
+        []
+    }
     private(set) var amountOfQuestions: Int
     private(set) var currentQuestion: QuestionModel?
     private(set) var currentQuestionNumber: Int
