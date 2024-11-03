@@ -23,7 +23,7 @@ struct QuestionnaireView: View {
                          timer: viewModel.timerViewModel) { answer in
                 viewModel.answer(answer)
             } skipQuestionAction: {
-                viewModel.skipQuestion()
+                viewModel.nextQuestion()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background {
@@ -34,9 +34,9 @@ struct QuestionnaireView: View {
                 viewModel.timerViewModel.startTimer()
             }
         case .correctAnswer(let score):
-            CorrectAnswerView(pointsEarned: score)
+            CorrectAnswerView(pointsEarned: score) { viewModel.nextQuestion() }
         case .incorrectAnswer(let correctAnswer):
-            WrongAnswerView(correctAnswer: correctAnswer)
+            WrongAnswerView(correctAnswer: correctAnswer) { viewModel.nextQuestion() }
         case .loading:
             Text("Loading...")
         case .firstLoad:

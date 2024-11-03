@@ -9,9 +9,11 @@ import SwiftUI
 
 struct WrongAnswerView: View {
     private let correctAnswer: String
+    private let nextQuestionAction: () -> Void
 
-    init(correctAnswer: String) {
+    init(correctAnswer: String, nextQuestionAction: @escaping () -> Void) {
         self.correctAnswer = correctAnswer
+        self.nextQuestionAction = nextQuestionAction
     }
 
     var body: some View {
@@ -68,18 +70,22 @@ struct WrongAnswerView: View {
     }
 
     private var nextButtonView: some View {
-        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+        Button {
+            nextQuestionAction()
+        } label: {
             Text("Next question")
                 .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
                 .foregroundStyle(CustomColor.primary)
                 .foregroundColor(.white)
                 .padding(.all, LayoutMultiplier.padding(1))
-        })
+        }
         .background(CustomColor.secondary)
         .cornerRadius(8)
     }
 }
 
 #Preview {
-    WrongAnswerView(correctAnswer: "This was actually the correct answer. Better luck next time!")
+    WrongAnswerView(correctAnswer: "This was actually the correct answer. Better luck next time!") {
+        print("Next question pressed")
+    }
 }

@@ -61,9 +61,8 @@ class QuestionnaireViewModel: ObservableObject {
         }
     }
 
-    func skipQuestion() {
-        // TODO:
-        print("Question skipped")
+    func nextQuestion() {
+        popQuestion()
     }
 
     private func fetchQuestions() throws {
