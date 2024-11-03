@@ -10,7 +10,7 @@ import SwiftUI
 struct HighestScoresView: View {
     private let highestScores: [PlayerScore]
     private let mainMenuAction: () -> Void
-    
+
     init(_ highestScores: [PlayerScore], mainMenuAction: @escaping () -> Void) {
         self.highestScores = highestScores.sorted().reversed()
         self.mainMenuAction = mainMenuAction
@@ -27,14 +27,24 @@ struct HighestScoresView: View {
                 }
             }
             Spacer()
-            Button("Main Menu") {
-                mainMenuAction()
-            }
+            mainMenuButton
         }
     }
 
     private var title: some View {
-        Text("HighestScoresView")
+        Text("Highest scores")
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+            .foregroundStyle(CustomColor.primary)
+    }
+
+    private var mainMenuButton: some View {
+        Button {
+            mainMenuAction()
+        } label: { Text("Main Menu")
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+                .foregroundStyle(CustomColor.primary)
+                .padding(.vertical, LayoutMultiplier.size(2))
+        }
     }
 }
 
