@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CustomImage {
+    static var scottDead: Image { Image("ScottDead") }
     static var scottJumping: Image { Image("ScottJumping") }
 
     private init() {}

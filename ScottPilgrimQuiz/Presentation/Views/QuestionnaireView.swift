@@ -36,7 +36,7 @@ struct QuestionnaireView: View {
         case .correctAnswer(let score):
             CorrectAnswerView(pointsEarned: score)
         case .incorrectAnswer(let correctAnswer):
-            Text("Incorrect. The correct answer was \(correctAnswer)")
+            WrongAnswerView(correctAnswer: correctAnswer)
         case .loading:
             Text("Loading...")
         case .firstLoad:
