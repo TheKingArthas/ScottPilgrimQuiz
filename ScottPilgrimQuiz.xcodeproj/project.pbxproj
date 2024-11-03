@@ -11,6 +11,8 @@
 		B5B15FFD2CD73741002D3659 /* WrongAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */; };
 		B5B160012CD73F96002D3659 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160002CD73F96002D3659 /* LoadingView.swift */; };
 		B5B160032CD74CFB002D3659 /* SaveScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160022CD74CFB002D3659 /* SaveScoreView.swift */; };
+		B5B160062CD75A40002D3659 /* QuestionnaireViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160052CD75A40002D3659 /* QuestionnaireViewModelError.swift */; };
+		B5B160092CD75A5F002D3659 /* QuestionnaireViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160082CD75A5F002D3659 /* QuestionnaireViewState.swift */; };
 		B5BB9AA42CD574D8000C284C /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB9AA32CD574D8000C284C /* ErrorView.swift */; };
 		B5D47B492CC8463600AAC9EE /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D47B482CC8463600AAC9EE /* TimerViewModel.swift */; };
 		B5D47B4B2CC8485900AAC9EE /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D47B4A2CC8485900AAC9EE /* TimerView.swift */; };
@@ -41,6 +43,8 @@
 		B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerView.swift; sourceTree = "<group>"; };
 		B5B160002CD73F96002D3659 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B5B160022CD74CFB002D3659 /* SaveScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScoreView.swift; sourceTree = "<group>"; };
+		B5B160052CD75A40002D3659 /* QuestionnaireViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewModelError.swift; sourceTree = "<group>"; };
+		B5B160082CD75A5F002D3659 /* QuestionnaireViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewState.swift; sourceTree = "<group>"; };
 		B5BB9AA32CD574D8000C284C /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		B5D47B482CC8463600AAC9EE /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		B5D47B4A2CC8485900AAC9EE /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -94,11 +98,35 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B5B160042CD75A2A002D3659 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				C709050E2B96CB2500CAB49F /* ServiceError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		B5B160072CD75A51002D3659 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				B5B160052CD75A40002D3659 /* QuestionnaireViewModelError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		B5B1600A2CD75A6B002D3659 /* ViewStates */ = {
+			isa = PBXGroup;
+			children = (
+				B5B160082CD75A5F002D3659 /* QuestionnaireViewState.swift */,
+			);
+			path = ViewStates;
+			sourceTree = "<group>";
+		};
 		C70904E82B96BC0500CAB49F = {
 			isa = PBXGroup;
 			children = (
-				C70904F32B96BC0500CAB49F /* ScottPilgrimQuiz */,
 				C70904F22B96BC0500CAB49F /* Products */,
+				C70904F32B96BC0500CAB49F /* ScottPilgrimQuiz */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				C709050C2B96CA9100CAB49F /* QuestionService.swift */,
-				C709050E2B96CB2500CAB49F /* ServiceError.swift */,
+				B5B160042CD75A2A002D3659 /* Errors */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -175,6 +203,8 @@
 		C70905102B96D1EE00CAB49F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B5B1600A2CD75A6B002D3659 /* ViewStates */,
+				B5B160072CD75A51002D3659 /* Errors */,
 				C70905082B96C91000CAB49F /* ViewModels */,
 				B567CA702C63048C009543CE /* Views */,
 				C70905022B96BFA400CAB49F /* Resources */,
@@ -272,7 +302,9 @@
 			files = (
 				B5D47B4B2CC8485900AAC9EE /* TimerView.swift in Sources */,
 				C70905072B96C87200CAB49F /* QuestionModel.swift in Sources */,
+				B5B160092CD75A5F002D3659 /* QuestionnaireViewState.swift in Sources */,
 				C709050F2B96CB2500CAB49F /* ServiceError.swift in Sources */,
+				B5B160062CD75A40002D3659 /* QuestionnaireViewModelError.swift in Sources */,
 				B5F6008D2C82BA23006EBCFB /* CustomImage.swift in Sources */,
 				B560A1112C9523D6006CC45F /* QuestionnaireModel.swift in Sources */,
 				C79E2CE32B995B1900E9395E /* CustomColor.swift in Sources */,

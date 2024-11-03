@@ -8,22 +8,6 @@
 import Foundation
 import SwiftUICore
 
-enum QuestionnaireViewModelError: Error {
-    case notEnoughQuestionsFetched
-}
-
-enum QuestionnaireViewState {
-    case correctAnswer(score: Int)
-    case error(_ title: String, _ description: String)
-    case firstLoad
-    case finished
-    case highestScores
-    case incorrectAnswer(correctAnswer: String)
-    case loading
-    case mainMenu
-    case question(_ question: QuestionModel)
-}
-
 class QuestionnaireViewModel: ObservableObject {
     @Published var viewState: QuestionnaireViewState
     private(set) var amountOfQuestions: Int
