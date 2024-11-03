@@ -29,6 +29,11 @@ struct HighestScoresView: View {
             Spacer()
             mainMenuButton
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background {
+            CustomColor.background
+        }
+        .ignoresSafeArea()
     }
 
     private var title: some View {
