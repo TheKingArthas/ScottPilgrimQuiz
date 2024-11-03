@@ -16,6 +16,8 @@ struct QuestionnaireView: View {
 
     var body: some View {
         switch viewModel.viewState {
+        case .mainMenu:
+            Text("Main menu")
         case .question(let currentQuestion):
             QuestionView(currentQuestionNumber: viewModel.currentQuestionNumber,
                          amountOfTotalQuestions: viewModel.amountOfQuestions,
@@ -48,6 +50,13 @@ struct QuestionnaireView: View {
                 }
         case .error(let title, let description):
             ErrorView(title: title, description: description)
+        case .finished:
+            SaveScoreView(totalScore: viewModel.score) { playerName in
+                viewModel.saveScore(playerName: playerName)
+                viewModel.viewState = .highestScores
+            }
+        case .highestScores:
+            EmptyView()
         }
     }
 }

@@ -13,12 +13,15 @@ enum QuestionnaireViewModelError: Error {
 }
 
 enum QuestionnaireViewState {
-    case question(_ question: QuestionModel)
     case correctAnswer(score: Int)
+    case error(_ title: String, _ description: String)
+    case firstLoad
+    case finished
+    case highestScores
     case incorrectAnswer(correctAnswer: String)
     case loading
-    case firstLoad
-    case error(_ title: String, _ description: String)
+    case mainMenu
+    case question(_ question: QuestionModel)
 }
 
 class QuestionnaireViewModel: ObservableObject {
@@ -27,8 +30,8 @@ class QuestionnaireViewModel: ObservableObject {
     private(set) var currentQuestion: QuestionModel?
     private(set) var currentQuestionNumber: Int
     private(set) var timerViewModel: TimerViewModel
+    private(set) var score: Int
     private var unaskedQuestions: [QuestionModel]
-    private var score: Int
     private let questionsService: QuestionService
 
     init(amountOfQuestions: Int,
@@ -64,7 +67,15 @@ class QuestionnaireViewModel: ObservableObject {
 
     func nextQuestion() {
         timerViewModel.stopTimer()
-        popQuestion()
+        if currentQuestionNumber < amountOfQuestions {
+            popQuestion()
+        } else {
+            viewState = .finished
+        }
+    }
+
+    func saveScore(playerName: String) {
+        //TODO: Save score
     }
 
     private func fetchQuestions() throws {
