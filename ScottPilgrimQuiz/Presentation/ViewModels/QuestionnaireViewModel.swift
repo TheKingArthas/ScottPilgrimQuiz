@@ -34,7 +34,7 @@ class QuestionnaireViewModel: ObservableObject {
     init(amountOfQuestions: Int,
          questionsService: QuestionService,
          secondsToAnswerEachQuestion: Int) {
-        self.viewState = .loading
+        self.viewState = .firstLoad
         self.amountOfQuestions = amountOfQuestions
         self.currentQuestionNumber = 0
         self.currentQuestion = nil

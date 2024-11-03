@@ -25,14 +25,22 @@ struct QuestionnaireView: View {
             } skipQuestionAction: {
                 viewModel.skipQuestion()
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background {
+                CustomColor.background
+            }
+            .ignoresSafeArea()
+            .onAppear() {
+                viewModel.timerViewModel.startTimer()
+            }
         case .correctAnswer:
             EmptyView()
         case .incorrectAnswer:
             EmptyView()
         case .loading:
-            EmptyView()
+            Text("Loading...")
         case .firstLoad:
-            EmptyView()
+            Text("First load...")
                 .onAppear {
                     do {
                         try viewModel.initQuestionnaire()

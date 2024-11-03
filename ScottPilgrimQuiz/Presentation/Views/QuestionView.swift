@@ -30,16 +30,6 @@ struct QuestionView: View {
     }
 
     var body: some View {
-        mainView
-            .background {
-                CustomColor.background
-                    .ignoresSafeArea()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(.vertical, LayoutMultiplier.padding(1))
-    }
-
-    private var mainView: some View {
         VStack {
             TimerView(viewModel: timer)
                 .padding(.bottom, LayoutMultiplier.padding(4))
