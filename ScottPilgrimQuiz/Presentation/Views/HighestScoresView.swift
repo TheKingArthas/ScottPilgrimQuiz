@@ -17,23 +17,32 @@ struct HighestScoresView: View {
     }
 
     var body: some View {
+        mainView
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background {
+                CustomColor.background
+                    .ignoresSafeArea()
+            }
+    }
+
+    var mainView: some View {
         VStack {
             title
+                .padding(.vertical, LayoutMultiplier.padding(4))
             ScrollView {
                 VStack {
                     ForEach(highestScores, id: \.self) { score in
-                        Text("\(score.name): \(score.score)")
+                        playerScore(score)
+                            .padding(.vertical, LayoutMultiplier.padding(0.5))
                     }
                 }
+                .padding(.horizontal, LayoutMultiplier.padding(4))
             }
             Spacer()
             mainMenuButton
+                .padding(.top, LayoutMultiplier.padding(4))
+                .padding(.bottom, LayoutMultiplier.padding(1))
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background {
-            CustomColor.background
-        }
-        .ignoresSafeArea()
     }
 
     private var title: some View {
@@ -50,6 +59,16 @@ struct HighestScoresView: View {
                 .foregroundStyle(CustomColor.primary)
                 .padding(.vertical, LayoutMultiplier.size(2))
         }
+    }
+
+    private func playerScore(_ playerScore: PlayerScore) -> some View {
+        HStack {
+            Text(playerScore.name)
+            Spacer()
+            Text("\(playerScore.score)")
+        }
+        .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+        .foregroundStyle(CustomColor.white)
     }
 }
 
