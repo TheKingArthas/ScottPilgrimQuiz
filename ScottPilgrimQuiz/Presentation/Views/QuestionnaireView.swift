@@ -9,11 +9,11 @@ import SwiftUI
 
 struct QuestionnaireView: View {
     @StateObject private var viewModel: QuestionnaireViewModel
-    
+
     init(viewModel: QuestionnaireViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-    
+
     var body: some View {
         switch viewModel.viewState {
         case .question(let currentQuestion):
@@ -30,9 +30,7 @@ struct QuestionnaireView: View {
                 CustomColor.background
             }
             .ignoresSafeArea()
-            .onAppear() {
-                viewModel.timerViewModel.startTimer()
-            }
+
         case .correctAnswer(let score):
             CorrectAnswerView(pointsEarned: score) { viewModel.nextQuestion() }
         case .incorrectAnswer(let correctAnswer):

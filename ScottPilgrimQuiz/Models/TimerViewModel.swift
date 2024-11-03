@@ -10,6 +10,7 @@ import SwiftUICore
 
 class TimerViewModel: ObservableObject {
     @Published private(set) var remainingTime: Int
+    private let initialTime: Int
     private var timer: Timer
 
     var remainingTimeAsFormattedString: String {
@@ -23,6 +24,7 @@ class TimerViewModel: ObservableObject {
     }
 
     init(initialTime: Int) {
+        self.initialTime = initialTime
         self.remainingTime = initialTime
         self.timer = .init()
     }
@@ -35,6 +37,7 @@ class TimerViewModel: ObservableObject {
     }
 
     func startTimer() {
+        remainingTime = initialTime
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             if self.remainingTime > 0 {
                 self.remainingTime -= 1

@@ -59,9 +59,11 @@ class QuestionnaireViewModel: ObservableObject {
                 viewState = .incorrectAnswer(correctAnswer: currentQuestion.correctAnswer)
             }
         }
+        timerViewModel.stopTimer()
     }
 
     func nextQuestion() {
+        timerViewModel.stopTimer()
         popQuestion()
     }
 
@@ -82,6 +84,7 @@ class QuestionnaireViewModel: ObservableObject {
             currentQuestionNumber += 1
             viewState = .question(currentQuestion)
         }
+        timerViewModel.startTimer()
     }
 
     private func popRandomQuestion(_ questions: inout [QuestionModel]) -> QuestionModel? {
