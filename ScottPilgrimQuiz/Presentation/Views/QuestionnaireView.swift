@@ -9,11 +9,11 @@ import SwiftUI
 
 struct QuestionnaireView: View {
     @StateObject private var viewModel: QuestionnaireViewModel
-
+    
     init(viewModel: QuestionnaireViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
         switch viewModel.viewState {
         case .question(let currentQuestion):
@@ -38,9 +38,9 @@ struct QuestionnaireView: View {
         case .incorrectAnswer(let correctAnswer):
             WrongAnswerView(correctAnswer: correctAnswer) { viewModel.nextQuestion() }
         case .loading:
-            Text("Loading...")
+            LoadingView()
         case .firstLoad:
-            Text("First load...")
+            LoadingView()
                 .onAppear {
                     do {
                         try viewModel.initQuestionnaire()
