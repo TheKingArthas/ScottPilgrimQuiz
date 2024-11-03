@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SuccessView: View {
+struct CorrectAnswerView: View {
     private let pointsEarned: Int
 
     init(pointsEarned: Int) {
@@ -30,7 +30,7 @@ struct SuccessView: View {
             correctTextView
                 .padding(.top, LayoutMultiplier.padding(10))
                 .padding(.bottom, LayoutMultiplier.padding(6))
-            pointsEarnedView(10)
+            pointsEarnedView(pointsEarned)
             Spacer()
             nextButtonView
         }
@@ -58,14 +58,13 @@ struct SuccessView: View {
     private var nextButtonView: some View {
         Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
             Text("Next question")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
                 .foregroundStyle(CustomColor.primary)
-                .padding(.vertical, LayoutMultiplier.size(2))
+                .foregroundColor(.white)
+                .padding(.all, LayoutMultiplier.padding(1))
         })
-        .clipShape(Circle())
-        .background {
-            CustomColor.white
-        }
+        .background(CustomColor.secondary)
+        .cornerRadius(8)
     }
 
     private func pointsEarnedView(_ amount: Int) -> some View {
@@ -84,5 +83,5 @@ struct SuccessView: View {
 }
 
 #Preview {
-    SuccessView(pointsEarned: 10)
+    CorrectAnswerView(pointsEarned: 10)
 }

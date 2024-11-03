@@ -34,7 +34,7 @@ struct QuestionnaireView: View {
                 viewModel.timerViewModel.startTimer()
             }
         case .correctAnswer(let score):
-            Text("Correct! Score: \(score)")
+            CorrectAnswerView(pointsEarned: score)
         case .incorrectAnswer(let correctAnswer):
             Text("Incorrect. The correct answer was \(correctAnswer)")
         case .loading:
