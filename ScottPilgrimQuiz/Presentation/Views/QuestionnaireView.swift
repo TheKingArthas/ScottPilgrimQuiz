@@ -33,10 +33,10 @@ struct QuestionnaireView: View {
             .onAppear() {
                 viewModel.timerViewModel.startTimer()
             }
-        case .correctAnswer:
-            EmptyView()
-        case .incorrectAnswer:
-            EmptyView()
+        case .correctAnswer(let score):
+            Text("Correct! Score: \(score)")
+        case .incorrectAnswer(let correctAnswer):
+            Text("Incorrect. The correct answer was \(correctAnswer)")
         case .loading:
             Text("Loading...")
         case .firstLoad:

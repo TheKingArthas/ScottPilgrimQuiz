@@ -14,8 +14,8 @@ enum QuestionnaireViewModelError: Error {
 
 enum QuestionnaireViewState {
     case question(_ question: QuestionModel)
-    case correctAnswer
-    case incorrectAnswer
+    case correctAnswer(score: Int)
+    case incorrectAnswer(correctAnswer: String)
     case loading
     case firstLoad
     case error(_ title: String, _ description: String)
@@ -50,8 +50,14 @@ class QuestionnaireViewModel: ObservableObject {
     }
 
     func answer(_ answer: String) {
-        if currentQuestion?.correctAnswer == answer {
-            scoreCorrectAnswer()
+        if let currentQuestion = currentQuestion {
+            if currentQuestion.correctAnswer == answer {
+                let score = correctAnswerScore()
+                addScore(score)
+                viewState = .correctAnswer(score: score)
+            } else {
+                viewState = .incorrectAnswer(correctAnswer: currentQuestion.correctAnswer)
+            }
         }
     }
 
@@ -93,8 +99,11 @@ class QuestionnaireViewModel: ObservableObject {
         return try QuestionService().fetchQuestions()
     }
 
-    private func scoreCorrectAnswer() {
-        score += timerViewModel.remainingTime
-        print("Score: \(score)")
+    private func correctAnswerScore() -> Int {
+        timerViewModel.remainingTime
+    }
+
+    private func addScore(_ score: Int) {
+        self.score += score
     }
 }

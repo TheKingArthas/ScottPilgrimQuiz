@@ -77,7 +77,7 @@ struct QuestionView: View {
     private func answerView(_ answer: String,
                             answerNumber: Int) -> some View {
         Button {
-
+            answerAction(answer)
         } label: {
             HStack {
                 Text("\(answerNumber)")
