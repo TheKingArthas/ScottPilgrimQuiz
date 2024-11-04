@@ -7,12 +7,7 @@
 
 import Foundation
 
-enum ScoresViewState {
-    case loading
-    case highestScores(_ highestScores: [PlayerScoreModel])
-    case playerScore(isInTopScores: Bool)
-    case error(_ title: String, _ description: String)
-}
+
 
 class ScoresViewModel: ObservableObject {
     @Published var viewState: ScoresViewState

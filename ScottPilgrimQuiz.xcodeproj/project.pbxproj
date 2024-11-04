@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B50F43EA2CD87180006F4148 /* PlayerScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43E92CD87180006F4148 /* PlayerScoreView.swift */; };
+		B50F43EC2CD875A1006F4148 /* ScoresViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43EB2CD875A1006F4148 /* ScoresViewState.swift */; };
 		B560A1112C9523D6006CC45F /* QuestionnaireModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */; };
 		B5B15FFD2CD73741002D3659 /* WrongAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */; };
 		B5B160012CD73F96002D3659 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160002CD73F96002D3659 /* LoadingView.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		B50F43E92CD87180006F4148 /* PlayerScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScoreView.swift; sourceTree = "<group>"; };
+		B50F43EB2CD875A1006F4148 /* ScoresViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresViewState.swift; sourceTree = "<group>"; };
 		B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireModel.swift; sourceTree = "<group>"; };
 		B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerView.swift; sourceTree = "<group>"; };
 		B5B160002CD73F96002D3659 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -100,12 +102,12 @@
 				B5BB9AA32CD574D8000C284C /* ErrorView.swift */,
 				B5B1600B2CD75B71002D3659 /* HighestScoresView.swift */,
 				B5B160002CD73F96002D3659 /* LoadingView.swift */,
+				B50F43E92CD87180006F4148 /* PlayerScoreView.swift */,
 				C70905112B96D22400CAB49F /* QuestionnaireView.swift */,
 				C70905132B96D32300CAB49F /* QuestionView.swift */,
 				B5B160022CD74CFB002D3659 /* ScoresView.swift */,
 				B5D47B4A2CC8485900AAC9EE /* TimerView.swift */,
 				B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */,
-				B50F43E92CD87180006F4148 /* PlayerScoreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				B5B160082CD75A5F002D3659 /* QuestionnaireViewState.swift */,
+				B50F43EB2CD875A1006F4148 /* ScoresViewState.swift */,
 			);
 			path = ViewStates;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				C70904F52B96BC0500CAB49F /* ScottPilgrimQuizApp.swift in Sources */,
 				C79E2CE52B995ECD00E9395E /* LayoutMultiplier.swift in Sources */,
 				B5B1600C2CD75B71002D3659 /* HighestScoresView.swift in Sources */,
+				B50F43EC2CD875A1006F4148 /* ScoresViewState.swift in Sources */,
 				B5B160102CD7DC2F002D3659 /* ScoreService.swift in Sources */,
 				C709050A2B96C97800CAB49F /* QuestionnaireViewModel.swift in Sources */,
 				B5D47B492CC8463600AAC9EE /* TimerViewModel.swift in Sources */,
