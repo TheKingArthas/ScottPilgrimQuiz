@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainMenuView: View {
     @StateObject private var viewModel: MainMenuViewModel
+    @State private var floating: Bool = false
 
     init(viewModel: MainMenuViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -39,6 +40,11 @@ struct MainMenuView: View {
         VStack {
             title
                 .padding(.top, LayoutMultiplier.padding(12))
+                .frame(maxHeight: 250, alignment: floating ? .bottom : .top)
+                .animation(Animation.easeInOut(duration: 2.5).repeatForever(autoreverses: true), value: floating)
+                .onAppear {
+                    self.floating.toggle()
+                }
             Spacer()
             HStack(spacing: LayoutMultiplier.padding(5)) {
                 mainMenuButton(title: "Start",
