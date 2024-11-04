@@ -37,7 +37,7 @@ struct ScoresView: View {
                 viewModel.goToMainMenu()
             }
         case let .error(title, description):
-            ErrorView(title: title, description: description)
+            ErrorView(title: title, description: description) { viewModel.goToMainMenu() }
         }
     }
 }
