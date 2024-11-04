@@ -13,6 +13,9 @@
 		B50F43F32CD88788006F4148 /* CustomViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43F22CD88780006F4148 /* CustomViewModifiers.swift */; };
 		B50F43F52CD89A8D006F4148 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43F42CD89A8A006F4148 /* AnswerModel.swift */; };
 		B50F43F72CD8A0A9006F4148 /* TimeIsUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43F62CD8A0A9006F4148 /* TimeIsUpView.swift */; };
+		B554A32E2CD911D400774FF9 /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B554A32D2CD911D400774FF9 /* MainMenuViewModel.swift */; };
+		B554A3302CD9125000774FF9 /* MainMenuViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B554A32F2CD9124D00774FF9 /* MainMenuViewState.swift */; };
+		B554A3322CD9138000774FF9 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B554A3312CD9138000774FF9 /* MainMenuView.swift */; };
 		B560A1112C9523D6006CC45F /* QuestionnaireModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */; };
 		B5B15FFD2CD73741002D3659 /* WrongAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */; };
 		B5B160012CD73F96002D3659 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160002CD73F96002D3659 /* LoadingView.swift */; };
@@ -53,6 +56,9 @@
 		B50F43F22CD88780006F4148 /* CustomViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifiers.swift; sourceTree = "<group>"; };
 		B50F43F42CD89A8A006F4148 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		B50F43F62CD8A0A9006F4148 /* TimeIsUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIsUpView.swift; sourceTree = "<group>"; };
+		B554A32D2CD911D400774FF9 /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
+		B554A32F2CD9124D00774FF9 /* MainMenuViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewState.swift; sourceTree = "<group>"; };
+		B554A3312CD9138000774FF9 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireModel.swift; sourceTree = "<group>"; };
 		B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerView.swift; sourceTree = "<group>"; };
 		B5B160002CD73F96002D3659 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -136,6 +142,7 @@
 				B50F43EF2CD87EB2006F4148 /* DesignComponents */,
 				B5BB9AA32CD574D8000C284C /* ErrorView.swift */,
 				B5B160002CD73F96002D3659 /* LoadingView.swift */,
+				B554A3312CD9138000774FF9 /* MainMenuView.swift */,
 				B50F43ED2CD87B82006F4148 /* Questionnaire */,
 				B50F43EE2CD87B98006F4148 /* Scores */,
 			);
@@ -161,6 +168,7 @@
 		B5B1600A2CD75A6B002D3659 /* ViewStates */ = {
 			isa = PBXGroup;
 			children = (
+				B554A32F2CD9124D00774FF9 /* MainMenuViewState.swift */,
 				B5B160082CD75A5F002D3659 /* QuestionnaireViewState.swift */,
 				B50F43EB2CD875A1006F4148 /* ScoresViewState.swift */,
 			);
@@ -236,6 +244,7 @@
 			children = (
 				C70905092B96C97800CAB49F /* QuestionnaireViewModel.swift */,
 				B5B160112CD856D4002D3659 /* ScoresViewModel.swift */,
+				B554A32D2CD911D400774FF9 /* MainMenuViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -355,10 +364,12 @@
 				C709050F2B96CB2500CAB49F /* ServiceError.swift in Sources */,
 				B5B160062CD75A40002D3659 /* QuestionnaireViewModelError.swift in Sources */,
 				B5F6008D2C82BA23006EBCFB /* CustomImage.swift in Sources */,
+				B554A32E2CD911D400774FF9 /* MainMenuViewModel.swift in Sources */,
 				B560A1112C9523D6006CC45F /* QuestionnaireModel.swift in Sources */,
 				C79E2CE32B995B1900E9395E /* CustomColor.swift in Sources */,
 				C709050D2B96CA9100CAB49F /* QuestionService.swift in Sources */,
 				C79E2CDB2B9951CC00E9395E /* CustomFont.swift in Sources */,
+				B554A3302CD9125000774FF9 /* MainMenuViewState.swift in Sources */,
 				B5B1600E2CD75C2A002D3659 /* PlayerScoreModel.swift in Sources */,
 				B5B160032CD74CFB002D3659 /* ScoresView.swift in Sources */,
 				B50F43F52CD89A8D006F4148 /* AnswerModel.swift in Sources */,
@@ -368,6 +379,7 @@
 				C70904F52B96BC0500CAB49F /* ScottPilgrimQuizApp.swift in Sources */,
 				B50F43F12CD87ECA006F4148 /* PrimaryButton.swift in Sources */,
 				C79E2CE52B995ECD00E9395E /* LayoutMultiplier.swift in Sources */,
+				B554A3322CD9138000774FF9 /* MainMenuView.swift in Sources */,
 				B5B1600C2CD75B71002D3659 /* HighestScoresView.swift in Sources */,
 				B50F43F72CD8A0A9006F4148 /* TimeIsUpView.swift in Sources */,
 				B50F43EC2CD875A1006F4148 /* ScoresViewState.swift in Sources */,
