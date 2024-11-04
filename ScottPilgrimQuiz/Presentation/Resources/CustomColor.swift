@@ -17,6 +17,7 @@ struct CustomColor {
     static var positive: Color { Color("PositiveColor") }
     static var primary: Color { Color("PrimaryColor") }
     static var secondary: Color { Color("SecondaryColor") }
+    static var titleText: Color { .yellow }
     static var white: Color { .white }
     
     private init() {}

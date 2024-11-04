@@ -38,12 +38,15 @@ struct MainMenuView: View {
     private var mainMenuView: some View {
         VStack {
             title
+                .padding(.top, LayoutMultiplier.padding(12))
+            Spacer()
             HStack {
                 mainMenuButton(title: "Start",
                                textColor: CustomColor.primary) {}
                 mainMenuButton(title: "Highest scores",
                                textColor: CustomColor.primary) {}
             }
+            .padding(.bottom, LayoutMultiplier.padding(20))
         }
         .background {
             CustomImage.scottPilgrimAllCharacters
@@ -52,9 +55,16 @@ struct MainMenuView: View {
 
     private var title: some View {
         VStack {
-            Text("Scott Pilgrim")
-                .customModifierTextTitle()
-            Text("Quiz")
+            Text("Scott")
+                .customModifierTextStroke(CustomColor.black, 8)
+                .customModifierTextTitle(10)
+                .padding(.bottom, LayoutMultiplier.padding(-8))
+            Text("Pilgrim")
+                .customModifierTextStroke(CustomColor.black, 8)
+                .customModifierTextTitle(12)
+                .padding(.bottom, LayoutMultiplier.padding(-3))
+            Text("VS THE QUIZ")
+                .customModifierTextStroke(CustomColor.black, 5)
                 .customModifierTextSubtitle()
         }
     }

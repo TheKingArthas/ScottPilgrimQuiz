@@ -16,7 +16,8 @@ extension View {
     func customModifierTextQuestion() -> some View { self.modifier(CustomViewModifiers.Text.Question()) }
     func customModifierTextScore(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Score(color)) }
     func customModifierTextTimer(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Timer(color)) }
-    func customModifierTextTitle() -> some View { self.modifier(CustomViewModifiers.Text.Title()) }
+    func customModifierTextTitle(_ sizeMultiplier: CGFloat) -> some View { self.modifier(CustomViewModifiers.Text.Title(sizeMultiplier)) }
+    func customModifierTextStroke(_ color: Color, _ lineWidth: CGFloat) -> some View { self.modifier(CustomViewModifiers.Text.Stroke(color, lineWidth)) }
     func customModifierTextSubtitle() -> some View { self.modifier(CustomViewModifiers.Text.Subtitle()) }
 }
 
@@ -120,11 +121,45 @@ fileprivate struct CustomViewModifiers {
         }
 
         struct Title: ViewModifier {
+            private let sizeMultiplier: CGFloat
+
+            init(_ sizeMultiplier: CGFloat) {
+                self.sizeMultiplier = sizeMultiplier
+            }
+
             func body(content: Content) -> some View {
                 content
-                    .font(CustomFont.superfly(size: LayoutMultiplier.size(10)))
-                    .foregroundStyle(CustomColor.primary)
+                    .font(CustomFont.superfly(size: LayoutMultiplier.size(sizeMultiplier)))
+                    .foregroundStyle(CustomColor.titleText)
                     .multilineTextAlignment(.center)
+            }
+        }
+
+        struct Stroke: ViewModifier {
+            private let color: Color
+            private let lineWidth: CGFloat
+
+            init(_ color: Color, _ lineWidth: CGFloat) {
+                self.color = color
+                self.lineWidth = lineWidth
+            }
+
+            func body(content: Content) -> some View {
+                ZStack {
+                    content
+                        .offset(x: lineWidth, y: lineWidth)
+                        .foregroundColor(color)
+                    content
+                        .offset(x: -lineWidth, y: -lineWidth)
+                        .foregroundColor(color)
+                    content
+                        .offset(x: -lineWidth, y: lineWidth)
+                        .foregroundColor(color)
+                    content
+                        .offset(x: lineWidth, y: -lineWidth)
+                        .foregroundColor(color)
+                    content
+                }
             }
         }
 
@@ -132,7 +167,7 @@ fileprivate struct CustomViewModifiers {
             func body(content: Content) -> some View {
                 content
                     .font(CustomFont.dusty(size: LayoutMultiplier.size(4)))
-                    .foregroundStyle(CustomColor.primary)
+                    .foregroundStyle(CustomColor.white)
                     .multilineTextAlignment(.center)
             }
         }
