@@ -48,6 +48,7 @@ struct CorrectAnswerView: View {
         VStack {
             Text("\(amount)")
                 .customModifierTextScore()
+                .padding(.bottom, LayoutMultiplier.padding(1))
             Text("points \nearned")
                 .customModifierTextH2()
                 .multilineTextAlignment(.center)

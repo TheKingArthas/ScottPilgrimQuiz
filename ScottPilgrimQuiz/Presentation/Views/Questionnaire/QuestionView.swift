@@ -32,15 +32,18 @@ struct QuestionView: View {
     var body: some View {
         VStack {
             TimerView(viewModel: timer)
-                .padding(.bottom, LayoutMultiplier.padding(4))
+                .padding(.top, LayoutMultiplier.padding(8))
+                .padding(.bottom, LayoutMultiplier.padding(2))
             questionNumberView(currentQuestionNumber: currentQuestionNumber,
                                amountOfTotalQuestions: amountOfTotalQuestions)
             .padding(.bottom, LayoutMultiplier.size(1))
+            Spacer()
             questionTextView()
                 .padding(.horizontal, LayoutMultiplier.padding(2.5))
                 .padding(.bottom, LayoutMultiplier.padding(4))
             answersView()
                 .frame(maxWidth: .infinity)
+                .padding(.bottom, LayoutMultiplier.padding(2))
             skipQuestionButtonView()
                 .padding(.vertical, LayoutMultiplier.size(4))
         }
@@ -49,18 +52,13 @@ struct QuestionView: View {
     private func questionNumberView(currentQuestionNumber: Int,
                                     amountOfTotalQuestions: Int) -> some View {
         Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-            .foregroundStyle(CustomColor.primary)
+            .customModifierTextTimer()
     }
 
     @ViewBuilder
     private func questionTextView() -> some View {
         Text(currentQuestion.question)
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
-            .minimumScaleFactor(0.8)
-            .lineLimit(5)
-            .multilineTextAlignment(.center)
-            .foregroundStyle(CustomColor.white)
+            .customModifierTextQuestion()
     }
 
     @ViewBuilder

@@ -9,8 +9,7 @@ struct TimerView: View {
 
     var body: some View {
         Text("Time remaining: \n\(viewModel.remainingTimeAsFormattedString)")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-            .multilineTextAlignment(.center)
-            .foregroundStyle(CustomColor.primary)
+            .customModifierTextTimer()
+            .frame(maxWidth: .infinity)
     }
 }
