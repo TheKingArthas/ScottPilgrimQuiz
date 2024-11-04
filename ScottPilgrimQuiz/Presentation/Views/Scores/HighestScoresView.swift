@@ -63,13 +63,7 @@ struct HighestScoresView: View {
     }
 
     private var mainMenuButton: some View {
-        Button {
-            mainMenuButtonAction()
-        } label: { Text("Main Menu")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-                .foregroundStyle(CustomColor.primary)
-                .padding(.vertical, LayoutMultiplier.size(2))
-        }
+        PrimaryButton(labelText: "Main menu") { mainMenuButtonAction() }
     }
 }
 

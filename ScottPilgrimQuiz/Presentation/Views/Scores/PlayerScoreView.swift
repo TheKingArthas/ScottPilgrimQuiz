@@ -12,17 +12,17 @@ struct PlayerScoreView: View {
     @State private var playerName: String
     private let playerScore: Int
     private let isInTopScores: Bool
-    private let nextButtonAction: () -> Void
+    private let restartButtonAction: () -> Void
     private let saveScoreButtonAction: (String) -> Void
 
     init(_ playerScore: Int,
          isInTopScores: Bool,
-         nextButtonAction: @escaping () -> Void,
+         restartButtonAction: @escaping () -> Void,
          saveScoreButtonAction: @escaping (String) -> Void) {
         _playerName = .init(initialValue: "")
         self.playerScore = playerScore
         self.isInTopScores = isInTopScores
-        self.nextButtonAction = nextButtonAction
+        self.restartButtonAction = restartButtonAction
         self.saveScoreButtonAction = saveScoreButtonAction
     }
 
@@ -69,14 +69,7 @@ struct PlayerScoreView: View {
     }
 
     private var nextButtonView: some View {
-        Button {
-            //TODO: Add action
-        } label: {
-            Text("Restart")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-                .foregroundStyle(CustomColor.destructive)
-                .padding(.vertical, LayoutMultiplier.size(2))
-        }
+        PrimaryButton(labelText: "Restart", labelColor: CustomColor.destructive) { restartButtonAction() }
     }
 
     private var saveScoreView: some View {
@@ -104,15 +97,10 @@ struct PlayerScoreView: View {
     }
 
     private func saveScoreButtonView(isDisabled: Bool) -> some View {
-        Button {
-            saveScoreButtonAction(playerName)
-        } label: {
-            Text("Save score")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-                .foregroundStyle(isDisabled ? CustomColor.disabled : CustomColor.positive)
-                .padding(.vertical, LayoutMultiplier.size(2))
-        }
-        .disabled(isDisabled)
+        PrimaryButton(labelText: "Save score",
+                      labelColor: CustomColor.positive,
+                      buttonAction: { saveScoreButtonAction(playerName) },
+                      isDisabled: isDisabled)
     }
 }
 
@@ -127,6 +115,6 @@ extension PlayerScoreView {
 #Preview {
     PlayerScoreView(99,
                     isInTopScores: false,
-                    nextButtonAction: {},
+                    restartButtonAction: {},
                     saveScoreButtonAction: {_ in })
 }

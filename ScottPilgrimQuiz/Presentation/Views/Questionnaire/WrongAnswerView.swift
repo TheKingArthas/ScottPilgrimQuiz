@@ -34,6 +34,7 @@ struct WrongAnswerView: View {
                 .padding(.bottom, LayoutMultiplier.padding(6))
             Spacer()
             nextButtonView
+                .padding(.vertical, LayoutMultiplier.padding(4))
         }
     }
 
@@ -57,17 +58,7 @@ struct WrongAnswerView: View {
     }
 
     private var nextButtonView: some View {
-        Button {
-            nextQuestionAction()
-        } label: {
-            Text("Next question")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
-                .foregroundStyle(CustomColor.primary)
-                .foregroundColor(.white)
-                .padding(.all, LayoutMultiplier.padding(1))
-        }
-        .background(CustomColor.secondary)
-        .cornerRadius(8)
+        PrimaryButton(labelText: "Next question", hasBackground: true) { nextQuestionAction() }
     }
 
     private var backgroundView: some View {

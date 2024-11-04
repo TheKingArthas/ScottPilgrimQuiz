@@ -35,6 +35,7 @@ struct CorrectAnswerView: View {
             pointsEarnedView(pointsEarned)
             Spacer()
             nextButtonView
+                .padding(.vertical, LayoutMultiplier.size(4))
         }
     }
 
@@ -59,17 +60,7 @@ struct CorrectAnswerView: View {
     }
 
     private var nextButtonView: some View {
-        Button {
-            nextQuestionAction()
-        } label: {
-            Text("Next question")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
-                .foregroundStyle(CustomColor.primary)
-                .foregroundColor(.white)
-                .padding(.all, LayoutMultiplier.padding(1))
-        }
-        .background(CustomColor.secondary)
-        .cornerRadius(8)
+        PrimaryButton(labelText: "Next question", hasBackground: true) { nextQuestionAction() }
     }
 
     private var backgroundView: some View {

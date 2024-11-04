@@ -41,7 +41,8 @@ struct QuestionView: View {
                 .padding(.bottom, LayoutMultiplier.padding(4))
             answersView()
                 .frame(maxWidth: .infinity)
-            skipButtonView()
+            skipQuestionButtonView()
+                .padding(.vertical, LayoutMultiplier.size(4))
         }
     }
 
@@ -98,15 +99,8 @@ struct QuestionView: View {
         .background(CustomColor.secondary)
     }
 
-    private func skipButtonView() -> some View {
-        Button {
-            skipQuestionAction()
-        } label: {
-            Text("Skip question")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-                .foregroundStyle(CustomColor.destructive)
-                .padding(.vertical, LayoutMultiplier.size(2))
-        }
+    private func skipQuestionButtonView() -> some View {
+        PrimaryButton(labelText: "Skip question", labelColor: CustomColor.destructive) { skipQuestionAction() }
     }
 }
 
