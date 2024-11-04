@@ -13,7 +13,6 @@ enum FontWeight {
 }
 
 struct CustomFont {
-    static func dusty(size: CGFloat) -> Font { .custom("Dusty", size: size) }
     static func karmaticArcade(size: CGFloat) -> Font { .custom("Karmatic Arcade", size: size) }
     static func montserrat(size: CGFloat, weight: FontWeight) -> Font {
         switch weight {

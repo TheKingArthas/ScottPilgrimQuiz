@@ -41,18 +41,16 @@ struct WrongAnswerView: View {
     private var explanationTextView: some View {
         VStack {
             Text("Wrong answer!!")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(6)))
-                .foregroundStyle(CustomColor.destructive)
+                .customModifierTextH1(CustomColor.destructive)
+                .padding(.top, LayoutMultiplier.padding(4))
                 .padding(.bottom, LayoutMultiplier.padding(2))
             Text("The correct answer was")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
-                .foregroundStyle(CustomColor.destructive)
+                .customModifierTextH3(CustomColor.destructive)
                 .padding(.bottom, LayoutMultiplier.padding(2))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             Text("\"\(correctAnswer)\"")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
-                .foregroundStyle(CustomColor.white)
+                .customModifierTextH3(CustomColor.white)
                 .padding(.bottom, LayoutMultiplier.padding(2))
         }
     }

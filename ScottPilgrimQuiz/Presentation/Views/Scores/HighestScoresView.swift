@@ -48,8 +48,7 @@ struct HighestScoresView: View {
 
     private var title: some View {
         Text("Highest scores")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
-            .foregroundStyle(CustomColor.primary)
+            .customModifierTextH1()
     }
 
     private func playerScoreRow(_ playerScore: PlayerScoreModel) -> some View {
@@ -58,8 +57,7 @@ struct HighestScoresView: View {
             Spacer()
             Text("\(playerScore.score)")
         }
-        .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-        .foregroundStyle(CustomColor.white)
+        .customModifierTextH3(CustomColor.white)
     }
 
     private var mainMenuButton: some View {

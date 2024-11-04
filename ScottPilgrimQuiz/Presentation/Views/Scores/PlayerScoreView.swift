@@ -58,14 +58,12 @@ struct PlayerScoreView: View {
 
     private var titleView: some View {
         Text("Game over")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(6)))
-            .foregroundStyle(CustomColor.primary)
+            .customModifierTextH1()
     }
 
     private var totalScoreTextView: some View {
         Text("Your total score was")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
-            .foregroundStyle(CustomColor.primary)
+            .customModifierTextH2()
     }
 
     private var nextButtonView: some View {
@@ -75,8 +73,7 @@ struct PlayerScoreView: View {
     private var saveScoreView: some View {
         VStack {
             Text("Enter your name")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
-                .foregroundStyle(CustomColor.primary)
+                .customModifierTextH3()
                 .padding(.top, LayoutMultiplier.padding(2))
             TextField("Name", text: $playerName)
                 .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
@@ -92,8 +89,7 @@ struct PlayerScoreView: View {
 
     private func scoreView(_ playerScore: Int) -> some View {
         Text("\(playerScore)")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(10)))
-            .foregroundStyle(playerScore > 0 ? CustomColor.positive : CustomColor.destructive)
+            .customModifierTextScore(playerScore > 0 ? CustomColor.positive : CustomColor.destructive)
     }
 
     private func saveScoreButtonView(isDisabled: Bool) -> some View {

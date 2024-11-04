@@ -8,30 +8,57 @@
 import SwiftUICore
 
 extension View {
-    func customModifierTextH1() -> some View { self.modifier(CustomViewModifiers.Text.H1()) }
-    func customModifierTextH2() -> some View { self.modifier(CustomViewModifiers.Text.H1()) }
+    func customModifierTextH1(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.H1(color)) }
+    func customModifierTextH2(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.H2(color)) }
+    func customModifierTextH3(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.H3(color)) }
     func customModifierTextLoading() -> some View { self.modifier(CustomViewModifiers.Text.Loading()) }
     func customModifierTextPrimaryButton() -> some View { self.modifier(CustomViewModifiers.Text.PrimaryButton()) }
     func customModifierTextQuestion() -> some View { self.modifier(CustomViewModifiers.Text.Question()) }
-    func customModifierTextScore() -> some View { self.modifier(CustomViewModifiers.Text.Score()) }
+    func customModifierTextScore(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Score(color)) }
     func customModifierTextTimer() -> some View { self.modifier(CustomViewModifiers.Text.Timer()) }
 }
 
 fileprivate struct CustomViewModifiers {
     struct Text {
         struct H1: ViewModifier {
+            private let color: Color
+
+            init(_ color: Color) {
+                self.color = color
+            }
+
             func body(content: Content) -> some View {
                 content
                     .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(6)))
-                    .foregroundStyle(CustomColor.positive)
+                    .foregroundStyle(color)
             }
         }
 
         struct H2: ViewModifier {
+            private let color: Color
+
+            init(_ color: Color) {
+                self.color = color
+            }
+
             func body(content: Content) -> some View {
                 content
-                    .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(6)))
-                    .foregroundStyle(CustomColor.positive)
+                    .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+                    .foregroundStyle(color)
+            }
+        }
+
+        struct H3: ViewModifier {
+            private let color: Color
+
+            init(_ color: Color) {
+                self.color = color
+            }
+
+            func body(content: Content) -> some View {
+                content
+                    .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
+                    .foregroundStyle(color)
             }
         }
 
@@ -62,10 +89,16 @@ fileprivate struct CustomViewModifiers {
         }
 
         struct Score: ViewModifier {
+            private let color: Color
+
+            init(_ color: Color) {
+                self.color = color
+            }
+
             func body(content: Content) -> some View {
                 content
                     .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(10)))
-                    .foregroundStyle(CustomColor.positive)
+                    .foregroundStyle(color)
             }
         }
 
