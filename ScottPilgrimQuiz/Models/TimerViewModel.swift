@@ -22,10 +22,12 @@ class TimerViewModel: ObservableObject {
     @Published private(set) var remainingTime: Int
     private let initialTime: Int
     private var timer: Timer
+    private var timeEndedAction: () -> Void
 
-    init(initialTime: Int) {
+    init(initialTime: Int, timeEndedAction: @escaping () -> Void) {
         self.initialTime = initialTime
         self.remainingTime = initialTime
+        self.timeEndedAction = timeEndedAction
         self.timer = .init()
     }
 
@@ -36,6 +38,7 @@ class TimerViewModel: ObservableObject {
                 self.remainingTime -= 1
             } else {
                 self.stopTimer()
+                self.timeEndedAction()
             }
         }
     }

@@ -8,9 +8,10 @@
 enum QuestionnaireViewState {
     case correctAnswer(score: Int)
     case error(_ title: String, _ description: String)
-    case firstLoad
     case finished(playerScore: Int)
-    case incorrectAnswer(correctAnswer: String)
+    case firstLoad
     case loading
     case question(_ question: QuestionModel)
+    case timeIsUp
+    case wrongAnswer(correctAnswer: String)
 }

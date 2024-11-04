@@ -43,13 +43,15 @@ struct QuestionnaireView: View {
             .ignoresSafeArea()
         case let .correctAnswer(score):
             CorrectAnswerView(pointsEarned: score) { viewModel.nextQuestion() }
-        case let .incorrectAnswer(correctAnswer):
+        case let .wrongAnswer(correctAnswer):
             WrongAnswerView(correctAnswer: correctAnswer) { viewModel.nextQuestion() }
         case let .error(title, description):
             ErrorView(title: title, description: description) { viewModel.goToMainMenu() }
         case let .finished(playerScore: playerScore):
             ScoresView(viewModel: ScoresViewModel(scoreService: ScoreService()),
                        playerScore: playerScore)
+        case .timeIsUp:
+            TimeIsUpView { viewModel.nextQuestion() }
         }
     }
 }

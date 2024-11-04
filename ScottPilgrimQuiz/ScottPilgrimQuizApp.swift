@@ -12,8 +12,7 @@ struct ScottPilgrimQuizApp: App {
     var body: some Scene {
         WindowGroup {
             QuestionnaireView(viewModel: QuestionnaireViewModel(amountOfQuestions: 10,
-                                                                questionsService: QuestionService(),
-                                                                secondsToAnswerEachQuestion: 30))
+                                                                questionsService: QuestionService()))
         }
     }
 }

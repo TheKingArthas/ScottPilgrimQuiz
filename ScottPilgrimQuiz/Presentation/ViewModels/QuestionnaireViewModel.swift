@@ -9,18 +9,20 @@ import Foundation
 import SwiftUICore
 
 class QuestionnaireViewModel: ObservableObject {
+    private static let secondsToAnswerEachQuestion: Int = 30
     @Published var viewState: QuestionnaireViewState
     private(set) var amountOfQuestions: Int
     private(set) var currentQuestion: QuestionModel?
     private(set) var currentQuestionNumber: Int
-    private(set) var timerViewModel: TimerViewModel
+    private(set) lazy var timerViewModel: TimerViewModel = TimerViewModel(initialTime: Self.secondsToAnswerEachQuestion) { [weak self] in
+        self?.viewState = .timeIsUp
+    }
     private(set) var playerScore: Int
     private var unaskedQuestions: [QuestionModel]
     private let questionsService: QuestionService
 
     init(amountOfQuestions: Int,
-         questionsService: QuestionService,
-         secondsToAnswerEachQuestion: Int) {
+         questionsService: QuestionService) {
         self.viewState = .firstLoad
         self.amountOfQuestions = amountOfQuestions
         self.currentQuestionNumber = 0
@@ -28,7 +30,6 @@ class QuestionnaireViewModel: ObservableObject {
         self.unaskedQuestions = []
         self.questionsService = questionsService
         self.playerScore = 0
-        self.timerViewModel = TimerViewModel(initialTime: secondsToAnswerEachQuestion)
     }
 
     func initQuestionnaire() throws {
@@ -43,7 +44,7 @@ class QuestionnaireViewModel: ObservableObject {
                 addScore(answerScore)
                 viewState = .correctAnswer(score: answerScore)
             } else {
-                viewState = .incorrectAnswer(correctAnswer: currentQuestion.correctAnswer.description)
+                viewState = .wrongAnswer(correctAnswer: currentQuestion.correctAnswer.description)
             }
         }
         timerViewModel.stopTimer()

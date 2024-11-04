@@ -21,5 +21,5 @@ struct TimerView: View {
 }
 
 #Preview {
-    TimerView(viewModel: .init(initialTime: 30))
+    TimerView(viewModel: .init(initialTime: 30) {})
 }

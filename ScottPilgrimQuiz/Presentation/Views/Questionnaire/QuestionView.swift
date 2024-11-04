@@ -113,5 +113,5 @@ struct QuestionView: View {
                                                     AnswerModel(id: "Q3A3", description: "Ney"),
                                                     AnswerModel(id: "Q3A4", description: "Also no")
                                                 ]),
-                 timer: TimerViewModel(initialTime: 30)) { _ in } skipQuestionAction: {}
+                 timer: TimerViewModel(initialTime: 30) {}) { _ in } skipQuestionAction: {}
 }
