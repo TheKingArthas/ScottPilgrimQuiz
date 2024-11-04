@@ -93,19 +93,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B567CA702C63048C009543CE /* Views */ = {
+		B50F43ED2CD87B82006F4148 /* Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
 				B5F6008A2C82B826006EBCFB /* CorrectAnswerView.swift */,
-				B5BB9AA32CD574D8000C284C /* ErrorView.swift */,
-				B5B1600B2CD75B71002D3659 /* HighestScoresView.swift */,
-				B5B160002CD73F96002D3659 /* LoadingView.swift */,
-				B50F43E92CD87180006F4148 /* PlayerScoreView.swift */,
 				C70905112B96D22400CAB49F /* QuestionnaireView.swift */,
 				C70905132B96D32300CAB49F /* QuestionView.swift */,
-				B5B160022CD74CFB002D3659 /* ScoresView.swift */,
 				B5D47B4A2CC8485900AAC9EE /* TimerView.swift */,
 				B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */,
+			);
+			path = Questionnaire;
+			sourceTree = "<group>";
+		};
+		B50F43EE2CD87B98006F4148 /* Scores */ = {
+			isa = PBXGroup;
+			children = (
+				B5B1600B2CD75B71002D3659 /* HighestScoresView.swift */,
+				B50F43E92CD87180006F4148 /* PlayerScoreView.swift */,
+				B5B160022CD74CFB002D3659 /* ScoresView.swift */,
+			);
+			path = Scores;
+			sourceTree = "<group>";
+		};
+		B567CA702C63048C009543CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5BB9AA32CD574D8000C284C /* ErrorView.swift */,
+				B5B160002CD73F96002D3659 /* LoadingView.swift */,
+				B50F43ED2CD87B82006F4148 /* Questionnaire */,
+				B50F43EE2CD87B98006F4148 /* Scores */,
 			);
 			path = Views;
 			sourceTree = "<group>";
