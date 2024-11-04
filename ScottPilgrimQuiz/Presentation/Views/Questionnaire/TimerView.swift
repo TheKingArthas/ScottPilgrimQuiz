@@ -16,7 +16,6 @@ struct TimerView: View {
             Text(viewModel.remainingTimeAsFormattedString)
                 .customModifierTextTimer(viewModel.isOnCriticalTime ? CustomColor.destructive : CustomColor.primary)
                 .frame(maxWidth: .infinity)
-
         }
     }
 }
