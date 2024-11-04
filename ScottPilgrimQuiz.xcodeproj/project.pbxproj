@@ -36,7 +36,6 @@
 		C70905142B96D32300CAB49F /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70905132B96D32300CAB49F /* QuestionView.swift */; };
 		C79E2CDB2B9951CC00E9395E /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E2CDA2B9951CC00E9395E /* CustomFont.swift */; };
 		C79E2CE02B9958C800E9395E /* Dusty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C79E2CDE2B9955B900E9395E /* Dusty.ttf */; };
-		C79E2CE12B9958CC00E9395E /* Superfly.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C79E2CDD2B9955B900E9395E /* Superfly.TTF */; };
 		C79E2CE32B995B1900E9395E /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E2CE22B995B1900E9395E /* CustomColor.swift */; };
 		C79E2CE52B995ECD00E9395E /* LayoutMultiplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E2CE42B995ECD00E9395E /* LayoutMultiplier.swift */; };
 		C79E2CE72B995FBD00E9395E /* KarmaticArcade.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C79E2CE62B995FBD00E9395E /* KarmaticArcade.ttf */; };
@@ -74,7 +73,6 @@
 		C70905112B96D22400CAB49F /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
 		C70905132B96D32300CAB49F /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		C79E2CDA2B9951CC00E9395E /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
-		C79E2CDD2B9955B900E9395E /* Superfly.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = Superfly.TTF; sourceTree = "<group>"; };
 		C79E2CDE2B9955B900E9395E /* Dusty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dusty.ttf; sourceTree = "<group>"; };
 		C79E2CDF2B99579400E9395E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C79E2CE22B995B1900E9395E /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 				C79E2CE62B995FBD00E9395E /* KarmaticArcade.ttf */,
 				C79E2CEA2B9967C200E9395E /* Montserrat-Bold.ttf */,
 				C79E2CE82B99650B00E9395E /* Montserrat-Medium.ttf */,
-				C79E2CDD2B9955B900E9395E /* Superfly.TTF */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -302,7 +299,6 @@
 			files = (
 				C79E2CE72B995FBD00E9395E /* KarmaticArcade.ttf in Resources */,
 				C70904FC2B96BC0700CAB49F /* Preview Assets.xcassets in Resources */,
-				C79E2CE12B9958CC00E9395E /* Superfly.TTF in Resources */,
 				C79E2CE92B99650C00E9395E /* Montserrat-Medium.ttf in Resources */,
 				C79E2CEB2B9967C200E9395E /* Montserrat-Bold.ttf in Resources */,
 				C70905042B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json in Resources */,

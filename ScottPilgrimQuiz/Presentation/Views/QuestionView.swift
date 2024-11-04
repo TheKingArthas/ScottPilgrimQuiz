@@ -113,3 +113,13 @@ struct QuestionView: View {
         answerAction(answer)
     }
 }
+
+#Preview {
+    QuestionView(currentQuestionNumber: 3,
+                 amountOfTotalQuestions: 10,
+                 currentQuestion: QuestionModel(id: "3",
+                                                question: "This is correct?",
+                                                correctAnswer: "Yes",
+                                                wrongAnswers: ["No", "Ney", "Also no"]),
+                 timer: TimerViewModel(initialTime: 30)) { _ in } skipQuestionAction: {}
+}

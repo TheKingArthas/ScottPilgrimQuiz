@@ -15,7 +15,6 @@ enum FontWeight {
 struct CustomFont {
     static func dusty(size: CGFloat) -> Font { .custom("Dusty", size: size) }
     static func karmaticArcade(size: CGFloat) -> Font { .custom("Karmatic Arcade", size: size) }
-    static func superfly(size: CGFloat) -> Font { .custom("Superfly", size: size) }
     static func montserrat(size: CGFloat, weight: FontWeight) -> Font {
         switch weight {
         case .bold:
@@ -24,9 +23,9 @@ struct CustomFont {
             montserratMedium(size: size)
         }
     }
-    
+
     private static func montserratBold(size: CGFloat) -> Font { .custom("Montserrat-Bold", size: size) }
     private static func montserratMedium(size: CGFloat) -> Font { .custom("Montserrat-Medium", size: size) }
-    
+
     private init() {}
 }
