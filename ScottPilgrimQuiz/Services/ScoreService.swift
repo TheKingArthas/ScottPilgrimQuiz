@@ -9,20 +9,27 @@ import Foundation
 
 class ScoreService {
     static private let scoresKey = "questions"
+    static private let amountOfTopScores: Int = 10
 
-    private(set) var highestScores: [PlayerScore] = []
+    private(set) var highestScores: [PlayerScoreModel]
 
-    func fetchHighestScores() {
-        highestScores = retrieveFromUserDefaults() ?? []
+    init() {
+        self.highestScores = []
     }
 
-    func isInTopScores(_ playerScore: PlayerScore) -> Bool {
-        highestScores.contains(where: { playerScore.score > $0.score })
+    func fetchHighestScores() throws {
+        highestScores = try retrieveFromUserDefaults() ?? []
     }
 
-    func addScore(_ playerScore: PlayerScore) throws {
-        highestScores.sort()
-        highestScores.removeLast()
+    func isInTopScores(_ score: Int) -> Bool {
+        highestScores.contains(where: { score > $0.score })
+    }
+
+    func addScore(_ playerScore: PlayerScoreModel) throws {
+        if highestScores.count == Self.amountOfTopScores {
+            highestScores.sort()
+            highestScores.removeLast()
+        }
         highestScores.append(playerScore)
         let data = try playerScoresToData(highestScores)
         saveToUsersDefaults(data)
@@ -32,25 +39,24 @@ class ScoreService {
         UserDefaults.standard.set(data, forKey: Self.scoresKey)
     }
 
-    private func retrieveFromUserDefaults() -> [PlayerScore]? {
+    private func retrieveFromUserDefaults() throws -> [PlayerScoreModel]? {
         if let data = UserDefaults.standard.data(forKey: Self.scoresKey) {
             let decoder = JSONDecoder()
             do {
-                let questions = try decoder.decode([PlayerScore].self, from: data)
+                let questions = try decoder.decode([PlayerScoreModel].self, from: data)
                 return questions
             } catch {
-                print("Failed to decode: \(error.localizedDescription)")
+                throw ServiceError.parsingFailed
             }
         }
-        return nil
+        throw ServiceError.parsingFailed
     }
 
-    private func playerScoresToData(_ playerScores: [PlayerScore]) throws -> Data {
+    private func playerScoresToData(_ playerScores: [PlayerScoreModel]) throws -> Data {
         do {
             let data = try JSONEncoder().encode(playerScores)
             return data
         } catch {
-            print("Error parsing to data:", error.localizedDescription)
             throw ServiceError.invalidData
         }
     }

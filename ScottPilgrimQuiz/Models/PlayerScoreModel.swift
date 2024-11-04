@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct PlayerScore: Hashable, Comparable, Codable {
-    static func < (lhs: PlayerScore, rhs: PlayerScore) -> Bool {
+struct PlayerScoreModel: Hashable, Comparable, Codable {
+    static func < (lhs: PlayerScoreModel, rhs: PlayerScoreModel) -> Bool {
         lhs.score < rhs.score
     }
 

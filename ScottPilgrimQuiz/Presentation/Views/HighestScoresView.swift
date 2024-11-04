@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct HighestScoresView: View {
-    private let highestScores: [PlayerScore]
-    private let mainMenuAction: () -> Void
+    private let highestScores: [PlayerScoreModel]
+    private let mainMenuButtonAction: () -> Void
 
-    init(_ highestScores: [PlayerScore], mainMenuAction: @escaping () -> Void) {
+    init(_ highestScores: [PlayerScoreModel],
+         mainMenuButtonAction: @escaping () -> Void) {
         self.highestScores = highestScores.sorted().reversed()
-        self.mainMenuAction = mainMenuAction
+        self.mainMenuButtonAction = mainMenuButtonAction
     }
 
     var body: some View {
-        mainView
+        mainView(highestScores)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background {
                 CustomColor.background
@@ -25,14 +26,14 @@ struct HighestScoresView: View {
             }
     }
 
-    var mainView: some View {
+    private func mainView(_ highestScores: [PlayerScoreModel]) -> some View {
         VStack {
             title
                 .padding(.vertical, LayoutMultiplier.padding(4))
             ScrollView {
                 VStack {
                     ForEach(highestScores, id: \.self) { score in
-                        playerScore(score)
+                        playerScoreRow(score)
                             .padding(.vertical, LayoutMultiplier.padding(0.5))
                     }
                 }
@@ -51,17 +52,7 @@ struct HighestScoresView: View {
             .foregroundStyle(CustomColor.primary)
     }
 
-    private var mainMenuButton: some View {
-        Button {
-            mainMenuAction()
-        } label: { Text("Main Menu")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-                .foregroundStyle(CustomColor.primary)
-                .padding(.vertical, LayoutMultiplier.size(2))
-        }
-    }
-
-    private func playerScore(_ playerScore: PlayerScore) -> some View {
+    private func playerScoreRow(_ playerScore: PlayerScoreModel) -> some View {
         HStack {
             Text(playerScore.name)
             Spacer()
@@ -70,20 +61,30 @@ struct HighestScoresView: View {
         .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
         .foregroundStyle(CustomColor.white)
     }
+
+    private var mainMenuButton: some View {
+        Button {
+            mainMenuButtonAction()
+        } label: { Text("Main Menu")
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+                .foregroundStyle(CustomColor.primary)
+                .padding(.vertical, LayoutMultiplier.size(2))
+        }
+    }
 }
 
 #Preview {
     HighestScoresView([
-        PlayerScore(name: "Federico", score: 100),
-        PlayerScore(name: "Roxy", score: 200),
-        PlayerScore(name: "Stacey", score: 300),
-        PlayerScore(name: "Neil", score: 400),
-        PlayerScore(name: "Knives", score: 500),
-        PlayerScore(name: "Bryan Lee", score: 9999),
-        PlayerScore(name: "Julie", score: 600),
-        PlayerScore(name: "Envy", score: 700),
-        PlayerScore(name: "Scott", score: 800),
-        PlayerScore(name: "Ramona", score: 900)
+        .init(name: "Federico", score: 100),
+        .init(name: "Roxy", score: 200),
+        .init(name: "Stacey", score: 300),
+        .init(name: "Neil", score: 400),
+        .init(name: "Knives", score: 500),
+        .init(name: "Bryan Lee", score: 9999),
+        .init(name: "Julie", score: 600),
+        .init(name: "Envy", score: 700),
+        .init(name: "Scott", score: 800),
+        .init(name: "Ramona", score: 900)
     ]) {
         print("Main menu button pressed")
     }

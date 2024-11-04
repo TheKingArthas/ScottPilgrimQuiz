@@ -16,8 +16,17 @@ struct QuestionnaireView: View {
 
     var body: some View {
         switch viewModel.viewState {
-        case .mainMenu:
-            Text("Main menu")
+        case .loading:
+            LoadingView()
+        case .firstLoad:
+            LoadingView()
+                .onAppear {
+                    do {
+                        try viewModel.initQuestionnaire()
+                    } catch {
+                        viewModel.viewState = .error("Something went wrong:", error.localizedDescription)
+                    }
+                }
         case .question(let currentQuestion):
             QuestionView(currentQuestionNumber: viewModel.currentQuestionNumber,
                          amountOfTotalQuestions: viewModel.amountOfQuestions,
@@ -32,32 +41,15 @@ struct QuestionnaireView: View {
                 CustomColor.background
             }
             .ignoresSafeArea()
-        case .correctAnswer(let score):
+        case let .correctAnswer(score):
             CorrectAnswerView(pointsEarned: score) { viewModel.nextQuestion() }
-        case .incorrectAnswer(let correctAnswer):
+        case let .incorrectAnswer(correctAnswer):
             WrongAnswerView(correctAnswer: correctAnswer) { viewModel.nextQuestion() }
-        case .loading:
-            LoadingView()
-        case .firstLoad:
-            LoadingView()
-                .onAppear {
-                    do {
-                        try viewModel.initQuestionnaire()
-                    } catch {
-                        viewModel.viewState = .error("Something went wrong:", error.localizedDescription)
-                    }
-                }
-        case .error(let title, let description):
+        case let .error(title, description):
             ErrorView(title: title, description: description)
-        case .finished:
-            SaveScoreView(totalScore: viewModel.score) { playerName in
-                viewModel.saveScore(playerName: playerName)
-                viewModel.viewState = .highestScores
-            }
-        case .highestScores:
-            HighestScoresView(viewModel.highestScores) {
-                viewModel.viewState = .mainMenu
-            }
+        case let .finished(playerScore: playerScore):
+            ScoresView(viewModel: ScoresViewModel(scoreService: ScoreService()),
+                       playerScore: playerScore)
         }
     }
 }

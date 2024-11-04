@@ -10,14 +10,11 @@ import SwiftUICore
 
 class QuestionnaireViewModel: ObservableObject {
     @Published var viewState: QuestionnaireViewState
-    var highestScores: [PlayerScore] {
-        []
-    }
     private(set) var amountOfQuestions: Int
     private(set) var currentQuestion: QuestionModel?
     private(set) var currentQuestionNumber: Int
     private(set) var timerViewModel: TimerViewModel
-    private(set) var score: Int
+    private(set) var playerScore: Int
     private var unaskedQuestions: [QuestionModel]
     private let questionsService: QuestionService
 
@@ -30,7 +27,7 @@ class QuestionnaireViewModel: ObservableObject {
         self.currentQuestion = nil
         self.unaskedQuestions = []
         self.questionsService = questionsService
-        self.score = 0
+        self.playerScore = 0
         self.timerViewModel = TimerViewModel(initialTime: secondsToAnswerEachQuestion)
     }
 
@@ -42,9 +39,9 @@ class QuestionnaireViewModel: ObservableObject {
     func answer(_ answer: String) {
         if let currentQuestion = currentQuestion {
             if currentQuestion.correctAnswer == answer {
-                let score = correctAnswerScore()
-                addScore(score)
-                viewState = .correctAnswer(score: score)
+                let answerScore = correctAnswerScore()
+                addScore(answerScore)
+                viewState = .correctAnswer(score: answerScore)
             } else {
                 viewState = .incorrectAnswer(correctAnswer: currentQuestion.correctAnswer)
             }
@@ -57,12 +54,8 @@ class QuestionnaireViewModel: ObservableObject {
         if currentQuestionNumber < amountOfQuestions {
             popQuestion()
         } else {
-            viewState = .finished
+            viewState = .finished(playerScore: playerScore)
         }
-    }
-
-    func saveScore(playerName: String) {
-        //TODO: Save score
     }
 
     private func fetchQuestions() throws {
@@ -104,6 +97,6 @@ class QuestionnaireViewModel: ObservableObject {
     }
 
     private func addScore(_ score: Int) {
-        self.score += score
+        self.playerScore += score
     }
 }
