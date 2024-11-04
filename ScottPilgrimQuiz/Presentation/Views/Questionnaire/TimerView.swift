@@ -8,8 +8,19 @@ struct TimerView: View {
     }
 
     var body: some View {
-        Text("Time remaining: \n\(viewModel.remainingTimeAsFormattedString)")
-            .customModifierTextTimer()
-            .frame(maxWidth: .infinity)
+        VStack {
+            Text("Time remaining:")
+                .customModifierTextTimer()
+                .frame(maxWidth: .infinity)
+                .padding(.bottom, LayoutMultiplier.padding(0.5))
+            Text(viewModel.remainingTimeAsFormattedString)
+                .customModifierTextTimer(viewModel.isOnCriticalTime ? CustomColor.destructive : CustomColor.primary)
+                .frame(maxWidth: .infinity)
+
+        }
     }
+}
+
+#Preview {
+    TimerView(viewModel: .init(initialTime: 30))
 }
