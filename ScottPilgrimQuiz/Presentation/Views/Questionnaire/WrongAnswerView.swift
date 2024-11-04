@@ -56,19 +56,6 @@ struct WrongAnswerView: View {
         }
     }
 
-    private var backgroundView: some View {
-        VStack {
-            Spacer()
-            CustomImage.scottDead
-                .resizable()
-                .scaledToFit()
-                .padding(.horizontal, LayoutMultiplier.padding(2))
-        }
-        .background {
-            CustomColor.black
-        }
-    }
-
     private var nextButtonView: some View {
         Button {
             nextQuestionAction()
@@ -81,6 +68,19 @@ struct WrongAnswerView: View {
         }
         .background(CustomColor.secondary)
         .cornerRadius(8)
+    }
+
+    private var backgroundView: some View {
+        VStack {
+            Spacer()
+            CustomImage.scottDead
+                .resizable()
+                .scaledToFit()
+                .padding(.horizontal, LayoutMultiplier.padding(2))
+        }
+        .background {
+            CustomColor.black
+        }
     }
 }
 

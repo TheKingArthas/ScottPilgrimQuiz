@@ -29,7 +29,7 @@ struct CorrectAnswerView: View {
 
     private var mainView: some View {
         VStack {
-            correctTextView
+            titleView
                 .padding(.top, LayoutMultiplier.padding(10))
                 .padding(.bottom, LayoutMultiplier.padding(6))
             pointsEarnedView(pointsEarned)
@@ -38,22 +38,23 @@ struct CorrectAnswerView: View {
         }
     }
 
-    private var correctTextView: some View {
+    private var titleView: some View {
         Text("Correct !!")
             .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(6)))
             .foregroundStyle(CustomColor.positive)
     }
 
-    private var backgroundView: some View {
+    private func pointsEarnedView(_ amount: Int) -> some View {
         VStack {
-            Spacer()
-            CustomImage.scottJumping
-                .resizable()
-                .scaledToFit()
-                .padding(.horizontal, LayoutMultiplier.padding(2))
-        }
-        .background {
-            CustomColor.background
+            Text("\(amount)")
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(10)))
+                .foregroundStyle(CustomColor.positive)
+                .padding(.bottom, LayoutMultiplier.padding(1))
+            Text("points \nearned")
+                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .foregroundStyle(CustomColor.positive)
         }
     }
 
@@ -71,17 +72,16 @@ struct CorrectAnswerView: View {
         .cornerRadius(8)
     }
 
-    private func pointsEarnedView(_ amount: Int) -> some View {
+    private var backgroundView: some View {
         VStack {
-            Text("\(amount)")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(10)))
-                .foregroundStyle(CustomColor.positive)
-                .padding(.bottom, LayoutMultiplier.padding(1))
-            Text("points \nearned")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
-                .multilineTextAlignment(.center)
-                .lineLimit(2)
-                .foregroundStyle(CustomColor.positive)
+            Spacer()
+            CustomImage.scottJumping
+                .resizable()
+                .scaledToFit()
+                .padding(.horizontal, LayoutMultiplier.padding(2))
+        }
+        .background {
+            CustomColor.background
         }
     }
 }

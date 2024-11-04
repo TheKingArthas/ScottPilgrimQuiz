@@ -45,6 +45,13 @@ struct QuestionView: View {
         }
     }
 
+    private func questionNumberView(currentQuestionNumber: Int,
+                                    amountOfTotalQuestions: Int) -> some View {
+        Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+            .foregroundStyle(CustomColor.primary)
+    }
+
     @ViewBuilder
     private func questionTextView() -> some View {
         Text(currentQuestion.question)
@@ -65,13 +72,6 @@ struct QuestionView: View {
                 .padding(.bottom, LayoutMultiplier.padding(1))
             }
         }
-    }
-
-    private func questionNumberView(currentQuestionNumber: Int,
-                                    amountOfTotalQuestions: Int) -> some View {
-        Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-            .foregroundStyle(CustomColor.primary)
     }
 
     private func answerView(_ answer: String,
@@ -107,10 +107,6 @@ struct QuestionView: View {
                 .foregroundStyle(CustomColor.destructive)
                 .padding(.vertical, LayoutMultiplier.size(2))
         }
-    }
-
-    private func handleAnswer(_ answer: String) {
-        answerAction(answer)
     }
 }
 
