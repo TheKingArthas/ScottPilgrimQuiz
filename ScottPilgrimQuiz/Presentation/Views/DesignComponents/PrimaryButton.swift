@@ -31,7 +31,7 @@ struct PrimaryButton: View {
             buttonAction()
         } label: {
             Text(labelText)
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
+                .customModifierTextPrimaryButton()
                 .foregroundStyle(isDisabled ? CustomColor.disabled : labelColor)
                 .padding(.all, LayoutMultiplier.padding(1))
         }

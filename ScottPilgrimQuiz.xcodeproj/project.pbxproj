@@ -10,6 +10,7 @@
 		B50F43EA2CD87180006F4148 /* PlayerScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43E92CD87180006F4148 /* PlayerScoreView.swift */; };
 		B50F43EC2CD875A1006F4148 /* ScoresViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43EB2CD875A1006F4148 /* ScoresViewState.swift */; };
 		B50F43F12CD87ECA006F4148 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43F02CD87ECA006F4148 /* PrimaryButton.swift */; };
+		B50F43F32CD88788006F4148 /* CustomViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43F22CD88780006F4148 /* CustomViewModifiers.swift */; };
 		B560A1112C9523D6006CC45F /* QuestionnaireModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */; };
 		B5B15FFD2CD73741002D3659 /* WrongAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */; };
 		B5B160012CD73F96002D3659 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160002CD73F96002D3659 /* LoadingView.swift */; };
@@ -48,6 +49,7 @@
 		B50F43E92CD87180006F4148 /* PlayerScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScoreView.swift; sourceTree = "<group>"; };
 		B50F43EB2CD875A1006F4148 /* ScoresViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresViewState.swift; sourceTree = "<group>"; };
 		B50F43F02CD87ECA006F4148 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		B50F43F22CD88780006F4148 /* CustomViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifiers.swift; sourceTree = "<group>"; };
 		B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireModel.swift; sourceTree = "<group>"; };
 		B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerView.swift; sourceTree = "<group>"; };
 		B5B160002CD73F96002D3659 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				C79E2CE22B995B1900E9395E /* CustomColor.swift */,
 				C79E2CDA2B9951CC00E9395E /* CustomFont.swift */,
 				B5F6008C2C82BA23006EBCFB /* CustomImage.swift */,
+				B50F43F22CD88780006F4148 /* CustomViewModifiers.swift */,
 				C79E2CDC2B99558700E9395E /* Font */,
 				C79E2CE42B995ECD00E9395E /* LayoutMultiplier.swift */,
 				C70905032B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json */,
@@ -343,6 +346,7 @@
 			files = (
 				B5B160122CD856D4002D3659 /* ScoresViewModel.swift in Sources */,
 				B5D47B4B2CC8485900AAC9EE /* TimerView.swift in Sources */,
+				B50F43F32CD88788006F4148 /* CustomViewModifiers.swift in Sources */,
 				B50F43EA2CD87180006F4148 /* PlayerScoreView.swift in Sources */,
 				C70905072B96C87200CAB49F /* QuestionModel.swift in Sources */,
 				B5B160092CD75A5F002D3659 /* QuestionnaireViewState.swift in Sources */,

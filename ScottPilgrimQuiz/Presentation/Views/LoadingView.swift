@@ -40,8 +40,7 @@ struct LoadingView: View {
 
     private var loadingText: some View {
         Text("Loading...")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2)))
-            .foregroundStyle(CustomColor.white)
+            .customModifierTextLoading()
     }
 }
 

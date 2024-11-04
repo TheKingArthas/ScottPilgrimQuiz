@@ -41,21 +41,17 @@ struct CorrectAnswerView: View {
 
     private var titleView: some View {
         Text("Correct !!")
-            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(6)))
-            .foregroundStyle(CustomColor.positive)
+            .customModifierTextH1()
     }
 
     private func pointsEarnedView(_ amount: Int) -> some View {
         VStack {
             Text("\(amount)")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(10)))
-                .foregroundStyle(CustomColor.positive)
-                .padding(.bottom, LayoutMultiplier.padding(1))
+                .customModifierTextScore()
             Text("points \nearned")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
+                .customModifierTextH2()
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
-                .foregroundStyle(CustomColor.positive)
         }
     }
 
