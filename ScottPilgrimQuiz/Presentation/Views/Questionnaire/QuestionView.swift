@@ -45,7 +45,7 @@ struct QuestionView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, LayoutMultiplier.padding(2))
             skipQuestionButtonView()
-                .padding(.vertical, LayoutMultiplier.size(4))
+                .padding(.bottom, LayoutMultiplier.size(8))
         }
     }
 

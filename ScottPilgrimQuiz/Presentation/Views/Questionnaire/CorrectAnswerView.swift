@@ -35,7 +35,7 @@ struct CorrectAnswerView: View {
             pointsEarnedView(pointsEarned)
             Spacer()
             nextButtonView
-                .padding(.vertical, LayoutMultiplier.size(4))
+                .padding(.bottom, LayoutMultiplier.size(2))
         }
     }
 
