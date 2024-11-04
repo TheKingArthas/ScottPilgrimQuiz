@@ -25,7 +25,7 @@ class ScoreService {
         highestScores.contains(where: { score > $0.score })
     }
 
-    func addScore(_ playerScore: PlayerScoreModel) throws {
+    func saveScore(_ playerScore: PlayerScoreModel) throws {
         if highestScores.count == Self.amountOfTopScores {
             highestScores.sort()
             highestScores.removeLast()

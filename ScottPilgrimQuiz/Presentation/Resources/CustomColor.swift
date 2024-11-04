@@ -12,6 +12,7 @@ struct CustomColor {
     static var background: Color { Color("BackgroundColor") }
     static var black: Color { .black }
     static var destructive: Color { Color("DestructiveColor") }
+    static var disabled: Color { .gray }
     static var positive: Color { Color("PositiveColor") }
     static var primary: Color { Color("PrimaryColor") }
     static var secondary: Color { Color("SecondaryColor") }

@@ -39,4 +39,17 @@ class ScoresViewModel: ObservableObject {
     func isInTopScores(_ score: Int) -> Bool {
         scoreService.isInTopScores(score)
     }
+
+    func saveScore(playerName: String, score: Int) {
+        let playerScore = PlayerScoreModel(name: playerName, score: score)
+        do {
+            try scoreService.saveScore(playerScore)
+        } catch {
+            print("Failed to save score: \(error.localizedDescription)")
+        }
+    }
+
+    func goToMainMenu() {
+        mainMenuAction()
+    }
 }

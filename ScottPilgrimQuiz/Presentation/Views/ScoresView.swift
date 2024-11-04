@@ -9,12 +9,10 @@ import SwiftUI
 
 struct ScoresView: View {
     @StateObject private var viewModel: ScoresViewModel
-    @State private var playerName: String
     private let playerScore: Int
 
     init(viewModel: ScoresViewModel, playerScore: Int) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        _playerName = .init(initialValue: "")
         self.playerScore = playerScore
     }
 
@@ -27,38 +25,18 @@ struct ScoresView: View {
                     viewModel.viewState = .playerScore(isInTopScores: viewModel.isInTopScores(playerScore))
                 }
         case let .playerScore(isInTopScores):
-            playerScoreView(playerScore, isInTopScores: isInTopScores)
+            PlayerScoreView(playerScore,
+                            isInTopScores: isInTopScores) {
+                viewModel.goToMainMenu()
+            } saveScoreButtonAction: { playerName in
+                viewModel.saveScore(playerName: playerName, score: playerScore)
+            }
         case let .highestScores(highestScores):
             HighestScoresView(highestScores) {
-                //TODO: Add action
+                viewModel.goToMainMenu()
             }
         case let .error(title, description):
             ErrorView(title: title, description: description)
-        }
-    }
-
-    private func playerScoreView(_ score: Int, isInTopScores: Bool) -> some View {
-        VStack {
-            Text("Game over")
-            Text("Your total score was")
-            Text("\(score)")
-            if isInTopScores {
-                Text("Enter your name to save your score")
-                TextField("Name", text: $playerName)
-                saveScoreButtonView
-                    .disabled(isInTopScores && playerName.isEmpty)
-            }
-        }
-    }
-
-    private var saveScoreButtonView: some View {
-        Button {
-            //TODO: Add action
-        } label: {
-            Text("Restart")
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
-                .foregroundStyle(CustomColor.destructive)
-                .padding(.vertical, LayoutMultiplier.size(2))
         }
     }
 }
