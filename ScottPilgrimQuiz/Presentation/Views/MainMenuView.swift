@@ -51,8 +51,12 @@ struct MainMenuView: View {
     }
 
     private var title: some View {
-        Text("Scott Pilgrim Quiz")
-            .customModifierTextTitle()
+        VStack {
+            Text("Scott Pilgrim")
+                .customModifierTextTitle()
+            Text("Quiz")
+                .customModifierTextSubtitle()
+        }
     }
 }
 
