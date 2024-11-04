@@ -41,16 +41,16 @@ struct CorrectAnswerView: View {
 
     private var titleView: some View {
         Text("Correct !!")
-            .customModifierTextH1()
+            .customModifierTextH1(CustomColor.positive)
     }
 
     private func pointsEarnedView(_ amount: Int) -> some View {
         VStack {
             Text("\(amount)")
-                .customModifierTextScore()
+                .customModifierTextScore(CustomColor.positive)
                 .padding(.bottom, LayoutMultiplier.padding(1))
             Text("points \nearned")
-                .customModifierTextH2()
+                .customModifierTextH2(CustomColor.positive)
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
         }
