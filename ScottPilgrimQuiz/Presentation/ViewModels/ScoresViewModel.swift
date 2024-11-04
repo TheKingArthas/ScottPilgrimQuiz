@@ -12,15 +12,11 @@ import Foundation
 class ScoresViewModel: ObservableObject {
     @Published var viewState: ScoresViewState
     private let scoreService: ScoreService
-    private(set) var mainMenuAction: () -> Void
     var highestScores: [PlayerScoreModel] { scoreService.highestScores }
 
     init(scoreService: ScoreService) {
         self.viewState = .loading
         self.scoreService = scoreService
-        self.mainMenuAction = {
-            //TODO: Add nav
-        }
     }
 
     func fetchHighestScores() {
@@ -43,9 +39,5 @@ class ScoresViewModel: ObservableObject {
         } catch {
             print("Failed to save score: \(error.localizedDescription)")
         }
-    }
-
-    func goToMainMenu() {
-        mainMenuAction()
     }
 }

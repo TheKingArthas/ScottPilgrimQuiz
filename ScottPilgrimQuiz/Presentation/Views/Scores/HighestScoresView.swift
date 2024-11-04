@@ -9,12 +9,10 @@ import SwiftUI
 
 struct HighestScoresView: View {
     private let highestScores: [PlayerScoreModel]
-    private let mainMenuButtonAction: () -> Void
+    @Environment(\.dismiss) private var dismiss
 
-    init(_ highestScores: [PlayerScoreModel],
-         mainMenuButtonAction: @escaping () -> Void) {
+    init(_ highestScores: [PlayerScoreModel]) {
         self.highestScores = highestScores.sorted().reversed()
-        self.mainMenuButtonAction = mainMenuButtonAction
     }
 
     var body: some View {
@@ -61,7 +59,7 @@ struct HighestScoresView: View {
     }
 
     private var mainMenuButton: some View {
-        PrimaryButton(labelText: "Main menu") { mainMenuButtonAction() }
+        PrimaryButton(labelText: "Main menu") { dismiss() }
     }
 }
 
@@ -77,7 +75,5 @@ struct HighestScoresView: View {
         .init(name: "Envy", score: 700),
         .init(name: "Scott", score: 800),
         .init(name: "Ramona", score: 900)
-    ]) {
-        print("Main menu button pressed")
-    }
+    ])
 }

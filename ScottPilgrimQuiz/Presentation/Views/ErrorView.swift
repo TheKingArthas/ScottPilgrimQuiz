@@ -10,14 +10,11 @@ import SwiftUI
 struct ErrorView: View {
     private let title: String
     private let description: String
-    private let mainMenuButtonAction: () -> Void
+    @Environment(\.dismiss) private var dismiss
 
-    init(title: String,
-         description: String,
-         mainMenuButtonAction: @escaping () -> Void) {
+    init(title: String, description: String) {
         self.title = title
         self.description = description
-        self.mainMenuButtonAction = mainMenuButtonAction
     }
 
     var body: some View {
@@ -30,7 +27,7 @@ struct ErrorView: View {
             Text(description)
                 .customModifierTextH3(CustomColor.white)
             Spacer()
-            PrimaryButton(labelText: "Main menu") { mainMenuButtonAction() }
+            PrimaryButton(labelText: "Main menu") { dismiss() }
         }
         .padding(.horizontal, LayoutMultiplier.padding(2))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -43,5 +40,5 @@ struct ErrorView: View {
 
 #Preview {
     ErrorView(title:"Something failed",
-              description: "This is a detailed description of what happened.") {}
+              description: "This is a detailed description of what happened.")
 }

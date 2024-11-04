@@ -26,18 +26,15 @@ struct ScoresView: View {
                 }
         case let .playerScore(isInTopScores):
             PlayerScoreView(playerScore,
-                            isInTopScores: isInTopScores) {
-                viewModel.goToMainMenu()
-            } saveScoreButtonAction: { playerName in
+                            isInTopScores: isInTopScores,
+                            saveScoreButtonAction: { playerName in
                 viewModel.saveScore(playerName: playerName, score: playerScore)
                 viewModel.viewState = .highestScores(viewModel.highestScores)
-            }
+            })
         case let .highestScores(highestScores):
-            HighestScoresView(highestScores) {
-                viewModel.goToMainMenu()
-            }
+            HighestScoresView(highestScores)
         case let .error(title, description):
-            ErrorView(title: title, description: description) { viewModel.goToMainMenu() }
+            ErrorView(title: title, description: description)
         }
     }
 }

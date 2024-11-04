@@ -59,10 +59,6 @@ class QuestionnaireViewModel: ObservableObject {
         }
     }
 
-    func goToMainMenu() {
-        //TODO: Add flow.
-    }
-
     private func fetchQuestions() throws {
         var questions = try fetchAllQuestions()
         guard questions.count >= amountOfQuestions else { throw QuestionnaireViewModelError.notEnoughQuestionsFetched }

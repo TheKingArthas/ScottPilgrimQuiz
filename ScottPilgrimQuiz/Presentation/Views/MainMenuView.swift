@@ -16,14 +16,19 @@ struct MainMenuView: View {
     }
 
     var body: some View {
-        mainView
+        NavigationStack {
+            mainView
+                .navigationDestination(for: RouterDestination.self) { destination in
+                    RouterReducer().reduce(destination)
+                }
+        }
     }
 
     @ViewBuilder
     var mainView: some View {
         switch viewModel.viewState {
         case let .error(title, description):
-            ErrorView(title: title, description: description) { viewModel.viewState = .firstLoad }
+            ErrorView(title: title, description: description)
         case .firstLoad:
             LoadingView()
                 .onAppear {
@@ -46,13 +51,8 @@ struct MainMenuView: View {
                     self.floating.toggle()
                 }
             Spacer()
-            HStack(spacing: LayoutMultiplier.padding(5)) {
-                mainMenuButton(title: "Start",
-                               textColor: CustomColor.primary) {}
-                mainMenuButton(title: "Highest scores",
-                               textColor: CustomColor.primary) {}
-            }
-            .padding(.bottom, LayoutMultiplier.padding(10))
+            buttons
+                .padding(.bottom, LayoutMultiplier.padding(10))
         }
         .background {
             CustomImage.scottPilgrimAllCharacters
@@ -75,23 +75,27 @@ struct MainMenuView: View {
                 .background { CustomColor.black }
         }
     }
+
+    private var buttons: some View {
+        HStack(spacing: LayoutMultiplier.padding(5)) {
+            NavigationLink(value: RouterDestination.quiz) {
+                mainMenuButton(title: "Start")
+            }
+            NavigationLink(value: RouterDestination.highestScores) {
+                mainMenuButton(title: "Highest scores")
+            }
+        }
+    }
 }
 
 extension MainMenuView {
-    private func mainMenuButton(title: String,
-                                textColor: Color,
-                                buttonAction: @escaping () -> Void) -> some View {
-        Button {
-            buttonAction()
-        } label: {
-            Text(title)
-                .customModifierTextPrimaryButton()
-                .foregroundStyle(textColor)
-                .padding(.all, LayoutMultiplier.padding(1))
-        }
-        .frame(width: LayoutMultiplier.size(19), height: LayoutMultiplier.size(14))
-        .background(CustomColor.secondary)
-        .cornerRadius(8)
+    private func mainMenuButton(title: String) -> some View {
+        Text(title)
+            .customModifierTextPrimaryButton()
+            .frame(width: LayoutMultiplier.size(19), height: LayoutMultiplier.size(14))
+            .foregroundStyle(CustomColor.primary)
+            .background(CustomColor.secondary)
+            .cornerRadius(8)
     }
 }
 

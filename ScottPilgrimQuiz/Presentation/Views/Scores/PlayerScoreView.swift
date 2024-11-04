@@ -12,17 +12,15 @@ struct PlayerScoreView: View {
     @State private var playerName: String
     private let playerScore: Int
     private let isInTopScores: Bool
-    private let restartButtonAction: () -> Void
     private let saveScoreButtonAction: (String) -> Void
+    @Environment(\.dismiss) private var dismiss
 
     init(_ playerScore: Int,
          isInTopScores: Bool,
-         restartButtonAction: @escaping () -> Void,
          saveScoreButtonAction: @escaping (String) -> Void) {
         _playerName = .init(initialValue: "")
         self.playerScore = playerScore
         self.isInTopScores = isInTopScores
-        self.restartButtonAction = restartButtonAction
         self.saveScoreButtonAction = saveScoreButtonAction
     }
 
@@ -67,7 +65,7 @@ struct PlayerScoreView: View {
     }
 
     private var nextButtonView: some View {
-        PrimaryButton(labelText: "Restart", labelColor: CustomColor.destructive) { restartButtonAction() }
+        PrimaryButton(labelText: "Restart", labelColor: CustomColor.destructive) { dismiss() }
     }
 
     private var saveScoreView: some View {
@@ -111,6 +109,5 @@ extension PlayerScoreView {
 #Preview {
     PlayerScoreView(99,
                     isInTopScores: false,
-                    restartButtonAction: {},
                     saveScoreButtonAction: {_ in })
 }

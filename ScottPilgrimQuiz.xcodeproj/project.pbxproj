@@ -18,6 +18,7 @@
 		B554A3322CD9138000774FF9 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B554A3312CD9138000774FF9 /* MainMenuView.swift */; };
 		B554A3352CD91C3300774FF9 /* Dusty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B554A3332CD91C3300774FF9 /* Dusty.ttf */; };
 		B554A3362CD91C3300774FF9 /* Superfly.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B554A3342CD91C3300774FF9 /* Superfly.ttf */; };
+		B554A33B2CD9706400774FF9 /* RouterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B554A33A2CD9705900774FF9 /* RouterReducer.swift */; };
 		B560A1112C9523D6006CC45F /* QuestionnaireModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */; };
 		B5B15FFD2CD73741002D3659 /* WrongAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */; };
 		B5B160012CD73F96002D3659 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160002CD73F96002D3659 /* LoadingView.swift */; };
@@ -63,6 +64,7 @@
 		B554A3312CD9138000774FF9 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		B554A3332CD91C3300774FF9 /* Dusty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dusty.ttf; sourceTree = "<group>"; };
 		B554A3342CD91C3300774FF9 /* Superfly.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Superfly.ttf; sourceTree = "<group>"; };
+		B554A33A2CD9705900774FF9 /* RouterReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterReducer.swift; sourceTree = "<group>"; };
 		B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireModel.swift; sourceTree = "<group>"; };
 		B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerView.swift; sourceTree = "<group>"; };
 		B5B160002CD73F96002D3659 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,14 @@
 			path = DesignComponents;
 			sourceTree = "<group>";
 		};
+		B554A3372CD9663400774FF9 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B554A33A2CD9705900774FF9 /* RouterReducer.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		B567CA702C63048C009543CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +210,7 @@
 			children = (
 				C79E2CDF2B99579400E9395E /* Info.plist */,
 				C70905052B96C86000CAB49F /* Models */,
+				B554A3372CD9663400774FF9 /* Navigation */,
 				C70905102B96D1EE00CAB49F /* Presentation */,
 				C70904FA2B96BC0700CAB49F /* Preview Content */,
 				C70904F42B96BC0500CAB49F /* ScottPilgrimQuizApp.swift */,
@@ -368,6 +379,7 @@
 				B50F43F32CD88788006F4148 /* CustomViewModifiers.swift in Sources */,
 				B50F43EA2CD87180006F4148 /* PlayerScoreView.swift in Sources */,
 				C70905072B96C87200CAB49F /* QuestionModel.swift in Sources */,
+				B554A33B2CD9706400774FF9 /* RouterReducer.swift in Sources */,
 				B5B160092CD75A5F002D3659 /* QuestionnaireViewState.swift in Sources */,
 				C709050F2B96CB2500CAB49F /* ServiceError.swift in Sources */,
 				B5B160062CD75A40002D3659 /* QuestionnaireViewModelError.swift in Sources */,
