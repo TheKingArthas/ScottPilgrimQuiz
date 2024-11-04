@@ -13,6 +13,7 @@ class ScoresViewModel: ObservableObject {
     @Published var viewState: ScoresViewState
     private let scoreService: ScoreService
     private(set) var mainMenuAction: () -> Void
+    var highestScores: [PlayerScoreModel] { scoreService.highestScores }
 
     init(scoreService: ScoreService) {
         self.viewState = .loading

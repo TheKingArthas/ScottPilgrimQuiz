@@ -22,7 +22,11 @@ class ScoreService {
     }
 
     func isInTopScores(_ score: Int) -> Bool {
-        highestScores.contains(where: { score > $0.score })
+        if score > 0 {
+            return highestScores.count < Self.amountOfTopScores ? true : highestScores.contains(where: { score > $0.score })
+        } else {
+            return false
+        }
     }
 
     func saveScore(_ playerScore: PlayerScoreModel) throws {
@@ -33,6 +37,7 @@ class ScoreService {
         highestScores.append(playerScore)
         let data = try playerScoresToData(highestScores)
         saveToUsersDefaults(data)
+        try fetchHighestScores()
     }
 
     private func saveToUsersDefaults(_ data: Data) {

@@ -30,6 +30,7 @@ struct ScoresView: View {
                 viewModel.goToMainMenu()
             } saveScoreButtonAction: { playerName in
                 viewModel.saveScore(playerName: playerName, score: playerScore)
+                viewModel.viewState = .highestScores(viewModel.highestScores)
             }
         case let .highestScores(highestScores):
             HighestScoresView(highestScores) {
