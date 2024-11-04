@@ -8,5 +8,5 @@
 import Foundation
 
 class MainMenuViewModel: ObservableObject {
-    @Published var viewState: MainMenuViewState = .loading
+    @Published var viewState: MainMenuViewState = .firstLoad
 }

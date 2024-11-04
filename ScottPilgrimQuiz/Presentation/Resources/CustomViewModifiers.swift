@@ -16,6 +16,7 @@ extension View {
     func customModifierTextQuestion() -> some View { self.modifier(CustomViewModifiers.Text.Question()) }
     func customModifierTextScore(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Score(color)) }
     func customModifierTextTimer(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Timer(color)) }
+    func customModifierTextTitle() -> some View { self.modifier(CustomViewModifiers.Text.Title()) }
 }
 
 fileprivate struct CustomViewModifiers {
@@ -113,6 +114,15 @@ fileprivate struct CustomViewModifiers {
                 content
                     .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
                     .foregroundStyle(color)
+                    .multilineTextAlignment(.center)
+            }
+        }
+
+        struct Title: ViewModifier {
+            func body(content: Content) -> some View {
+                content
+                    .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(6)))
+                    .foregroundStyle(CustomColor.primary)
                     .multilineTextAlignment(.center)
             }
         }

@@ -25,6 +25,9 @@ struct MainMenuView: View {
             ErrorView(title: title, description: description) { viewModel.viewState = .firstLoad }
         case .firstLoad:
             LoadingView()
+                .onAppear {
+                    viewModel.viewState = .success
+                }
         case .loading:
             LoadingView()
         case .success:
@@ -33,25 +36,36 @@ struct MainMenuView: View {
     }
 
     private var mainMenuView: some View {
-        HStack {
-            mainMenuButton("Start") {}
-            mainMenuButton("Highest scores") {}
+        VStack {
+            title
+            HStack {
+                mainMenuButton(title: "Start",
+                               textColor: CustomColor.primary) {}
+                mainMenuButton(title: "Highest scores",
+                               textColor: CustomColor.primary) {}
+            }
+        }
+        .background {
+            CustomImage.scottPilgrimAllCharacters
         }
     }
 
     private var title: some View {
         Text("Scott Pilgrim Quiz")
-            .customModifierTextH1()
+            .customModifierTextTitle()
     }
 }
 
 extension MainMenuView {
-    private func mainMenuButton(_ title: String, buttonAction: @escaping () -> Void) -> some View {
+    private func mainMenuButton(title: String,
+                                textColor: Color,
+                                buttonAction: @escaping () -> Void) -> some View {
         Button {
             buttonAction()
         } label: {
             Text(title)
                 .customModifierTextPrimaryButton()
+                .foregroundStyle(textColor)
                 .padding(.all, LayoutMultiplier.padding(1))
         }
         .background(CustomColor.secondary)

@@ -13,6 +13,7 @@ struct CustomImage {
     static var ramonaAiming: Image { Image("RamonaAiming") }
     static var scottDead: Image { Image("ScottDead") }
     static var scottJumping: Image { Image("ScottJumping") }
+    static var scottPilgrimAllCharacters: Image { Image("ScottPilgrimAllCharacters") }
 
     private init() {}
 }
