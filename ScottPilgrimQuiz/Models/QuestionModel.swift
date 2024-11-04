@@ -10,9 +10,9 @@ import Foundation
 struct QuestionModel: Codable, Identifiable {
     let id: String
     let question: String
-    let correctAnswer: String
-    let wrongAnswers: [String]
-    var allAnswers: [String] {
+    let correctAnswer: AnswerModel
+    let wrongAnswers: [AnswerModel]
+    var allAnswers: [AnswerModel] {
         var allAnswers = Array(wrongAnswers)
         allAnswers.append(correctAnswer)
         return allAnswers

@@ -36,14 +36,14 @@ class QuestionnaireViewModel: ObservableObject {
         popQuestion()
     }
 
-    func answer(_ answer: String) {
+    func answer(_ answer: AnswerModel) {
         if let currentQuestion = currentQuestion {
             if currentQuestion.correctAnswer == answer {
                 let answerScore = correctAnswerScore()
                 addScore(answerScore)
                 viewState = .correctAnswer(score: answerScore)
             } else {
-                viewState = .incorrectAnswer(correctAnswer: currentQuestion.correctAnswer)
+                viewState = .incorrectAnswer(correctAnswer: currentQuestion.correctAnswer.description)
             }
         }
         timerViewModel.stopTimer()

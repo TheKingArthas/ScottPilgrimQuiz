@@ -12,14 +12,14 @@ struct QuestionView: View {
     private let amountOfTotalQuestions: Int
     private let currentQuestion: QuestionModel
     private let timer: TimerViewModel
-    private let answerAction: (String) -> Void
+    private let answerAction: (AnswerModel) -> Void
     private let skipQuestionAction: () -> Void
 
     init(currentQuestionNumber: Int,
          amountOfTotalQuestions: Int,
          currentQuestion: QuestionModel,
          timer: TimerViewModel,
-         answerAction: @escaping (String) -> Void,
+         answerAction: @escaping (AnswerModel) -> Void,
          skipQuestionAction: @escaping () -> Void) {
         self.currentQuestionNumber = currentQuestionNumber
         self.amountOfTotalQuestions = amountOfTotalQuestions
@@ -73,7 +73,7 @@ struct QuestionView: View {
         }
     }
 
-    private func answerView(_ answer: String,
+    private func answerView(_ answer: AnswerModel,
                             answerNumber: Int) -> some View {
         Button {
             answerAction(answer)
@@ -83,7 +83,7 @@ struct QuestionView: View {
                     .padding(LayoutMultiplier.padding(2))
                     .background(CustomColor.background)
                     .clipShape(Circle())
-                Text(answer)
+                Text(answer.description)
                     .padding(.leading, LayoutMultiplier.padding(1.5))
                     .frame(maxWidth: .infinity)
             }
@@ -105,9 +105,13 @@ struct QuestionView: View {
 #Preview {
     QuestionView(currentQuestionNumber: 3,
                  amountOfTotalQuestions: 10,
-                 currentQuestion: QuestionModel(id: "3",
+                 currentQuestion: QuestionModel(id: "Q3",
                                                 question: "This is correct?",
-                                                correctAnswer: "Yes",
-                                                wrongAnswers: ["No", "Ney", "Also no"]),
+                                                correctAnswer: AnswerModel(id: "Q3A1", description: "Yes"),
+                                                wrongAnswers: [
+                                                    AnswerModel(id: "Q3A2", description: "No"),
+                                                    AnswerModel(id: "Q3A3", description: "Ney"),
+                                                    AnswerModel(id: "Q3A4", description: "Also no")
+                                                ]),
                  timer: TimerViewModel(initialTime: 30)) { _ in } skipQuestionAction: {}
 }
