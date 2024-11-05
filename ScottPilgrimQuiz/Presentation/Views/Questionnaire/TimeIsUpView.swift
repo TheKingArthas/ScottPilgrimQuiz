@@ -51,7 +51,7 @@ struct TimeIsUpView: View {
     }
 
     private var nextButtonView: some View {
-        PrimaryButton(labelText: "Next question", hasBackground: true) { nextQuestionAction() }
+        PrimaryButton(labelText: "Next question", hasNextArrow: true) { nextQuestionAction() }
     }
 
     private var backgroundView: some View {

@@ -11,6 +11,7 @@ import SwiftUI
 struct CustomColor {
     static var background: Color { Color("BackgroundColor") }
     static var backgroundDestructive: Color { Color("BackgroundDestructiveColor") }
+    static var backgroundDisabled: Color { Color("BackgroundDisabledColor") }
     static var black: Color { .black }
     static var destructive: Color { Color("DestructiveColor") }
     static var disabled: Color { .gray }
@@ -19,6 +20,6 @@ struct CustomColor {
     static var secondary: Color { Color("SecondaryColor") }
     static var titleText: Color { .yellow }
     static var white: Color { .white }
-    
+
     private init() {}
 }

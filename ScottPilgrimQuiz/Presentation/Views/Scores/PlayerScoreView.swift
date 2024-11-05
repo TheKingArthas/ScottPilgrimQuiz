@@ -102,8 +102,7 @@ struct PlayerScoreView: View {
     private func saveScoreButtonView(isDisabled: Bool) -> some View {
         PrimaryButton(labelText: "Save score",
                       labelColor: CustomColor.positive,
-                      buttonAction: { saveScoreButtonAction(playerName) },
-                      isDisabled: isDisabled)
+                      isDisabled: isDisabled) { saveScoreButtonAction(playerName) }
     }
 }
 

@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CustomImage {
+    static var nextArrow: Image { Image("NextArrow") }
     static var lucasLeeSkating: Image { Image("LucasLeeSkating") }
     static var ramonaAiming: Image { Image("RamonaAiming") }
     static var scottDead: Image { Image("ScottDead") }
