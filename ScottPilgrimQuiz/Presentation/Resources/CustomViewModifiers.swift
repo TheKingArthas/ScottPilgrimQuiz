@@ -8,6 +8,9 @@
 import SwiftUICore
 
 extension View {
+    func customModifierEffectFloating(_ duration: TimeInterval, _ toggleableBoolean: Bool) -> some View { self.modifier(CustomViewModifiers.Effect.Floating(duration: duration, toggleableBoolean: toggleableBoolean)) }
+    func customModifierEffectStroke(_ color: Color, _ lineWidth: CGFloat) -> some View { self.modifier(CustomViewModifiers.Effect.Stroke(color, lineWidth)) }
+
     func customModifierTextH1(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.H1(color)) }
     func customModifierTextH2(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.H2(color)) }
     func customModifierTextH3(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.H3(color)) }
@@ -17,11 +20,55 @@ extension View {
     func customModifierTextScore(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Score(color)) }
     func customModifierTextTimer(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Timer(color)) }
     func customModifierTextTitle(_ sizeMultiplier: CGFloat) -> some View { self.modifier(CustomViewModifiers.Text.Title(sizeMultiplier)) }
-    func customModifierTextStroke(_ color: Color, _ lineWidth: CGFloat) -> some View { self.modifier(CustomViewModifiers.Text.Stroke(color, lineWidth)) }
     func customModifierTextSubtitle() -> some View { self.modifier(CustomViewModifiers.Text.Subtitle()) }
 }
 
 fileprivate struct CustomViewModifiers {
+    struct Effect {
+        struct Floating: ViewModifier {
+            private let duration: TimeInterval
+            private let toggleableBoolean: Bool
+
+            init(duration: TimeInterval, toggleableBoolean: Bool) {
+                self.duration = duration
+                self.toggleableBoolean = toggleableBoolean
+            }
+
+            func body(content: Content) -> some View {
+                content
+                    .animation(Animation.easeInOut(duration: 2.5).repeatForever(autoreverses: true), value: toggleableBoolean)
+            }
+        }
+
+        struct Stroke: ViewModifier {
+            private let color: Color
+            private let lineWidth: CGFloat
+
+            init(_ color: Color, _ lineWidth: CGFloat) {
+                self.color = color
+                self.lineWidth = lineWidth
+            }
+
+            func body(content: Content) -> some View {
+                ZStack {
+                    content
+                        .offset(x: lineWidth, y: lineWidth)
+                        .foregroundColor(color)
+                    content
+                        .offset(x: -lineWidth, y: -lineWidth)
+                        .foregroundColor(color)
+                    content
+                        .offset(x: -lineWidth, y: lineWidth)
+                        .foregroundColor(color)
+                    content
+                        .offset(x: lineWidth, y: -lineWidth)
+                        .foregroundColor(color)
+                    content
+                }
+            }
+        }
+    }
+
     struct Text {
         struct H1: ViewModifier {
             private let color: Color
@@ -132,34 +179,6 @@ fileprivate struct CustomViewModifiers {
                     .font(CustomFont.superfly(size: LayoutMultiplier.size(sizeMultiplier)))
                     .foregroundStyle(CustomColor.titleText)
                     .multilineTextAlignment(.center)
-            }
-        }
-
-        struct Stroke: ViewModifier {
-            private let color: Color
-            private let lineWidth: CGFloat
-
-            init(_ color: Color, _ lineWidth: CGFloat) {
-                self.color = color
-                self.lineWidth = lineWidth
-            }
-
-            func body(content: Content) -> some View {
-                ZStack {
-                    content
-                        .offset(x: lineWidth, y: lineWidth)
-                        .foregroundColor(color)
-                    content
-                        .offset(x: -lineWidth, y: -lineWidth)
-                        .foregroundColor(color)
-                    content
-                        .offset(x: -lineWidth, y: lineWidth)
-                        .foregroundColor(color)
-                    content
-                        .offset(x: lineWidth, y: -lineWidth)
-                        .foregroundColor(color)
-                    content
-                }
             }
         }
 

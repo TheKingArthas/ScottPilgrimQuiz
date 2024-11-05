@@ -46,7 +46,7 @@ struct MainMenuView: View {
             title
                 .padding(.top, LayoutMultiplier.padding(12))
                 .frame(maxHeight: 250, alignment: floating ? .bottom : .top)
-                .animation(Animation.easeInOut(duration: 2.5).repeatForever(autoreverses: true), value: floating)
+                .customModifierEffectFloating(2.5, floating)
                 .onAppear {
                     self.floating.toggle()
                 }
@@ -62,15 +62,15 @@ struct MainMenuView: View {
     private var title: some View {
         VStack {
             Text("SCOTT")
-                .customModifierTextStroke(CustomColor.black, 8)
+                .customModifierEffectStroke(CustomColor.black, 8)
                 .customModifierTextTitle(10)
                 .padding(.bottom, LayoutMultiplier.padding(-8))
             Text("PILGRIM")
-                .customModifierTextStroke(CustomColor.black, 8)
+                .customModifierEffectStroke(CustomColor.black, 8)
                 .customModifierTextTitle(12)
                 .padding(.bottom, LayoutMultiplier.padding(-3))
             Text("VS THE QUIZ")
-                .customModifierTextStroke(CustomColor.black, 5)
+                .customModifierEffectStroke(CustomColor.black, 5)
                 .customModifierTextSubtitle()
                 .background { CustomColor.black }
         }

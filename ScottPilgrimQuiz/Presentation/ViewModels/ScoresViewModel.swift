@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 class ScoresViewModel: ObservableObject {
     @Published var viewState: ScoresViewState
     private let scoreService: ScoreService
