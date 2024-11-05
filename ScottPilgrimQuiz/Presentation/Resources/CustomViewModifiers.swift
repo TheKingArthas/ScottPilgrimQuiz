@@ -17,6 +17,7 @@ extension View {
     func customModifierTextLoading() -> some View { self.modifier(CustomViewModifiers.Text.Loading()) }
     func customModifierTextPrimaryButton() -> some View { self.modifier(CustomViewModifiers.Text.PrimaryButton()) }
     func customModifierTextQuestion() -> some View { self.modifier(CustomViewModifiers.Text.Question()) }
+    func customModifierTextQuestionNumber() -> some View { self.modifier(CustomViewModifiers.Text.QuestionNumber()) }
     func customModifierTextScore(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Score(color)) }
     func customModifierTextTimer(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Timer(color)) }
     func customModifierTextTitle(_ sizeMultiplier: CGFloat) -> some View { self.modifier(CustomViewModifiers.Text.Title(sizeMultiplier)) }
@@ -138,6 +139,15 @@ fileprivate struct CustomViewModifiers {
             }
         }
 
+        struct QuestionNumber: ViewModifier {
+            func body(content: Content) -> some View {
+                content
+                    .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(CustomColor.primary)
+            }
+        }
+
         struct Score: ViewModifier {
             private let color: Color
 
@@ -161,7 +171,7 @@ fileprivate struct CustomViewModifiers {
 
             func body(content: Content) -> some View {
                 content
-                    .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(2.5)))
+                    .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(4)))
                     .foregroundStyle(color)
                     .multilineTextAlignment(.center)
             }

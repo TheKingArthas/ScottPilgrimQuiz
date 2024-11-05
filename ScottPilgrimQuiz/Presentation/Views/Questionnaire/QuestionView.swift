@@ -33,10 +33,10 @@ struct QuestionView: View {
         VStack {
             TimerView(viewModel: timer)
                 .padding(.top, LayoutMultiplier.padding(8))
-                .padding(.bottom, LayoutMultiplier.padding(2))
+                .padding(.bottom, LayoutMultiplier.padding(8))
             questionNumberView(currentQuestionNumber: currentQuestionNumber,
                                amountOfTotalQuestions: amountOfTotalQuestions)
-            .padding(.bottom, LayoutMultiplier.size(1))
+            .padding(.bottom, LayoutMultiplier.size(-12))
             Spacer()
             questionTextView()
                 .padding(.horizontal, LayoutMultiplier.padding(2.5))
@@ -46,12 +46,16 @@ struct QuestionView: View {
                 .padding(.bottom, LayoutMultiplier.padding(2))
             Spacer()
         }
+        .background {
+            CustomColor.background
+                .ignoresSafeArea()
+        }
     }
 
     private func questionNumberView(currentQuestionNumber: Int,
                                     amountOfTotalQuestions: Int) -> some View {
         Text("Question \(currentQuestionNumber)-\(amountOfTotalQuestions)")
-            .customModifierTextTimer()
+            .customModifierTextQuestionNumber()
     }
 
     @ViewBuilder
@@ -86,7 +90,7 @@ struct QuestionView: View {
                     .padding(.leading, LayoutMultiplier.padding(1.5))
                     .frame(maxWidth: .infinity)
             }
-            .font(CustomFont.montserrat(size: LayoutMultiplier.size(2.5),
+            .font(CustomFont.montserrat(size: LayoutMultiplier.size(3),
                                         weight: .bold))
             .lineLimit(2)
             .minimumScaleFactor(0.8)
@@ -105,7 +109,6 @@ struct QuestionView: View {
                                                 correctAnswer: AnswerModel(id: "Q3A1", description: "Yes"),
                                                 wrongAnswers: [
                                                     AnswerModel(id: "Q3A2", description: "No"),
-                                                    AnswerModel(id: "Q3A3", description: "Ney"),
                                                     AnswerModel(id: "Q3A4", description: "Also no")
                                                 ]),
                  timer: TimerViewModel(initialTime: 30) {}) { _ in } skipQuestionAction: {}

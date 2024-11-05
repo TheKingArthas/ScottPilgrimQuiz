@@ -10,7 +10,7 @@ struct TimerView: View {
     var body: some View {
         VStack {
             Text("Time remaining:")
-                .customModifierTextTimer()
+                .customModifierTextQuestionNumber()
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, LayoutMultiplier.padding(0.5))
             Text(viewModel.remainingTimeAsFormattedString)
