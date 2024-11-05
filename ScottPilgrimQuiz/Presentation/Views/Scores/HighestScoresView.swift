@@ -59,7 +59,7 @@ struct HighestScoresView: View {
     }
 
     private var mainMenuButton: some View {
-        PrimaryButton(labelText: "Main menu") { dismiss() }
+        PrimaryButton(labelText: "Main menu", labelColor: CustomColor.destructive) { dismiss() }
     }
 }
 

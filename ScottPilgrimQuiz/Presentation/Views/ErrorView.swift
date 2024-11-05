@@ -27,7 +27,7 @@ struct ErrorView: View {
             Text(description)
                 .customModifierTextH3(CustomColor.white)
             Spacer()
-            PrimaryButton(labelText: "Main menu") { dismiss() }
+            PrimaryButton(labelText: "Main menu", labelColor: CustomColor.destructive) { dismiss() }
         }
         .padding(.horizontal, LayoutMultiplier.padding(2))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
