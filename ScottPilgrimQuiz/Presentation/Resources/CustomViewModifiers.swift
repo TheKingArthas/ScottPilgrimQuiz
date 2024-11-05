@@ -107,7 +107,7 @@ fileprivate struct CustomViewModifiers {
 
             func body(content: Content) -> some View {
                 content
-                    .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
+                    .font(CustomFont.montserrat(size: LayoutMultiplier.size(3), weight: .bold))
                     .foregroundStyle(color)
             }
         }

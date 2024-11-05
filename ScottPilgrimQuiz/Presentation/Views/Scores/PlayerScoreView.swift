@@ -37,11 +37,13 @@ struct PlayerScoreView: View {
         VStack {
             titleView
                 .padding(.top, LayoutMultiplier.padding(12))
-                .padding(.bottom, LayoutMultiplier.padding(2))
+                .padding(.bottom, LayoutMultiplier.padding(8))
             totalScoreTextView
-                .padding(.bottom, LayoutMultiplier.padding(2))
             scoreView(playerScore)
-            if isInTopScores {
+                .padding(.top, LayoutMultiplier.padding(1))
+                .padding(.bottom, LayoutMultiplier.padding(7))
+            //            if isInTopScores {
+            if true {
                 saveScoreView
                     .padding(.bottom, LayoutMultiplier.padding(4))
             } else {
@@ -61,7 +63,7 @@ struct PlayerScoreView: View {
 
     private var totalScoreTextView: some View {
         Text("Your total score was")
-            .customModifierTextH2()
+            .customModifierTextH3()
     }
 
     private var nextButtonView: some View {
@@ -73,13 +75,20 @@ struct PlayerScoreView: View {
             Text("Enter your name")
                 .customModifierTextH3()
                 .padding(.top, LayoutMultiplier.padding(2))
-            TextField("Name", text: $playerName)
-                .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
-                .foregroundStyle(CustomColor.white)
-                .background()
-                .padding(.top, LayoutMultiplier.padding(2))
-                .padding(.horizontal, LayoutMultiplier.padding(5))
-                .onReceive(Just(playerName)) { _ in limitTextfieldText(12) }
+            TextField("", text: $playerName, prompt:
+                        Text("Name")
+                .foregroundColor(CustomColor.disabled)
+            )
+            .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(3)))
+            .frame(height: LayoutMultiplier.size(7))
+            .multilineTextAlignment(.center)
+            .foregroundStyle(CustomColor.white)
+            .background {
+                CustomColor.black
+            }
+            .cornerRadius(8)
+            .padding(.horizontal, LayoutMultiplier.padding(5))
+            .onReceive(Just(playerName)) { _ in limitTextfieldText(12) }
             Spacer()
             saveScoreButtonView(isDisabled: isInTopScores && playerName.isEmpty)
         }
