@@ -22,7 +22,7 @@ struct WrongAnswerView: View {
                    maxHeight: .infinity)
             .padding()
             .background {
-                backgroundView
+                CustomColor.black
                     .ignoresSafeArea()
             }
     }
@@ -33,8 +33,9 @@ struct WrongAnswerView: View {
                 .padding(.top, LayoutMultiplier.padding(10))
                 .padding(.bottom, LayoutMultiplier.padding(6))
             Spacer()
+            wrongAnswerImageView
             nextButtonView
-                .padding(.vertical, LayoutMultiplier.padding(4))
+                .padding(.bottom, LayoutMultiplier.padding(4))
         }
     }
 
@@ -55,21 +56,16 @@ struct WrongAnswerView: View {
         }
     }
 
-    private var nextButtonView: some View {
-        PrimaryButton(labelText: "Next question", hasNextArrow: true) { nextQuestionAction() }
+    private var wrongAnswerImageView: some View {
+        CustomImage.scottDead
+            .resizable()
+            .scaledToFit()
+            .padding(.horizontal, LayoutMultiplier.padding(2))
+            .padding(.bottom, LayoutMultiplier.padding(1))
     }
 
-    private var backgroundView: some View {
-        VStack {
-            Spacer()
-            CustomImage.scottDead
-                .resizable()
-                .scaledToFit()
-                .padding(.horizontal, LayoutMultiplier.padding(2))
-        }
-        .background {
-            CustomColor.black
-        }
+    private var nextButtonView: some View {
+        PrimaryButton(labelText: "Next question", hasNextArrow: true) { nextQuestionAction() }
     }
 }
 
