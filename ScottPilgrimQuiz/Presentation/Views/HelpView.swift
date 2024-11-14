@@ -41,7 +41,7 @@ struct HelpView: View {
 
     private var descriptionView: some View {
         ScrollView {
-            Text(Instructions().description)
+            Text("game_instructions")
         }
     }
 

@@ -1,0 +1,94 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "\"%@\"" : {
+
+    },
+    "%lld" : {
+
+    },
+    "Correct !!" : {
+
+    },
+    "Enter your name" : {
+
+    },
+    "Game over" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game over"
+          }
+        }
+      }
+    },
+    "game_instructions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test your knowledge of the Scott Pilgrim universe by answering 10 random questions.\n\nHere’s how it works:\n\nYou have 30 seconds to answer each question.\n\nAnswer correctly, and the remaining time will be added to your score.\n\nAnswer incorrectly or run out of time, and you’ll score 0 points for that question.\n\nGood luck, and may the Power of Love be with you!"
+          }
+        }
+      }
+    },
+    "Highest scores" : {
+
+    },
+    "Instructions" : {
+
+    },
+    "Loading..." : {
+
+    },
+    "Name" : {
+
+    },
+    "PILGRIM" : {
+      "shouldTranslate" : false
+    },
+    "points \nearned" : {
+
+    },
+    "Question %lld-%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Question %1$lld-%2$lld"
+          }
+        }
+      }
+    },
+    "SCOTT" : {
+      "shouldTranslate" : false
+    },
+    "The correct answer was" : {
+
+    },
+    "Time is up!" : {
+
+    },
+    "Time remaining:" : {
+
+    },
+    "Try to be faster next time" : {
+
+    },
+    "VS THE QUIZ" : {
+      "shouldTranslate" : false
+    },
+    "Wrong answer!!" : {
+
+    },
+    "Your total score was" : {
+
+    }
+  },
+  "version" : "1.0"
+}

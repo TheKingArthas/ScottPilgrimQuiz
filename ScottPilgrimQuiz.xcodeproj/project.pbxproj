@@ -31,7 +31,7 @@
 		B5B160122CD856D4002D3659 /* ScoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160112CD856D4002D3659 /* ScoresViewModel.swift */; };
 		B5BB9AA42CD574D8000C284C /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BB9AA32CD574D8000C284C /* ErrorView.swift */; };
 		B5CB21F62CE578ED006C9CA6 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB21F52CE578ED006C9CA6 /* HelpView.swift */; };
-		B5CB21F82CE59609006C9CA6 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CB21F72CE59604006C9CA6 /* Instructions.swift */; };
+		B5CB21FD2CE59C07006C9CA6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B5CB21FC2CE59C07006C9CA6 /* Localizable.xcstrings */; };
 		B5D47B492CC8463600AAC9EE /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D47B482CC8463600AAC9EE /* TimerViewModel.swift */; };
 		B5D47B4B2CC8485900AAC9EE /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D47B4A2CC8485900AAC9EE /* TimerView.swift */; };
 		B5F6008B2C82B826006EBCFB /* CorrectAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6008A2C82B826006EBCFB /* CorrectAnswerView.swift */; };
@@ -79,7 +79,7 @@
 		B5B160112CD856D4002D3659 /* ScoresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresViewModel.swift; sourceTree = "<group>"; };
 		B5BB9AA32CD574D8000C284C /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		B5CB21F52CE578ED006C9CA6 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
-		B5CB21F72CE59604006C9CA6 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
+		B5CB21FC2CE59C07006C9CA6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B5D47B482CC8463600AAC9EE /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		B5D47B4A2CC8485900AAC9EE /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		B5F6008A2C82B826006EBCFB /* CorrectAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerView.swift; sourceTree = "<group>"; };
@@ -241,8 +241,8 @@
 				B5F6008C2C82BA23006EBCFB /* CustomImage.swift */,
 				B50F43F22CD88780006F4148 /* CustomViewModifiers.swift */,
 				C79E2CDC2B99558700E9395E /* Font */,
-				B5CB21F72CE59604006C9CA6 /* Instructions.swift */,
 				C79E2CE42B995ECD00E9395E /* LayoutMultiplier.swift */,
+				B5CB21FC2CE59C07006C9CA6 /* Localizable.xcstrings */,
 				C70905032B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json */,
 			);
 			path = Resources;
@@ -367,6 +367,7 @@
 				B554A3362CD91C3300774FF9 /* Superfly.ttf in Resources */,
 				C70904FC2B96BC0700CAB49F /* Preview Assets.xcassets in Resources */,
 				C79E2CE92B99650C00E9395E /* Montserrat-Medium.ttf in Resources */,
+				B5CB21FD2CE59C07006C9CA6 /* Localizable.xcstrings in Resources */,
 				C79E2CEB2B9967C200E9395E /* Montserrat-Bold.ttf in Resources */,
 				C70905042B96C04000CAB49F /* ScottPilgrimQuizJsonResponse.json in Resources */,
 				C70904F92B96BC0700CAB49F /* Assets.xcassets in Resources */,
@@ -385,7 +386,6 @@
 				B50F43F32CD88788006F4148 /* CustomViewModifiers.swift in Sources */,
 				B50F43EA2CD87180006F4148 /* PlayerScoreView.swift in Sources */,
 				C70905072B96C87200CAB49F /* QuestionModel.swift in Sources */,
-				B5CB21F82CE59609006C9CA6 /* Instructions.swift in Sources */,
 				B554A33B2CD9706400774FF9 /* RouterReducer.swift in Sources */,
 				B5B160092CD75A5F002D3659 /* QuestionnaireViewState.swift in Sources */,
 				C709050F2B96CB2500CAB49F /* ServiceError.swift in Sources */,
@@ -482,6 +482,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -538,6 +539,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
