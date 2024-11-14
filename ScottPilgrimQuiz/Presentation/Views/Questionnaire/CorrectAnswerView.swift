@@ -57,7 +57,7 @@ struct CorrectAnswerView: View {
     }
 
     private var nextButtonView: some View {
-        PrimaryButton(labelText: "Next question", hasNextArrow: true) { nextQuestionAction() }
+        PrimaryButton(labelText: "Next question", buttonDirection: .forward) { nextQuestionAction() }
     }
 
     private var backgroundView: some View {

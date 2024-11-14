@@ -63,7 +63,7 @@ struct PlayerScoreView: View {
 
     private var totalScoreTextView: some View {
         Text("Your total score was")
-            .customModifierTextH3()
+            .customModifierTextBody()
     }
 
     private var nextButtonView: some View {
@@ -73,7 +73,7 @@ struct PlayerScoreView: View {
     private var saveScoreView: some View {
         VStack {
             Text("Enter your name")
-                .customModifierTextH3()
+                .customModifierTextBody()
                 .padding(.top, LayoutMultiplier.padding(2))
             TextField("", text: $playerName, prompt:
                         Text("Name")

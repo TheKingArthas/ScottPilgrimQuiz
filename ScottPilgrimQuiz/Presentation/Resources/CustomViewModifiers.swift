@@ -13,7 +13,7 @@ extension View {
 
     func customModifierTextH1(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.H1(color)) }
     func customModifierTextH2(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.H2(color)) }
-    func customModifierTextH3(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.H3(color)) }
+    func customModifierTextBody(_ color: Color = CustomColor.primary) -> some View { self.modifier(CustomViewModifiers.Text.Body(color)) }
     func customModifierTextLoading() -> some View { self.modifier(CustomViewModifiers.Text.Loading()) }
     func customModifierTextPrimaryButton() -> some View { self.modifier(CustomViewModifiers.Text.PrimaryButton()) }
     func customModifierTextQuestion() -> some View { self.modifier(CustomViewModifiers.Text.Question()) }
@@ -99,7 +99,7 @@ fileprivate struct CustomViewModifiers {
             }
         }
 
-        struct H3: ViewModifier {
+        struct Body: ViewModifier {
             private let color: Color
 
             init(_ color: Color) {

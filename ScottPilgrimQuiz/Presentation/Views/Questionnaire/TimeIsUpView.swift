@@ -43,7 +43,7 @@ struct TimeIsUpView: View {
                 .padding(.top, LayoutMultiplier.padding(4))
                 .padding(.bottom, LayoutMultiplier.padding(2))
             Text("Try to be faster next time")
-                .customModifierTextH3(CustomColor.white)
+                .customModifierTextBody(CustomColor.white)
                 .padding(.bottom, LayoutMultiplier.padding(2))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
@@ -51,7 +51,7 @@ struct TimeIsUpView: View {
     }
 
     private var nextButtonView: some View {
-        PrimaryButton(labelText: "Next question", hasNextArrow: true) { nextQuestionAction() }
+        PrimaryButton(labelText: "Next question", buttonDirection: .forward) { nextQuestionAction() }
     }
 
     private var backgroundView: some View {

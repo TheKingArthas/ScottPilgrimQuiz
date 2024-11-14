@@ -46,12 +46,12 @@ struct WrongAnswerView: View {
                 .padding(.top, LayoutMultiplier.padding(4))
                 .padding(.bottom, LayoutMultiplier.padding(2))
             Text("The correct answer was")
-                .customModifierTextH3(CustomColor.destructive)
+                .customModifierTextBody(CustomColor.destructive)
                 .padding(.bottom, LayoutMultiplier.padding(2))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             Text("\"\(correctAnswer)\"")
-                .customModifierTextH3(CustomColor.white)
+                .customModifierTextBody(CustomColor.white)
                 .padding(.bottom, LayoutMultiplier.padding(2))
         }
     }
@@ -65,7 +65,7 @@ struct WrongAnswerView: View {
     }
 
     private var nextButtonView: some View {
-        PrimaryButton(labelText: "Next question", hasNextArrow: true) { nextQuestionAction() }
+        PrimaryButton(labelText: "Next question", buttonDirection: .forward) { nextQuestionAction() }
     }
 }
 

@@ -55,7 +55,7 @@ struct HighestScoresView: View {
             Spacer()
             Text("\(playerScore.score)")
         }
-        .customModifierTextH3(CustomColor.white)
+        .customModifierTextBody(CustomColor.white)
     }
 
     private var mainMenuButton: some View {

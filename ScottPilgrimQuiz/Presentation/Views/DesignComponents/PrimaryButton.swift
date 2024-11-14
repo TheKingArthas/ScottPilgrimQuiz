@@ -7,21 +7,27 @@
 
 import SwiftUI
 
+enum ButtonArrowDirection {
+    case back
+    case forward
+    case none
+}
+
 struct PrimaryButton: View {
     private let labelText: String
     private let labelColor: Color
-    private let hasNextArrow: Bool
+    private let buttonDirection: ButtonArrowDirection
     private let isDisabled: Bool
     private let buttonAction: () -> Void
 
     init(labelText: String,
          labelColor: Color = CustomColor.primary,
-         hasNextArrow: Bool = false,
+         buttonDirection: ButtonArrowDirection = .none,
          isDisabled: Bool = false,
          buttonAction: @escaping () -> Void) {
         self.labelText = labelText
         self.labelColor = labelColor
-        self.hasNextArrow = hasNextArrow
+        self.buttonDirection = buttonDirection
         self.isDisabled = isDisabled
         self.buttonAction = buttonAction
     }
@@ -31,14 +37,9 @@ struct PrimaryButton: View {
             buttonAction()
         } label: {
             HStack {
+                if case buttonDirection = ButtonArrowDirection.back { arrowView }
                 Text(labelText)
-                if hasNextArrow {
-                    CustomImage.nextArrow
-                        .resizable()
-                        .renderingMode(.template)
-                        .foregroundColor(isDisabled ? CustomColor.disabled : labelColor)
-                        .scaledToFit()
-                    .frame(width: LayoutMultiplier.size(3))}
+                if case buttonDirection = ButtonArrowDirection.forward { arrowView }
             }
             .customModifierTextPrimaryButton()
             .foregroundStyle(isDisabled ? CustomColor.disabled : labelColor)
@@ -48,10 +49,38 @@ struct PrimaryButton: View {
         .cornerRadius(8)
         .disabled(isDisabled)
     }
+
+    private var arrowView: some View {
+        guard self.buttonDirection != .none else { return AnyView(EmptyView()) }
+        let arrowImage = self.buttonDirection == .back ? CustomImage.backArrow : CustomImage.nextArrow
+
+        return AnyView(arrowImage
+            .resizable()
+            .renderingMode(.template)
+            .scaledToFit()
+            .frame(width: LayoutMultiplier.size(3)))
+    }
 }
 
 #Preview {
-    PrimaryButton(labelText: "Press me",
-                  hasNextArrow: true,
-                  isDisabled: false) {}
+    VStack {
+        PrimaryButton(labelText: "Press me",
+                      buttonDirection: .back,
+                      isDisabled: false) { print("Button pressed")}
+        PrimaryButton(labelText: "Press me",
+                      buttonDirection: .none,
+                      isDisabled: false) { print("Button pressed")}
+        PrimaryButton(labelText: "Press me",
+                      buttonDirection: .forward,
+                      isDisabled: false) { print("Button pressed")}
+        PrimaryButton(labelText: "Press me",
+                      buttonDirection: .back,
+                      isDisabled: true) { print("Button pressed")}
+        PrimaryButton(labelText: "Press me",
+                      buttonDirection: .none,
+                      isDisabled: true) { print("Button pressed")}
+        PrimaryButton(labelText: "Press me",
+                      buttonDirection: .forward,
+                      isDisabled: true) { print("Button pressed")}
+    }
 }

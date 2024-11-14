@@ -51,11 +51,24 @@ struct MainMenuView: View {
                     self.floating.toggle()
                 }
             Spacer()
-            buttons
-                .padding(.bottom, LayoutMultiplier.padding(10))
+            gameButtons
+                .padding(.bottom, LayoutMultiplier.padding(4))
+            helpButton
+                .padding(.bottom, 0)
         }
         .background {
             CustomImage.scottPilgrimAllCharacters
+        }
+    }
+
+    private var helpButton: some View {
+        HStack {
+            Spacer()
+            NavigationLink(value: RouterDestination.help) {
+                mainMenuButton(title: "?",
+                               width: LayoutMultiplier.padding(5),
+                               height: LayoutMultiplier.padding(5))
+            }
         }
     }
 
@@ -76,23 +89,30 @@ struct MainMenuView: View {
         }
     }
 
-    private var buttons: some View {
-        HStack(spacing: LayoutMultiplier.padding(5)) {
+    private var gameButtons: some View {
+        let width = LayoutMultiplier.size(19)
+        let height = LayoutMultiplier.size(14)
+
+        return HStack(spacing: LayoutMultiplier.padding(5)) {
             NavigationLink(value: RouterDestination.quiz) {
-                mainMenuButton(title: "Start")
+                mainMenuButton(title: "Start",
+                               width: width,
+                               height: height)
             }
             NavigationLink(value: RouterDestination.highestScores) {
-                mainMenuButton(title: "Highest scores")
+                mainMenuButton(title: "Highest scores",
+                               width: width,
+                               height: height)
             }
         }
     }
 }
 
 extension MainMenuView {
-    private func mainMenuButton(title: String) -> some View {
+    private func mainMenuButton(title: String, width: CGFloat, height: CGFloat) -> some View {
         Text(title)
             .customModifierTextPrimaryButton()
-            .frame(width: LayoutMultiplier.size(19), height: LayoutMultiplier.size(14))
+            .frame(width: width, height: height)
             .foregroundStyle(CustomColor.primary)
             .background(CustomColor.secondary)
             .cornerRadius(8)

@@ -8,14 +8,18 @@
 import SwiftUICore
 
 enum RouterDestination: Hashable {
-    case quiz
+    case help
     case highestScores
+    case quiz
 }
 
 struct RouterReducer {
     @ViewBuilder
     func reduce(_ destination: RouterDestination) -> some View {
         switch destination {
+        case .help:
+            HelpView()
+                .navigationBarBackButtonHidden(true)
         case .highestScores:
             HighestScoresView([])
                 .navigationBarBackButtonHidden(true)

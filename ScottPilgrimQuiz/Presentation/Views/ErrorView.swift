@@ -25,11 +25,12 @@ struct ErrorView: View {
                 .padding(.top, LayoutMultiplier.padding(20))
                 .padding(.bottom, LayoutMultiplier.padding(4))
             Text(description)
-                .customModifierTextH3(CustomColor.white)
+                .customModifierTextBody(CustomColor.white)
             Spacer()
             PrimaryButton(labelText: "Main menu", labelColor: CustomColor.destructive) { dismiss() }
         }
         .padding(.horizontal, LayoutMultiplier.padding(2))
+        .padding(.bottom, LayoutMultiplier.size(2))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background {
             CustomColor.backgroundDestructive
