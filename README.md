@@ -1,27 +1,41 @@
-Crea una "Quiz app" contrareloj con ranking.
+# Scott Pilgrim vs the Quiz
+## 0. Abstract
+Create a "Quiz app" against the clock with a ranking system.
 
-Requisitos:
-- El diseño es de libre elección.
-- La temática de las preguntas del cuestionario será de libre elección. Puede estar
-  bien seguir un mismo tema (por ejemplo, preguntas sobre el universo "Harry Potter").
-- En la pantalla inicial podrás comenzar a jugar o consultar el ranking de puntuaciones.
-- El juego consistirá en 10 preguntas aleatorias con 3 respuestas y sólo una correcta.
-  Recomendable crear más de 10 preguntas para que no siempre salgan las mismas. Cada vez
-  que se responde a una pregunta, se pasará a la siguiente.
-- Disponemos de 30 segundos para responder cada pregunta. El contador deberá aparecer
-  en la pantalla, y si llega a 0 se tomará como respuesta incorrecta y se pasará
-  a la siguiente pregunta.
-- Al marcar una respuesta o finalizar el tiempo, se mostrará si se ha acertado o no la
-  pregunta, dando feedback sobre cuál sería la respuesta correcta y navegando al cabo
-  de un par de segundos a la siguiente pantalla.
-- Sistema de puntuación:
-  - Contador a 0 o respuesta incorrecta = 0 puntos.
-  - Contador mayor 0 y respuesta correcta = [segundos restantes] puntos.
-    Ej: Si quedaban 9 segundos para finalizar la cuenta atrás y se acierta la pregunta,
- se asignan 9 puntos.
-- Una vez finalizada la pregunta número 10 se mostrará en una nueva pantalla
-  la puntuación final y se deberá introducir un nombre para guardarla de forma
-  persistente (aunque cerremos la app). Hecho estos se mostrará la pantalla de ranking.
-- La pantalla de ranking muestra ordenados de mayor a menor los 10 mejores
-  resultados y el nombre guardado. Desde esta pantalla siempre se podrá navegar
-  a la pantalla inicial.
+## 1. Requirements
+
+* The design is free to choose.  
+* The theme of the quiz questions will be freely chosen. It might be a good idea to stick to a single theme (e.g., questions about the "Harry Potter" universe).  
+* On the home screen, you can start playing or check the score ranking.  
+* The game will consist of 10 random questions with 3 answers, and only one is correct. It is recommended to create more than 10 questions so that the same ones don't always appear. Each time a question is answered, the game will move on to the next one.  
+* There are 30 seconds available to answer each question. The timer should appear on the screen, and if it reaches 0, the question will be considered incorrect.
+* Upon selecting an answer or when time runs out, the game will indicate whether the question was answered correctly or not, providing feedback on the correct answer.
+* Scoring system:
+  * Timer reaches 0 or incorrect answer = 0 points.  
+  * Timer greater than 0 and correct answer = [remaining seconds] points.  
+    For example: If there are 9 seconds left when answering correctly, 9 points are awarded.  
+* Once question number 10 is completed, a new screen will display the final score, and a name must be entered to save it persistently (even if the app is closed). After this, the ranking screen will appear.  
+* The ranking screen shows the top 10 results, sorted from highest to lowest, along with the saved names. From this screen, it should always be possible to navigate back to the home screen.  
+
+## 2. Screenshots
+<img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_MainMenu.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_Help.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_Question.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_CorrectAnswer.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_WrongAnswer.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_TimeUp.png width="150"> 
+
+## 3. Demo
+<img src="./DocumentationAssets/Recordings/ScottPilgrimVsTheQuiz_Demo_FirstFlow.gif" width="300" /> <img src="./DocumentationAssets/Recordings/ScottPilgrimVsTheQuiz_Demo_GameOver.gif" width="300" /> <img src="./DocumentationAssets/Recordings/ScottPilgrimVsTheQuiz_Demo_Timer.gif" width="300" />
+
+## 4. Assets sources
+* _Dusty_ font from [DaFont.com](https://dafont.com/dusty.font)
+* _Karmatic Arcade_ font from [DaFont.com](https://www.dafont.com/karmatic-arcade.font)
+* _Montserrat_ font from [Google Fonts](https://fonts.google.com/specimen/Montserrat)
+* _Superfly_ font from [DaFont.com](https://www.dafont.com/superfly.font)
+
+**Disclaimer:** _"Scott Pilgrim" and all related characters, settings, and trademarks are the property of Bryan Lee O'Malley and their respective rights holders. This project is a fan-made application created for educational and non-commercial purposes. No copyright infringement is intended._
+
+
+## 5. Problem source
+[![GitHub repository stars](https://img.shields.io/github/stars/mouredev/Monthly-App-Challenge-2022?label=2022%20monthly%20Swift/iOS%20challenges&style=social)](https://github.com/mouredev/Monthly-App-Challenge-2022) by [Brais Moure (MoureDev)](https://mouredev.com/).
+
+## 6. Contact me
+[![GitHub](https://img.shields.io/badge/GitHub-TheKingArthas-yellow?style=for-the-badge&logo=github&logoColor=black&labelColor=white)](https://github.com/TheKingArthas?tab=repositories)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Federico%20De%20Luca-blue?style=for-the-badge&logo=linkedin&logoColor=blue&labelColor=white)](https://www.linkedin.com/in/federicodl/)
+[![Mail](https://img.shields.io/badge/email-federicondeluca@gmail.com-red?style=for-the-badge&logo=gmail&logoColor=red&labelColor=white)](mailto:federicoNdeluca@gmail.com)
