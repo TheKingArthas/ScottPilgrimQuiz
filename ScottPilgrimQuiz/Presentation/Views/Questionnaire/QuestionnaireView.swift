@@ -22,11 +22,13 @@ struct QuestionnaireView: View {
             LoadingView()
                 .onAppear {
                     do {
-                        try viewModel.initQuestionnaire()
+                        try viewModel.fetchQuestions()
                     } catch {
                         viewModel.viewState = .error("Something went wrong:", error.localizedDescription)
                     }
                 }
+        case .questionnaireCountdown:
+            QuestionnaireCountdownView() { viewModel.nextQuestion() }
         case .question(let currentQuestion):
             QuestionView(currentQuestionNumber: viewModel.currentQuestionNumber,
                          amountOfTotalQuestions: viewModel.amountOfQuestions,

@@ -34,6 +34,7 @@
 		B5CB21FD2CE59C07006C9CA6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B5CB21FC2CE59C07006C9CA6 /* Localizable.xcstrings */; };
 		B5D47B492CC8463600AAC9EE /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D47B482CC8463600AAC9EE /* TimerViewModel.swift */; };
 		B5D47B4B2CC8485900AAC9EE /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D47B4A2CC8485900AAC9EE /* TimerView.swift */; };
+		B5D7CD522CE83DBE0019352D /* QuestionnaireCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7CD512CE83DBE0019352D /* QuestionnaireCountdownView.swift */; };
 		B5F6008B2C82B826006EBCFB /* CorrectAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6008A2C82B826006EBCFB /* CorrectAnswerView.swift */; };
 		B5F6008D2C82BA23006EBCFB /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6008C2C82BA23006EBCFB /* CustomImage.swift */; };
 		C70904F52B96BC0500CAB49F /* ScottPilgrimQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70904F42B96BC0500CAB49F /* ScottPilgrimQuizApp.swift */; };
@@ -82,6 +83,7 @@
 		B5CB21FC2CE59C07006C9CA6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B5D47B482CC8463600AAC9EE /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		B5D47B4A2CC8485900AAC9EE /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		B5D7CD512CE83DBE0019352D /* QuestionnaireCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireCountdownView.swift; sourceTree = "<group>"; };
 		B5F6008A2C82B826006EBCFB /* CorrectAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerView.swift; sourceTree = "<group>"; };
 		B5F6008C2C82BA23006EBCFB /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		C70904F12B96BC0500CAB49F /* ScottPilgrimQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScottPilgrimQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				B5F6008A2C82B826006EBCFB /* CorrectAnswerView.swift */,
+				B5D7CD512CE83DBE0019352D /* QuestionnaireCountdownView.swift */,
 				C70905112B96D22400CAB49F /* QuestionnaireView.swift */,
 				C70905132B96D32300CAB49F /* QuestionView.swift */,
 				B50F43F62CD8A0A9006F4148 /* TimeIsUpView.swift */,
@@ -412,6 +415,7 @@
 				B50F43F72CD8A0A9006F4148 /* TimeIsUpView.swift in Sources */,
 				B50F43EC2CD875A1006F4148 /* GameOverViewState.swift in Sources */,
 				B5B160102CD7DC2F002D3659 /* ScoreService.swift in Sources */,
+				B5D7CD522CE83DBE0019352D /* QuestionnaireCountdownView.swift in Sources */,
 				C709050A2B96C97800CAB49F /* QuestionnaireViewModel.swift in Sources */,
 				B5D47B492CC8463600AAC9EE /* TimerViewModel.swift in Sources */,
 				B5B15FFD2CD73741002D3659 /* WrongAnswerView.swift in Sources */,

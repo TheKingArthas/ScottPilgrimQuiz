@@ -12,6 +12,7 @@ enum QuestionnaireViewState {
     case firstLoad
     case loading
     case question(_ question: QuestionModel)
+    case questionnaireCountdown
     case timeIsUp
     case wrongAnswer(correctAnswer: String)
 }

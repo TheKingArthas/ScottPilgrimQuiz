@@ -32,9 +32,17 @@ class QuestionnaireViewModel: ObservableObject {
         self.playerScore = 0
     }
 
-    func initQuestionnaire() throws {
-        try fetchQuestions()
-        popQuestion()
+
+    func fetchQuestions() throws {
+        var questions = try fetchAllQuestions()
+        guard questions.count >= amountOfQuestions else { throw QuestionnaireViewModelError.notEnoughQuestionsFetched }
+
+        (1...amountOfQuestions).forEach { _ in
+            if let randomQuestion = popRandomQuestion(&questions) {
+                unaskedQuestions.append(randomQuestion)
+            }
+        }
+        viewState = .questionnaireCountdown
     }
 
     func answer(_ answer: AnswerModel) {
@@ -56,17 +64,6 @@ class QuestionnaireViewModel: ObservableObject {
             popQuestion()
         } else {
             viewState = .finished(playerScore: playerScore)
-        }
-    }
-
-    private func fetchQuestions() throws {
-        var questions = try fetchAllQuestions()
-        guard questions.count >= amountOfQuestions else { throw QuestionnaireViewModelError.notEnoughQuestionsFetched }
-
-        (1...amountOfQuestions).forEach { _ in
-            if let randomQuestion = popRandomQuestion(&questions) {
-                unaskedQuestions.append(randomQuestion)
-            }
         }
     }
 
