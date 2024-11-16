@@ -21,7 +21,7 @@ struct RouterReducer {
             HelpView()
                 .navigationBarBackButtonHidden(true)
         case .highestScores:
-            HighestScoresView([])
+            GameOverView(viewModel: GameOverViewModel(scoreService: ScoreService()))
                 .navigationBarBackButtonHidden(true)
         case .quiz:
             QuestionnaireView(viewModel: QuestionnaireViewModel(amountOfQuestions: 10,

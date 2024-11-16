@@ -42,8 +42,7 @@ struct PlayerScoreView: View {
             scoreView(playerScore)
                 .padding(.top, LayoutMultiplier.padding(1))
                 .padding(.bottom, LayoutMultiplier.padding(7))
-            //            if isInTopScores {
-            if true {
+            if isInTopScores {
                 saveScoreView
                     .padding(.bottom, LayoutMultiplier.padding(4))
             } else {

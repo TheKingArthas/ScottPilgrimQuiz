@@ -48,7 +48,7 @@ struct QuestionnaireView: View {
         case let .error(title, description):
             ErrorView(title: title, description: description)
         case let .finished(playerScore: playerScore):
-            ScoresView(viewModel: ScoresViewModel(scoreService: ScoreService()),
+            GameOverView(viewModel: GameOverViewModel(scoreService: ScoreService()),
                        playerScore: playerScore)
         case .timeIsUp:
             TimeIsUpView { viewModel.nextQuestion() }

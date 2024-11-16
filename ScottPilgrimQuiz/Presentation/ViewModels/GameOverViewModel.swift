@@ -7,10 +7,9 @@
 
 import Foundation
 
-class ScoresViewModel: ObservableObject {
-    @Published var viewState: ScoresViewState
+class GameOverViewModel: ObservableObject {
+    @Published var viewState: GameOverViewState
     private let scoreService: ScoreService
-    var highestScores: [PlayerScoreModel] { scoreService.highestScores }
 
     init(scoreService: ScoreService) {
         self.viewState = .loading
@@ -34,6 +33,8 @@ class ScoresViewModel: ObservableObject {
         let playerScore = PlayerScoreModel(name: playerName, score: score)
         do {
             try scoreService.saveScore(playerScore)
+            fetchHighestScores()
+            viewState = .highestScores(scoreService.highestScores)
         } catch {
             print("Failed to save score: \(error.localizedDescription)")
         }
