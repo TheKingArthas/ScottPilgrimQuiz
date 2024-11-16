@@ -8,6 +8,5 @@
 import Foundation
 
 struct QuestionnaireModel: Codable {
-    let version: String
     let questions: [QuestionModel]
 }
