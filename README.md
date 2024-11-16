@@ -18,7 +18,9 @@ Create a "Quiz app" against the clock with a ranking system.
 * The ranking screen shows the top 10 results, sorted from highest to lowest, along with the saved names. From this screen, it should always be possible to navigate back to the home screen.  
 
 ## 2. Screenshots
-<img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_MainMenu.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_Help.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_Question.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_CorrectAnswer.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_WrongAnswer.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_TimeUp.png width="150"> 
+<img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_MainMenu.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_Help.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_Question.png width="150"> 
+
+<img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_CorrectAnswer.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_WrongAnswer.png width="150"> <img src=./DocumentationAssets/Screenshots/ScottPilgrimVsTheQuiz_TimeUp.png width="150"> 
 
 ## 3. Demo
 <img src="./DocumentationAssets/Recordings/ScottPilgrimVsTheQuiz_Demo_FirstFlow.gif" width="300" /> <img src="./DocumentationAssets/Recordings/ScottPilgrimVsTheQuiz_Demo_GameOver.gif" width="300" /> <img src="./DocumentationAssets/Recordings/ScottPilgrimVsTheQuiz_Demo_Timer.gif" width="300" />
