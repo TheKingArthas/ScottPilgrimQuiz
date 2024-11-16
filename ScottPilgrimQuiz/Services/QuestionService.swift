@@ -13,32 +13,8 @@ struct QuestionService {
     func fetchQuestions() throws -> [QuestionModel] {
         let fileURL = try localJsonFileUrl()
         let retrievedJsonData = try readLocalJsonFile(fileUrl: fileURL)
-        let retrievedQuestions = try parseJSONData(data: retrievedJsonData)
-
-        if let persistedQuestions = retrieveFromUserDefaults(),
-           persistedQuestions.version >= retrievedQuestions.version {
-            return persistedQuestions.questions
-        } else {
-            saveToUsersDefaults(retrievedJsonData)
-            return retrievedQuestions.questions
-        }
-    }
-
-    private func saveToUsersDefaults(_ data: Data) {
-        UserDefaults.standard.set(data, forKey: Self.questionsKey)
-    }
-
-    private func retrieveFromUserDefaults() -> QuestionnaireModel? {
-        if let data = UserDefaults.standard.data(forKey: Self.questionsKey) {
-            let decoder = JSONDecoder()
-            do {
-                let questions = try decoder.decode(QuestionnaireModel.self, from: data)
-                return questions
-            } catch {
-                print("Failed to decode: \(error.localizedDescription)")
-            }
-        }
-        return nil
+        let questionnaireModel = try parseJSONDataToQuestionnaireModel(retrievedJsonData)
+        return questionnaireModel.questions
     }
 }
 
@@ -62,7 +38,7 @@ extension QuestionService {
         return fileUrl
     }
 
-    private func parseJSONData(data: Data) throws -> QuestionnaireModel {
+    private func parseJSONDataToQuestionnaireModel(_ data: Data) throws -> QuestionnaireModel {
         do {
             let decoder = JSONDecoder()
             return try decoder.decode(QuestionnaireModel.self, from: data)
