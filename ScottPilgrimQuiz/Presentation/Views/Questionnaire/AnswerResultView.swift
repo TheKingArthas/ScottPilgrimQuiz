@@ -18,8 +18,10 @@ struct AnswerResultView: View {
     
     var body: some View {
         mainView
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background {
                 backgroundReducer(viewState)
+                    .ignoresSafeArea()
             }
     }
     
@@ -142,6 +144,8 @@ extension AnswerResultView {
             }
             .background {
                 CustomColor.backgroundDestructive
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea()
             }
         }
     }
