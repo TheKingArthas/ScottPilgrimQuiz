@@ -24,7 +24,7 @@ struct AnswerResultView: View {
             case .correctAnswer(let score, _):
                 correctAnswerView(score: score)
             case .wrongAnswer(let correctAnswer, _):
-                EmptyView()
+                wrongAnswerView(correctAnswer: correctAnswer)
             case .timeIsUp(_):
                 timeIsUpView
             }
@@ -66,6 +66,25 @@ struct AnswerResultView: View {
         }
     }
 
+    private func wrongAnswerView(correctAnswer: String) -> some View {
+        VStack {
+            Text("Wrong answer!!")
+                .customModifierTextH1(CustomColor.destructive)
+                .padding(.top, LayoutMultiplier.padding(4))
+                .padding(.bottom, LayoutMultiplier.padding(2))
+            Text("The correct answer was")
+                .customModifierTextBody(CustomColor.destructive)
+                .padding(.bottom, LayoutMultiplier.padding(2))
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+            Text("\"\(correctAnswer)\"")
+                .customModifierTextBody(CustomColor.white)
+                .padding(.bottom, LayoutMultiplier.padding(2))
+        }
+        .padding(.top, LayoutMultiplier.padding(10))
+        .padding(.bottom, LayoutMultiplier.padding(6))
+    }
+
     private func nextButtonView(_ viewState: AnswerResultViewState) -> some View {
         switch viewState {
         case .correctAnswer(_, let isLastQuestion),
@@ -80,6 +99,7 @@ struct AnswerResultView: View {
 }
 
 extension AnswerResultView {
+    @ViewBuilder
     private func backgroundReducer(_ viewState: AnswerResultViewState) -> some View {
         switch viewModel.viewState {
         case .correctAnswer(_, _):
@@ -94,7 +114,19 @@ extension AnswerResultView {
                 CustomColor.background
             }
         case .wrongAnswer(_, _):
-            EmptyView()
+            ZStack {
+                CustomColor.black
+                    .ignoresSafeArea()
+                VStack {
+                    Spacer()
+                    CustomImage.scottDead
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.horizontal, LayoutMultiplier.padding(2))
+                        .padding(.bottom, LayoutMultiplier.padding(1))
+                }
+                CustomColor.black.opacity(0.8)
+            }
         case .timeIsUp(_):
             VStack {
                 Spacer()

@@ -22,7 +22,6 @@
 		B554A3362CD91C3300774FF9 /* Superfly.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B554A3342CD91C3300774FF9 /* Superfly.ttf */; };
 		B554A33B2CD9706400774FF9 /* RouterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B554A33A2CD9705900774FF9 /* RouterReducer.swift */; };
 		B560A1112C9523D6006CC45F /* QuestionnaireModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */; };
-		B5B15FFD2CD73741002D3659 /* WrongAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */; };
 		B5B160012CD73F96002D3659 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160002CD73F96002D3659 /* LoadingView.swift */; };
 		B5B160032CD74CFB002D3659 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160022CD74CFB002D3659 /* GameOverView.swift */; };
 		B5B160062CD75A40002D3659 /* QuestionnaireViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B160052CD75A40002D3659 /* QuestionnaireViewModelError.swift */; };
@@ -72,7 +71,6 @@
 		B554A3342CD91C3300774FF9 /* Superfly.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Superfly.ttf; sourceTree = "<group>"; };
 		B554A33A2CD9705900774FF9 /* RouterReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterReducer.swift; sourceTree = "<group>"; };
 		B560A1102C9523D6006CC45F /* QuestionnaireModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireModel.swift; sourceTree = "<group>"; };
-		B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerView.swift; sourceTree = "<group>"; };
 		B5B160002CD73F96002D3659 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B5B160022CD74CFB002D3659 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		B5B160052CD75A40002D3659 /* QuestionnaireViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewModelError.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 				C70905112B96D22400CAB49F /* QuestionnaireView.swift */,
 				C70905132B96D32300CAB49F /* QuestionView.swift */,
 				B5D47B4A2CC8485900AAC9EE /* TimerView.swift */,
-				B5B15FFC2CD73741002D3659 /* WrongAnswerView.swift */,
 			);
 			path = Questionnaire;
 			sourceTree = "<group>";
@@ -422,7 +419,6 @@
 				B5D7CD522CE83DBE0019352D /* QuestionnaireCountdownView.swift in Sources */,
 				C709050A2B96C97800CAB49F /* QuestionnaireViewModel.swift in Sources */,
 				B5D47B492CC8463600AAC9EE /* TimerViewModel.swift in Sources */,
-				B5B15FFD2CD73741002D3659 /* WrongAnswerView.swift in Sources */,
 				B5BB9AA42CD574D8000C284C /* ErrorView.swift in Sources */,
 				B5B160012CD73F96002D3659 /* LoadingView.swift in Sources */,
 			);
