@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5089E302CE861100096CC0D /* AnswerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5089E2F2CE861100096CC0D /* AnswerResultView.swift */; };
+		B5089E322CE861C20096CC0D /* AnswerResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5089E312CE861C20096CC0D /* AnswerResultViewModel.swift */; };
+		B5089E342CE861E10096CC0D /* AnswerResultViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5089E332CE861E10096CC0D /* AnswerResultViewState.swift */; };
 		B50F43EA2CD87180006F4148 /* PlayerScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43E92CD87180006F4148 /* PlayerScoreView.swift */; };
 		B50F43EC2CD875A1006F4148 /* GameOverViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43EB2CD875A1006F4148 /* GameOverViewState.swift */; };
 		B50F43F12CD87ECA006F4148 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43F02CD87ECA006F4148 /* PrimaryButton.swift */; };
@@ -35,7 +38,6 @@
 		B5D47B492CC8463600AAC9EE /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D47B482CC8463600AAC9EE /* TimerViewModel.swift */; };
 		B5D47B4B2CC8485900AAC9EE /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D47B4A2CC8485900AAC9EE /* TimerView.swift */; };
 		B5D7CD522CE83DBE0019352D /* QuestionnaireCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7CD512CE83DBE0019352D /* QuestionnaireCountdownView.swift */; };
-		B5F6008B2C82B826006EBCFB /* CorrectAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6008A2C82B826006EBCFB /* CorrectAnswerView.swift */; };
 		B5F6008D2C82BA23006EBCFB /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F6008C2C82BA23006EBCFB /* CustomImage.swift */; };
 		C70904F52B96BC0500CAB49F /* ScottPilgrimQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70904F42B96BC0500CAB49F /* ScottPilgrimQuizApp.swift */; };
 		C70904F92B96BC0700CAB49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70904F82B96BC0700CAB49F /* Assets.xcassets */; };
@@ -56,6 +58,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5089E2F2CE861100096CC0D /* AnswerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerResultView.swift; sourceTree = "<group>"; };
+		B5089E312CE861C20096CC0D /* AnswerResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerResultViewModel.swift; sourceTree = "<group>"; };
+		B5089E332CE861E10096CC0D /* AnswerResultViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerResultViewState.swift; sourceTree = "<group>"; };
 		B50F43E92CD87180006F4148 /* PlayerScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScoreView.swift; sourceTree = "<group>"; };
 		B50F43EB2CD875A1006F4148 /* GameOverViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewState.swift; sourceTree = "<group>"; };
 		B50F43F02CD87ECA006F4148 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
@@ -84,7 +89,6 @@
 		B5D47B482CC8463600AAC9EE /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		B5D47B4A2CC8485900AAC9EE /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		B5D7CD512CE83DBE0019352D /* QuestionnaireCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireCountdownView.swift; sourceTree = "<group>"; };
-		B5F6008A2C82B826006EBCFB /* CorrectAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerView.swift; sourceTree = "<group>"; };
 		B5F6008C2C82BA23006EBCFB /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		C70904F12B96BC0500CAB49F /* ScottPilgrimQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScottPilgrimQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70904F42B96BC0500CAB49F /* ScottPilgrimQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScottPilgrimQuizApp.swift; sourceTree = "<group>"; };
@@ -120,7 +124,7 @@
 		B50F43ED2CD87B82006F4148 /* Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
-				B5F6008A2C82B826006EBCFB /* CorrectAnswerView.swift */,
+				B5089E2F2CE861100096CC0D /* AnswerResultView.swift */,
 				B5D7CD512CE83DBE0019352D /* QuestionnaireCountdownView.swift */,
 				C70905112B96D22400CAB49F /* QuestionnaireView.swift */,
 				C70905132B96D32300CAB49F /* QuestionView.swift */,
@@ -190,9 +194,10 @@
 		B5B1600A2CD75A6B002D3659 /* ViewStates */ = {
 			isa = PBXGroup;
 			children = (
+				B5089E332CE861E10096CC0D /* AnswerResultViewState.swift */,
+				B50F43EB2CD875A1006F4148 /* GameOverViewState.swift */,
 				B554A32F2CD9124D00774FF9 /* MainMenuViewState.swift */,
 				B5B160082CD75A5F002D3659 /* QuestionnaireViewState.swift */,
-				B50F43EB2CD875A1006F4148 /* GameOverViewState.swift */,
 			);
 			path = ViewStates;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 		C70905082B96C91000CAB49F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B5089E312CE861C20096CC0D /* AnswerResultViewModel.swift */,
 				B5B160112CD856D4002D3659 /* GameOverViewModel.swift */,
 				B554A32D2CD911D400774FF9 /* MainMenuViewModel.swift */,
 				C70905092B96C97800CAB49F /* QuestionnaireViewModel.swift */,
@@ -393,7 +399,9 @@
 				B5B160092CD75A5F002D3659 /* QuestionnaireViewState.swift in Sources */,
 				C709050F2B96CB2500CAB49F /* ServiceError.swift in Sources */,
 				B5B160062CD75A40002D3659 /* QuestionnaireViewModelError.swift in Sources */,
+				B5089E302CE861100096CC0D /* AnswerResultView.swift in Sources */,
 				B5F6008D2C82BA23006EBCFB /* CustomImage.swift in Sources */,
+				B5089E342CE861E10096CC0D /* AnswerResultViewState.swift in Sources */,
 				B554A32E2CD911D400774FF9 /* MainMenuViewModel.swift in Sources */,
 				B560A1112C9523D6006CC45F /* QuestionnaireModel.swift in Sources */,
 				C79E2CE32B995B1900E9395E /* CustomColor.swift in Sources */,
@@ -406,7 +414,6 @@
 				B50F43F52CD89A8D006F4148 /* AnswerModel.swift in Sources */,
 				C70905142B96D32300CAB49F /* QuestionView.swift in Sources */,
 				C70905122B96D22400CAB49F /* QuestionnaireView.swift in Sources */,
-				B5F6008B2C82B826006EBCFB /* CorrectAnswerView.swift in Sources */,
 				C70904F52B96BC0500CAB49F /* ScottPilgrimQuizApp.swift in Sources */,
 				B50F43F12CD87ECA006F4148 /* PrimaryButton.swift in Sources */,
 				C79E2CE52B995ECD00E9395E /* LayoutMultiplier.swift in Sources */,
@@ -414,6 +421,7 @@
 				B5B1600C2CD75B71002D3659 /* HighestScoresView.swift in Sources */,
 				B50F43F72CD8A0A9006F4148 /* TimeIsUpView.swift in Sources */,
 				B50F43EC2CD875A1006F4148 /* GameOverViewState.swift in Sources */,
+				B5089E322CE861C20096CC0D /* AnswerResultViewModel.swift in Sources */,
 				B5B160102CD7DC2F002D3659 /* ScoreService.swift in Sources */,
 				B5D7CD522CE83DBE0019352D /* QuestionnaireCountdownView.swift in Sources */,
 				C709050A2B96C97800CAB49F /* QuestionnaireViewModel.swift in Sources */,

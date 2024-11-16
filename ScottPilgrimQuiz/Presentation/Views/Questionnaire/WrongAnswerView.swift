@@ -24,7 +24,6 @@ struct WrongAnswerView: View {
         mainView
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity)
-            .padding()
             .background {
                 backgroundView
             }
