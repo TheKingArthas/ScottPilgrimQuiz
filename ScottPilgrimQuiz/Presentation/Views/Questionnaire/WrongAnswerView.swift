@@ -26,8 +26,7 @@ struct WrongAnswerView: View {
                    maxHeight: .infinity)
             .padding()
             .background {
-                CustomColor.black
-                    .ignoresSafeArea()
+                backgroundView
             }
     }
 
@@ -37,7 +36,6 @@ struct WrongAnswerView: View {
                 .padding(.top, LayoutMultiplier.padding(10))
                 .padding(.bottom, LayoutMultiplier.padding(6))
             Spacer()
-            wrongAnswerImageView
             nextButtonView
                 .padding(.bottom, LayoutMultiplier.padding(4))
         }
@@ -72,6 +70,19 @@ struct WrongAnswerView: View {
         PrimaryButton(labelText: isLastQuestion ? "Finish" : "Next question",
                       buttonDirection: .forward) {
             nextQuestionAction()
+        }
+    }
+
+    private var backgroundView: some View {
+        ZStack {
+            CustomColor.black
+                .ignoresSafeArea()
+            VStack {
+                Spacer()
+                wrongAnswerImageView
+                    .padding(.bottom, 0)
+            }
+            CustomColor.black.opacity(0.8)
         }
     }
 }
