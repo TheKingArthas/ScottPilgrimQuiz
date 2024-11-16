@@ -26,11 +26,28 @@ struct AnswerResultView: View {
             case .wrongAnswer(let correctAnswer, _):
                 EmptyView()
             case .timeIsUp(_):
-                EmptyView()
+                timeIsUpView
             }
             Spacer()
             nextButtonView(viewModel.viewState)
+                .padding(.bottom, LayoutMultiplier.padding(4))
         }
+    }
+
+    private var timeIsUpView: some View {
+        VStack {
+            Text("Time is up!")
+                .customModifierTextH1(CustomColor.destructive)
+                .padding(.top, LayoutMultiplier.padding(4))
+                .padding(.bottom, LayoutMultiplier.padding(2))
+            Text("Try to be faster next time")
+                .customModifierTextBody(CustomColor.white)
+                .padding(.bottom, LayoutMultiplier.padding(2))
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+        }
+        .padding(.top, LayoutMultiplier.padding(10))
+        .padding(.bottom, LayoutMultiplier.padding(6))
     }
 
     private func correctAnswerView(score: Int) -> some View {
@@ -79,7 +96,16 @@ extension AnswerResultView {
         case .wrongAnswer(_, _):
             EmptyView()
         case .timeIsUp(_):
-            EmptyView()
+            VStack {
+                Spacer()
+                CustomImage.ramonaAiming
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.horizontal, LayoutMultiplier.padding(2))
+            }
+            .background {
+                CustomColor.backgroundDestructive
+            }
         }
     }
 }
