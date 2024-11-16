@@ -81,6 +81,7 @@ fileprivate struct CustomViewModifiers {
             func body(content: Content) -> some View {
                 content
                     .font(CustomFont.karmaticArcade(size: LayoutMultiplier.size(6)))
+                    .multilineTextAlignment(.center)
                     .foregroundStyle(color)
             }
         }

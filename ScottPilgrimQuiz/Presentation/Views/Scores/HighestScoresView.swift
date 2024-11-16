@@ -26,30 +26,29 @@ struct HighestScoresView: View {
 
     private func mainView(_ highestScores: [PlayerScoreModel]) -> some View {
         VStack {
-            title
+            titleView
                 .padding(.vertical, LayoutMultiplier.padding(4))
-            ScrollView {
-                VStack {
-                    ForEach(highestScores, id: \.self) { score in
-                        playerScoreRow(score)
-                            .padding(.vertical, LayoutMultiplier.padding(0.5))
-                    }
-                }
-                .padding(.horizontal, LayoutMultiplier.padding(4))
+            if highestScores.isEmpty {
+                Text("No scores to show.")
+                    .customModifierTextBody(CustomColor.white)
+                    .padding(.horizontal, LayoutMultiplier.padding(4))
+            } else {
+                highestScoresTableView(highestScores)
+                    .padding(.horizontal, LayoutMultiplier.padding(4))
             }
             Spacer()
-            mainMenuButton
+            mainMenuButtonView
                 .padding(.top, LayoutMultiplier.padding(4))
                 .padding(.bottom, LayoutMultiplier.padding(1))
         }
     }
 
-    private var title: some View {
+    private var titleView: some View {
         Text("Highest scores")
             .customModifierTextH1()
     }
 
-    private func playerScoreRow(_ playerScore: PlayerScoreModel) -> some View {
+    private func playerScoreRowView(_ playerScore: PlayerScoreModel) -> some View {
         HStack {
             Text(playerScore.name)
             Spacer()
@@ -58,8 +57,19 @@ struct HighestScoresView: View {
         .customModifierTextBody(CustomColor.white)
     }
 
-    private var mainMenuButton: some View {
-        PrimaryButton(labelText: "Main menu", labelColor: CustomColor.destructive) { dismiss() }
+    private var mainMenuButtonView: some View {
+        PrimaryButton(labelText: "Main menu") { dismiss() }
+    }
+
+    private func highestScoresTableView(_ highestScores: [PlayerScoreModel]) -> some View {
+        ScrollView {
+            VStack {
+                ForEach(highestScores, id: \.self) { score in
+                    playerScoreRowView(score)
+                        .padding(.vertical, LayoutMultiplier.padding(0.5))
+                }
+            }
+        }
     }
 }
 
