@@ -8,7 +8,7 @@
 import Foundation
 
 class ScoreService {
-    static private let scoresKey = "questionsAJFPIJEPOA"
+    static private let scoresKey = "questions"
     static private let amountOfTopScores: Int = 10
 
     private(set) var highestScores: [PlayerScoreModel]

@@ -263,9 +263,9 @@
 		C70905082B96C91000CAB49F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				C70905092B96C97800CAB49F /* QuestionnaireViewModel.swift */,
 				B5B160112CD856D4002D3659 /* GameOverViewModel.swift */,
 				B554A32D2CD911D400774FF9 /* MainMenuViewModel.swift */,
+				C70905092B96C97800CAB49F /* QuestionnaireViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
