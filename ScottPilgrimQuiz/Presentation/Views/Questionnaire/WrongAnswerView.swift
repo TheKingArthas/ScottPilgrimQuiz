@@ -9,10 +9,14 @@ import SwiftUI
 
 struct WrongAnswerView: View {
     private let correctAnswer: String
+    private let isLastQuestion: Bool
     private let nextQuestionAction: () -> Void
 
-    init(correctAnswer: String, nextQuestionAction: @escaping () -> Void) {
+    init(correctAnswer: String,
+         isLastQuestion: Bool,
+         nextQuestionAction: @escaping () -> Void) {
         self.correctAnswer = correctAnswer
+        self.isLastQuestion = isLastQuestion
         self.nextQuestionAction = nextQuestionAction
     }
 
@@ -65,12 +69,16 @@ struct WrongAnswerView: View {
     }
 
     private var nextButtonView: some View {
-        PrimaryButton(labelText: "Next question", buttonDirection: .forward) { nextQuestionAction() }
+        PrimaryButton(labelText: isLastQuestion ? "Finish" : "Next question",
+                      buttonDirection: .forward) {
+            nextQuestionAction()
+        }
     }
 }
 
 #Preview {
-    WrongAnswerView(correctAnswer: "This was actually the correct answer. Better luck next time!") {
+    WrongAnswerView(correctAnswer: "This was actually the correct answer. Better luck next time!",
+                    isLastQuestion: false) {
         print("Next question pressed")
     }
 }

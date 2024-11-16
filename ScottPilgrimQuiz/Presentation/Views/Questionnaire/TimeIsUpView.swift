@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct TimeIsUpView: View {
+    private let isLastQuestion: Bool
     private let nextQuestionAction: () -> Void
 
-    init(nextQuestionAction: @escaping () -> Void) {
+    init(isLastQuestion: Bool, nextQuestionAction: @escaping () -> Void) {
+        self.isLastQuestion = isLastQuestion
         self.nextQuestionAction = nextQuestionAction
     }
 
@@ -51,7 +53,10 @@ struct TimeIsUpView: View {
     }
 
     private var nextButtonView: some View {
-        PrimaryButton(labelText: "Next question", buttonDirection: .forward) { nextQuestionAction() }
+        PrimaryButton(labelText: isLastQuestion ? "Finish" : "Next question",
+                      buttonDirection: .forward) {
+            nextQuestionAction()
+        }
     }
 
     private var backgroundView: some View {
@@ -69,5 +74,5 @@ struct TimeIsUpView: View {
 }
 
 #Preview {
-    TimeIsUpView() {}
+    TimeIsUpView(isLastQuestion: true) {}
 }

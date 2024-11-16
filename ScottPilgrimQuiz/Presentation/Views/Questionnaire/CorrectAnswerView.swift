@@ -9,10 +9,14 @@ import SwiftUI
 
 struct CorrectAnswerView: View {
     private let pointsEarned: Int
+    private let isLastQuestion: Bool
     private let nextQuestionAction: () -> Void
 
-    init(pointsEarned: Int, nextQuestionAction: @escaping () -> Void) {
+    init(pointsEarned: Int,
+         isLastQuestion: Bool,
+         nextQuestionAction: @escaping () -> Void) {
         self.pointsEarned = pointsEarned
+        self.isLastQuestion = isLastQuestion
         self.nextQuestionAction = nextQuestionAction
     }
 
@@ -57,7 +61,10 @@ struct CorrectAnswerView: View {
     }
 
     private var nextButtonView: some View {
-        PrimaryButton(labelText: "Next question", buttonDirection: .forward) { nextQuestionAction() }
+        PrimaryButton(labelText: isLastQuestion ? "Finish" : "Next question",
+                      buttonDirection: .forward) {
+            nextQuestionAction()
+        }
     }
 
     private var backgroundView: some View {
@@ -75,7 +82,8 @@ struct CorrectAnswerView: View {
 }
 
 #Preview {
-    CorrectAnswerView(pointsEarned: 10) {
+    CorrectAnswerView(pointsEarned: 10,
+                      isLastQuestion: true) {
         print("Next question pressed")
     }
 }

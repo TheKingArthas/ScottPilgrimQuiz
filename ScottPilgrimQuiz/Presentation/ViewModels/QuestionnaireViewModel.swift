@@ -9,6 +9,7 @@ import Foundation
 import SwiftUICore
 
 class QuestionnaireViewModel: ObservableObject {
+    var isLastQuestion: Bool { currentQuestionNumber == amountOfQuestions }
     private static let secondsToAnswerEachQuestion: Int = 30
     @Published var viewState: QuestionnaireViewState
     private(set) var amountOfQuestions: Int
