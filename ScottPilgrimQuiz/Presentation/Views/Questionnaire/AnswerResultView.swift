@@ -8,19 +8,24 @@
 import SwiftUI
 
 struct AnswerResultView: View {
-    @StateObject private var viewModel: AnswerResultViewModel
+    private var viewState: AnswerResultViewState
     private let nextQuestionAction: () -> Void
-
+    
+    init(viewState: AnswerResultViewState, nextQuestionAction: @escaping () -> Void) {
+        self.viewState = viewState
+        self.nextQuestionAction = nextQuestionAction
+    }
+    
     var body: some View {
         mainView
             .background {
-                backgroundReducer(viewModel.viewState)
+                backgroundReducer(viewState)
             }
     }
-
+    
     private var mainView: some View {
         VStack {
-            switch viewModel.viewState {
+            switch viewState {
             case .correctAnswer(let score, _):
                 correctAnswerView(score: score)
             case .wrongAnswer(let correctAnswer, _):
@@ -29,11 +34,11 @@ struct AnswerResultView: View {
                 timeIsUpView
             }
             Spacer()
-            nextButtonView(viewModel.viewState)
+            nextButtonView(viewState)
                 .padding(.bottom, LayoutMultiplier.padding(4))
         }
     }
-
+    
     private var timeIsUpView: some View {
         VStack {
             Text("Time is up!")
@@ -49,7 +54,7 @@ struct AnswerResultView: View {
         .padding(.top, LayoutMultiplier.padding(10))
         .padding(.bottom, LayoutMultiplier.padding(6))
     }
-
+    
     private func correctAnswerView(score: Int) -> some View {
         VStack {
             Text("Correct !!")
@@ -65,7 +70,7 @@ struct AnswerResultView: View {
                 .lineLimit(2)
         }
     }
-
+    
     private func wrongAnswerView(correctAnswer: String) -> some View {
         VStack {
             Text("Wrong answer!!")
@@ -84,7 +89,7 @@ struct AnswerResultView: View {
         .padding(.top, LayoutMultiplier.padding(10))
         .padding(.bottom, LayoutMultiplier.padding(6))
     }
-
+    
     private func nextButtonView(_ viewState: AnswerResultViewState) -> some View {
         switch viewState {
         case .correctAnswer(_, let isLastQuestion),
@@ -101,7 +106,7 @@ struct AnswerResultView: View {
 extension AnswerResultView {
     @ViewBuilder
     private func backgroundReducer(_ viewState: AnswerResultViewState) -> some View {
-        switch viewModel.viewState {
+        switch viewState {
         case .correctAnswer(_, _):
             VStack {
                 Spacer()
@@ -143,5 +148,6 @@ extension AnswerResultView {
 }
 
 #Preview {
-    AnswerResultView()
+    AnswerResultView(viewState: .correctAnswer(score: 20, isLastQuestion: false),
+                     nextQuestionAction: { print("Next") })
 }

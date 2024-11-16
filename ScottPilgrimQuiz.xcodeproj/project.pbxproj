@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B5089E302CE861100096CC0D /* AnswerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5089E2F2CE861100096CC0D /* AnswerResultView.swift */; };
-		B5089E322CE861C20096CC0D /* AnswerResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5089E312CE861C20096CC0D /* AnswerResultViewModel.swift */; };
 		B5089E342CE861E10096CC0D /* AnswerResultViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5089E332CE861E10096CC0D /* AnswerResultViewState.swift */; };
 		B50F43EA2CD87180006F4148 /* PlayerScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43E92CD87180006F4148 /* PlayerScoreView.swift */; };
 		B50F43EC2CD875A1006F4148 /* GameOverViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F43EB2CD875A1006F4148 /* GameOverViewState.swift */; };
@@ -57,7 +56,6 @@
 
 /* Begin PBXFileReference section */
 		B5089E2F2CE861100096CC0D /* AnswerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerResultView.swift; sourceTree = "<group>"; };
-		B5089E312CE861C20096CC0D /* AnswerResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerResultViewModel.swift; sourceTree = "<group>"; };
 		B5089E332CE861E10096CC0D /* AnswerResultViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerResultViewState.swift; sourceTree = "<group>"; };
 		B50F43E92CD87180006F4148 /* PlayerScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScoreView.swift; sourceTree = "<group>"; };
 		B50F43EB2CD875A1006F4148 /* GameOverViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewState.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 		C70905082B96C91000CAB49F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				B5089E312CE861C20096CC0D /* AnswerResultViewModel.swift */,
 				B5B160112CD856D4002D3659 /* GameOverViewModel.swift */,
 				B554A32D2CD911D400774FF9 /* MainMenuViewModel.swift */,
 				C70905092B96C97800CAB49F /* QuestionnaireViewModel.swift */,
@@ -414,7 +411,6 @@
 				B554A3322CD9138000774FF9 /* MainMenuView.swift in Sources */,
 				B5B1600C2CD75B71002D3659 /* HighestScoresView.swift in Sources */,
 				B50F43EC2CD875A1006F4148 /* GameOverViewState.swift in Sources */,
-				B5089E322CE861C20096CC0D /* AnswerResultViewModel.swift in Sources */,
 				B5B160102CD7DC2F002D3659 /* ScoreService.swift in Sources */,
 				B5D7CD522CE83DBE0019352D /* QuestionnaireCountdownView.swift in Sources */,
 				C709050A2B96C97800CAB49F /* QuestionnaireViewModel.swift in Sources */,

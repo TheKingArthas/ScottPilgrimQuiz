@@ -44,22 +44,24 @@ struct QuestionnaireView: View {
             }
             .ignoresSafeArea()
         case let .correctAnswer(score):
-            CorrectAnswerView(pointsEarned: score,
-                              isLastQuestion: viewModel.isLastQuestion) {
+            AnswerResultView(viewState: .correctAnswer(score: score,
+                                                       isLastQuestion: viewModel.isLastQuestion)) {
                 viewModel.nextQuestion()
             }
         case let .wrongAnswer(correctAnswer):
-            WrongAnswerView(correctAnswer: correctAnswer,
-                            isLastQuestion: viewModel.isLastQuestion) {
+            AnswerResultView(viewState: .wrongAnswer(correctAnswer: correctAnswer,
+                                                     isLastQuestion: viewModel.isLastQuestion)) {
                 viewModel.nextQuestion()
             }
-        case let .error(title, description):
-            ErrorView(title: title, description: description)
+        case .timeIsUp:
+            AnswerResultView(viewState: .timeIsUp(isLastQuestion: viewModel.isLastQuestion)) {
+                viewModel.nextQuestion()
+            }
         case let .finished(playerScore: playerScore):
             GameOverView(viewModel: GameOverViewModel(scoreService: ScoreService()),
-                       playerScore: playerScore)
-        case .timeIsUp:
-            TimeIsUpView(isLastQuestion: viewModel.isLastQuestion) { viewModel.nextQuestion() }
+                         playerScore: playerScore)
+        case let .error(title, description):
+            ErrorView(title: title, description: description)
         }
     }
 }
